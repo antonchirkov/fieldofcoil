@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+  body{
+    display:block;
+    margin:0;
+    padding:0;
+    width:100vw;
+    height:100vh;
+    font-size:3.5vmin;
+    font-family: sans-serif;
+    -moz-user-select: none; -khtml-user-select: none; -webkit-user-select: none; user-select: none;
+    position:relative;
+  }
+  input{
+    margin:auto;
+  }
+  button{
+    font-size:14px;
+  }
+  #animation{
+    display:block;
+    height:400px;
+    width: 798px;
+    border: 1px solid black;
+    border-bottom:0;
+    z-index: 2;
+    position:relative;
+  }
+  .controlPanel{
+    background: white;
+    display:flex;
+    height:99px;
+    width:800px;
+
+  }
+  .panelInput{
+    width:400px;
+    display: inline-block;
+    background: #ddd;
+    border-radius:5px 5px 0 0;
+    }
+.nameOfField{
+  width:100%;
+  text-align:center;
+  font-size:14px;
+  background:#bbb;
+  color:white;
+  border-radius:5px 5px 0 0;
+}
+  .inputValues{
+    align-items:center;
+    text-align: center;
+    display:block;
+    margin-bottom:5px;
+    margin-top:5px;
+    font-size:12px;
+    border-radius:5px 5px 0 0;
+  }
+  .inputAndChange{
+    display:inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left:10px;
+    margin-bottom: 8px;
+  }
+  .inputValue{
+    display:inline-block;
+    position:relative;
+    background: white;
+    width:50px;
+    height:23px;
+    line-height: 23px;
+    margin-top:0;
+    margin-right:-1px;
+    font-size:14px;
+    z-index: 0;
+  }
+  .changeValue{
+    display:inline-block;
+    position:relative;
+    width:20px;
+    margin-left:0;
+    height:25px;
+    border-radius:0 5px 5px 0;
+    z-index: 1;
+  }
+  .changeValueButtons{
+    background:#bbb;
+    font-size:8px;
+    height:12px;
+    line-height:15px;
+    display:block;
+    border-bottom: 1px solid #999;
+    border-radius:0 3px 3px 0;
+  }
+  .workChoice{
+    width:100px;
+    margin-left:2px;
+    margin-right:2px;
+    font-size:14px;
+    display:inline-flex;
+    align-items: center;
+    flex-direction: column;
+    background: #ddd;
+    border-radius:5px 5px 0 0;
+  }
+  .panelOutput{
+    width:300px;
+    height:100px;
+    display:inline;
+    position:relative;
+    background: #ddd;
+    font-size:14px;
+    border-radius:5px 5px 0 0;
+  }
+  .outputValue{
+    display:inline;
+  }
+  .circle {
+width: 38px;
+height: 38px;
+background: #bbb;
+border-radius: 50%;
+border: 1px solid  black;
+position:absolute;
+display:block;
+text-align:center;
+line-height:38px;
+font-size:30px;
+font-weight: bold;
+color:white;
+z-index: 3;
+}
+.point{
+  height:2px;
+  width:2px;
+  background:blue;
+  position:absolute;
+  display:block;
+  z-index: 3;
+  border-radius: 50%;
+}
+</style>
+</head>
+<body>
+  <div style="position:absolute; height:200px; width:40px; top:100px; left:380px; background:#aaa; z-index:0;">
+    <div style="position:relative; width:100%; height:100%;">
+    <div id="circleTop" class="circle" style="top:-20px">⋅</div>
+    <div id="circleBottom" class="circle" style="bottom:-20px">×</div>
+    </div>
+</div>
+  <div id="midleAxis" style="width:800px; height:2px; position:absolute; background:red; top:200px; display:block; z-index:1;">
+</div>
+<div style="display:inline; height:10px; width:2px; background:red; position:absolute; top:200px; left:400px; z-index:1"></div>
+<div style="position:absolute; color:red; left:700px; top:194px; font-size:12px;">►</div>
+  <div id="animation">
+  </div>
+  <div class="controlPanel">
+    <div class="panelInput">
+      <div class="nameOfField">Входные параметры</div>
+      <div class="inputValues">
+        <div class="inputAndChange">
+          x = <div class="inputValue" id="coordinateX">5.00</div>
+          <div class="changeValue">
+          <div class="changeValueButtons" onclick="if(Number(coordinateX.innerHTML)<19){coordinateX.innerHTML=(Number(coordinateX.innerHTML)+0.1).toFixed(2); writeB(coordinateX.innerHTML, coordinateY.innerHTML, radius.innerHTML, current.innerHTML)}">▲</div>
+          <div class="changeValueButtons" onclick="if(Number(coordinateX.innerHTML)>-19){coordinateX.innerHTML=(Number(coordinateX.innerHTML)-0.1).toFixed(2); writeB(coordinateX.innerHTML, coordinateY.innerHTML, radius.innerHTML, current.innerHTML)}">▼</div>
+        </div>
+        </div>
+        cм
+        <div class="inputAndChange">
+          y = <div class="inputValue" id="coordinateY">0.00</div>
+          <div class="changeValue">
+          <div class="changeValueButtons" onclick="if(Number(coordinateY.innerHTML)<9.5){coordinateY.innerHTML=(Number(coordinateY.innerHTML)+0.1).toFixed(2); writeB(coordinateX.innerHTML, coordinateY.innerHTML, radius.innerHTML, current.innerHTML)}">▲</div>
+          <div class="changeValueButtons" onclick="if(Number(coordinateY.innerHTML)>-9.5){coordinateY.innerHTML=(Number(coordinateY.innerHTML)-0.1).toFixed(2); writeB(coordinateX.innerHTML, coordinateY.innerHTML, radius.innerHTML, current.innerHTML)}">▼</div>
+        </div></div> см <br>
+        <div class="inputAndChange">
+        I = <div class="inputValue" id="current">20</div>
+        <div class="changeValue">
+<div class="changeValueButtons" onclick="if(Number(current.innerHTML)<20){current.innerHTML=(Number(current.innerHTML)+1).toFixed(2); writeB(coordinateX.innerHTML, coordinateY.innerHTML, radius.innerHTML, current.innerHTML); refresh(); plotLines(0, Number(radius.innerHTML), Number(current.innerHTML), Number(dB.innerHTML));}">
+            ▲</div>
+<div class="changeValueButtons" onclick="if(Number(current.innerHTML)>-20){current.innerHTML=(Number(current.innerHTML)-1).toFixed(2); writeB(coordinateX.innerHTML, coordinateY.innerHTML, radius.innerHTML, current.innerHTML); refresh(); plotLines(0, Number(radius.innerHTML), Number(current.innerHTML), Number(dB.innerHTML));}">
+  ▼</div>
+        </div></div> A
+        <div class="inputAndChange">
+          R = <div class="inputValue" id="radius">5</div>
+          <div class="changeValue">
+          <div class="changeValueButtons">▲</div>
+          <div class="changeValueButtons">▼</div>
+        </div></div> см
+        <div class="inputAndChange">
+          ΔB = <div class="inputValue" id="dB">60</div>
+          <div class="changeValue">
+          <div class="changeValueButtons">▲</div>
+          <div class="changeValueButtons">▼</div>
+        </div></div> мкТл
+      </div>
+    </div>
+    <div class="workChoice">
+      <div class="nameOfField">Режим </div>
+      <br>
+    <form id="workChoice" style="margin-left:10px;">
+    <input type="radio" name="numberOfSlots" value="one" checked/> Линии
+    <br>
+    <input type="radio" name="numberOfSlots" value="two"/> Опилки
+  </form>
+  </div>
+    <div class="panelOutput">
+        <div class="nameOfField">Выходные параметры</div> <br>
+     <div style="display:block; margin-left:25px;">B = <div id="BField" class="outputValue"></div> мкТл</div>
+     <div style="display:block; margin-left:20px;">B<sub>x</sub> = <div id="BFieldX" class="outputValue"></div> мкТл</div>
+     <div style="display:block; margin-left:21px;">B<sub>y</sub> = <div id="BFieldY" class="outputValue"></div> мкТл</div>
+    </div>
+  </div>
+  <script>
+  let matrix = {};
+  writeB(Number(coordinateX.innerHTML), Number(coordinateY.innerHTML), Number(radius.innerHTML), Number(current.innerHTML));
+  plotLines(0, Number(radius.innerHTML), Number(current.innerHTML), Number(dB.innerHTML));
+  //fillInMatrix();
+  console.log(matrix["1.00,2.00"]);
+
+  animation.onclick=function(event){
+    let x=(event.pageX-400)/20;
+    let y=(-(event.pageY-200)/20);
+    if (!(x <= 1.5 && x>=-1.5 && y<=6.5 && y >= 3.5)) // Вблизи среза витка вычисления не производятся
+    {coordinateX.innerHTML=x.toFixed(2);
+    coordinateY.innerHTML=y.toFixed(2);
+    writeB(x.toFixed(2), y.toFixed(2), Number(radius.innerHTML), Number(current.innerHTML));
+  }
+  }
+  workChoice.onchange=function(e){
+    if (e.target.value == 'one'){
+    }
+    else{
+    }
+  }
+  function fillInMatrix(){
+    for (i=0; i<=400; i++){
+      for (j=0; j<=200; j++){
+        let x=(i)/20;
+        let y = -(j)/20;
+        if (!(x <= 0.4 && x>=-0.4 && y<=1.0 && y >= 3.0))
+        {
+          let answer=findBxy(x, y, 5, 20);
+          matrix[x.toFixed(2) + ',' + y.toFixed(2)] = [answer[0], answer[1], answer[3]];}
+      }
+    }
+    writeOutputFromMatrix();
+  }
+  function writeB(x, y, r, i){
+    let answer=findBxy(x,y, r, i);
+    BField.innerHTML=(Math.sqrt(Math.pow(answer[0],2)+Math.pow(answer[1],2))*1000000).toFixed(2);
+    BFieldX.innerHTML=(answer[0]*1000000).toFixed(2);
+    BFieldY.innerHTML=(answer[1]*1000000).toFixed(2);
+  }
+  function findBxy(x,y,r,i){
+    let dFi = 3.141593/360
+    let answerBx =0;
+    let answerBy =0;
+    let fi=-3.141593/2;
+    while (fi<=3.141593/2)
+    {
+      answerBx=answerBx + (r/100-y/100*Math.sin(fi))*r/100/Math.pow(y*y/10000+x*x/10000+r*r/10000-2*r*y/10000*Math.sin(fi),3/2);
+      answerBy=answerBy + x/100*Math.sin(fi)*r/100/Math.pow(y*y/10000+x*x/10000+r*r/10000-2*r*y/10000*Math.sin(fi),3/2);
+      fi=fi+dFi;
+    }
+    answerBx=dFi*2*Math.pow(10,-7)*i*answerBx;
+    answerBy=dFi*2*Math.pow(10,-7)*i*answerBy;
+    return [answerBx, answerBy, Math.sqrt(answerBx*answerBx+answerBy*answerBy)];
+  }
+function writeOutputFromMatrix(){
+  let output = matrix[coordinateX.innerHTML + ',' + coordinateY.innerHTML];
+  BFieldX.innerHTML=(output[0]*1000000).toFixed(2);
+  BFieldY.innerHTML=(output[1]*1000000).toFixed(2);
+  BField.innerHTML=(output[2]*1000000).toFixed(2);
+}
+function plotLines(y, r, i, dB){
+  let startPointB=findBxy(0, y, r, i)[2];
+  let newPointB=startPointB;
+  // Поиск подходяящего B от dB, отметка точки
+  while (newPointB<=startPointB+dB/1000000){
+  y=y+0.05
+  newPointB=findBxy(0,y,r,i)[2];
+  }
+  let startPointLine1 = document.createElement('div');
+  let startPointLine2 = document.createElement('div');
+
+  startPointLine1.className='point';
+  startPointLine1.style.top=`${199-y*20}px`;
+  startPointLine1.style.left='399px';
+  animation.prepend(startPointLine1);
+  startPointLine2.className='point';
+  startPointLine2.style.top=`${199+y*20}px`;
+  startPointLine2.style.left='399px';
+  animation.prepend(startPointLine2);
+
+  let nextX=0;
+  let nextY=y*20;
+  //Отрисовывание линий
+  while (nextX>=0 && nextX<=400 && nextY<=200 && nextY>=0)
+  {
+    let nextPointB=findBxy(nextX/20,nextY/20,r,i);
+
+    nextX=(nextX+nextPointB[0]/nextPointB[2]*4);
+    nextY=(nextY+nextPointB[1]/nextPointB[2]*4);
+    let nextPointLine1 = document.createElement('div');
+    let nextPointLine2 = document.createElement('div');
+    let nextPointLine3 = document.createElement('div');
+    let nextPointLine4 = document.createElement('div');
+    nextPointLine1.className='point';
+    nextPointLine1.style.top=`${199-nextY}px`;
+    nextPointLine1.style.left=`${399+nextX}px`;
+    animation.prepend(nextPointLine1);
+    //зеркальные точки
+    nextPointLine2.className='point';
+    nextPointLine2.style.top=`${199+nextY}px`;
+    nextPointLine2.style.left=`${399+nextX}px`;
+    animation.prepend(nextPointLine2);
+    nextPointLine3.className='point';
+    nextPointLine3.style.top=`${199+nextY}px`;
+    nextPointLine3.style.left=`${399-nextX}px`;
+    animation.prepend(nextPointLine3);
+    nextPointLine4.className='point';
+    nextPointLine4.style.top=`${199-nextY}px`;
+    nextPointLine4.style.left=`${399-nextX}px`;
+    animation.prepend(nextPointLine4);
+  }
+  if (y<r-1.5) plotLines(y,r,i, dB);
+}
+function randomInteger(min, max) {
+    let rand = min + Math.random() * (max + 1 - min);
+    return Math.floor(rand);
+}
+function refresh(){
+  animation.querySelectorAll('.point').forEach((item) => {
+    item.remove();
+  });
+
+}
+</script>
+</body>
+</html>
