@@ -1,4 +1,30 @@
 
+function findBxy(x,y,r,i){
+	let dFi = 3.141593/360
+	let answerBx =0;
+	let answerBy =0;
+	let fi=-3.141593/2;
+	// Интегралл
+	while (fi<=3.141593/2)
+	{
+		answerBx=answerBx + (r/100-Math.abs(x)/100*Math.sin(fi))*r/100/Math.pow(y*y/10000+x*x/10000+r*r/10000-2*r*Math.abs(y)/10000*Math.sin(fi),3/2);
+		answerBy=answerBy + Math.abs(y)/100*Math.sin(fi)*r/100/Math.pow(y*y/10000+x*x/10000+r*r/10000-2*r*Math.abs(y)/10000*Math.sin(fi),3/2);
+		fi=fi+dFi;
+	}
+	answerBx=dFi*2*Math.pow(10,-7)*i*answerBx*1000000;
+	answerBy=dFi*2*Math.pow(10,-7)*i*answerBy*1000000;
+	// Распределение на кварталах с отрицательными x/y (зеркаление)
+	if(x>=0)
+	{
+		if(y<0) answerBy=-answerBy;
+	}
+	else{
+		if(y>0) answerBy=-answerBy;
+	}
+	return [answerBx, answerBy, Math.sqrt(answerBx*answerBx+answerBy*answerBy)];
+}
+
+
 // Функция строитель для вашей модели
 // Наименование функции - CamelCase от type модели из XML
 // Код этой функции в большинстве случаев копируется и не редактируется разработчиком кастомной модели
@@ -302,28 +328,3 @@ modelNS.fieldOfCoilView = modelNS.BaseModelView.extend({
 
 
 });
-
-function findBxy(x,y,r,i){
-	let dFi = 3.141593/360
-	let answerBx =0;
-	let answerBy =0;
-	let fi=-3.141593/2;
-	// Интегралл
-	while (fi<=3.141593/2)
-	{
-		answerBx=answerBx + (r/100-Math.abs(x)/100*Math.sin(fi))*r/100/Math.pow(y*y/10000+x*x/10000+r*r/10000-2*r*Math.abs(y)/10000*Math.sin(fi),3/2);
-		answerBy=answerBy + Math.abs(y)/100*Math.sin(fi)*r/100/Math.pow(y*y/10000+x*x/10000+r*r/10000-2*r*Math.abs(y)/10000*Math.sin(fi),3/2);
-		fi=fi+dFi;
-	}
-	answerBx=dFi*2*Math.pow(10,-7)*i*answerBx*1000000;
-	answerBy=dFi*2*Math.pow(10,-7)*i*answerBy*1000000;
-	// Распределение на кварталах с отрицательными x/y (зеркаление)
-	if(x>=0)
-	{
-		if(y<0) answerBy=-answerBy;
-	}
-	else{
-		if(y>0) answerBy=-answerBy;
-	}
-	return [answerBx, answerBy, Math.sqrt(answerBx*answerBx+answerBy*answerBy)];
-}

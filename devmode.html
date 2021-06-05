@@ -2,7 +2,7 @@
 
 <!--
  Шаблон для PISA-2021
- > npm run dev-build --config=pisa2021
+ > npm run models-build --config=pisa2021
 -->
 
 <head>
@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=10">
   	<title>Облако знаний</title>
 
-<link href="css/models.css?82022bbe85dfda2acf74" rel="stylesheet"><script type="text/javascript" src="js/models.js?82022bbe85dfda2acf74"></script></HEAD>
+<link href="css/models.css?96f0005843f579cc4f99" rel="stylesheet"><script type="text/javascript" src="js/models.js?96f0005843f579cc4f99"></script></HEAD>
 
 <BODY style="margin:0px;">
 
@@ -45,10 +45,9 @@
 					applicationVersion: applicationVersion,
 					pseudoRandomString: pseudoRandomString,
 					courseManifest: courseManifest,
-					firstSlideDependOnContentsChildren: true,
 
-					// Используется для ИКС-дев разработки
-					disableZoomScale: 'contain, auto',
+					// Используется для ИКС-дев разработки без включенного автоматического масштабирования
+					disableZoomScale: true,
 
 					// Сервисы используются как независимые вспомогательные объекты для плеера
 					services: {
@@ -82,7 +81,6 @@
 
 		/** Смена содержимого заголовка */
 		function changeHeaderText(txt, title) {
-			txt = txt.replace(/–/g, "<span class='verdana'>–</span>");
 				var headertext = $('#headertext');
 				headertext.html(txt);
 				if (typeof title !== 'undefined') {
