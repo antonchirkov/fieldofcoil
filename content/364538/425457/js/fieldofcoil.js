@@ -307,3 +307,4 @@ modelNS.fieldOfCoilView = modelNS.BaseModelView.extend({
 
 
 });
+ 
