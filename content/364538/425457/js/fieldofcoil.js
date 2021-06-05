@@ -126,7 +126,7 @@ modelNS.fieldOfCoilView = modelNS.BaseModelView.extend({
 
 		this.botLayout = new modelNS.DualVerticalLayout({
 			firstPaneWidth : 500,
-			secondPaneWidth:400,
+			secondPaneWidth:500,
 			parent : this.topBotLayout.$bottomPane,
 		}).render();
 
