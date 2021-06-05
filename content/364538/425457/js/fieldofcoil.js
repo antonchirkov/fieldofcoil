@@ -66,28 +66,6 @@ function fieldOfCoil(xmlData, wrapper, basePath, params) {
 // fieldOfCoil - функция-строитель данной модели
 modelNS.CommonModel.models.fieldofcoil = fieldOfCoil;
 
-modelNS.addLangs({
-	ru : {
-		animation : 'Анимация',
-		system_params : 'Параметры системы',
-		speed_impulses : 'Скорости, импульсы и энергии',
-		collision_type : 'Тип столкновения',
-		collision_v1 : 'Скорость первой тележки',
-		collision_v2 : 'Скорость второй тележки',
-		collision_m1 : 'Масса первой тележки',
-		collision_m2 : 'Масса второй тележки',
-		collision_elastic : 'Абсолютно упругое',
-		collision_notelastic : 'Абсолютно неупругое',
-		collision_Ek1 : 'Кинетическая энергия первой тележки',
-		collision_Ek2 : 'Кинетическая энергия второй тележки',
-		collision_dE : 'Изменение кинетической энергии при столкновении',
-		collision_p1 : 'Импульс первой тележки',
-		collision_p2 : 'Импульс второй тележки',
-		m_s : 'м/c',
-		kg : 'кг',
-		J : 'Дж',
-	}
-});
 
 modelNS.fieldOfCoil = modelNS.BaseModel.extend({
 	initialize: function(options) {
@@ -136,6 +114,7 @@ modelNS.fieldOfCoilView = modelNS.BaseModelView.extend({
 	{
 		this.topBotLayout = new modelNS.DualHorizontalLayout({
 			bottomPaneHeight: 120,
+			topPaneHeight: 400,
 			parent: this.$el,
 		}).render();
 
@@ -146,7 +125,7 @@ modelNS.fieldOfCoilView = modelNS.BaseModelView.extend({
 		}).render();
 
 		this.botLayout = new modelNS.DualVerticalLayout({
-			firstPaneWidth : 600,
+			firstPaneWidth : 500,
 			secondPaneWidth:400,
 			parent : this.topBotLayout.$bottomPane,
 		}).render();
@@ -159,8 +138,8 @@ modelNS.fieldOfCoilView = modelNS.BaseModelView.extend({
 		}).render();
 
 		this.botRight = new modelNS.DualVerticalLayout({
-			firstPaneWidth :200,
-			secondPaneWidth:200,
+			firstPaneWidth :150,
+			secondPaneWidth:245,
 			parent : this.botLayout.$secondPane,
 		}).render();
 
