@@ -1,0 +1,185 @@
+@CHARSET "UTF-8";
+
+.interactive-ruler {
+	position: absolute;
+	-webkit-user-select: none;  
+  	-moz-user-select: none;    
+  	-ms-user-select: none;      
+  	user-select: none;
+  	display: inline-block;
+    height: 40px;
+}
+
+.interactive-ruler .instruments-label {
+	float: left;
+	line-height: 20px;
+}
+
+.interactive-ruler-ruler {
+	-webkit-user-select: none;  
+  	-moz-user-select: none;    
+  	-ms-user-select: none;      
+  	user-select: none;
+	width: 300px;
+	height: 50px;
+	z-index: 500;
+	display: none;
+	position: absolute;
+}
+
+.interactive-ruler-ruler .ruler-rotatable {
+	position: relative;
+	background: url('img/ruler-middle.png') 0 0 repeat-x;
+	width: 100%;
+	height: 100%;
+	padding: 0 20px;
+}
+
+.interactive-ruler-ruler .ruler-rotatable .ruler-left,
+.interactive-ruler-ruler .ruler-rotatable .ruler-right {
+	position: absolute;
+	height: 50px;
+	top: 0;
+}
+
+.interactive-ruler-ruler .ruler-rotatable .ruler-left {
+	width: 15px;
+	left: -14px;
+	background: url(img/ruler-start.png) 0 0 no-repeat;
+}
+
+.interactive-ruler-ruler .ruler-rotatable .ruler-right {
+	width: 14px;
+	right: -13px;
+	background: url(img/ruler-end.png) 0 0 no-repeat;
+}
+
+.interactive-ruler-ruler .ruler-rotatable .mark {
+	position: absolute;
+	width: 1px;
+	height: 5px;
+	top: 4px;
+	margin-left: 20px;
+	background: #fff;
+}
+
+.interactive-ruler-ruler .ruler-rotatable .mark .label {
+	position: absolute;
+	color: #fff;
+	bottom: -20px;
+	display: inline-block;
+	font-size: 14px;
+}
+
+.interactive-ruler-ruler .ruler-rotatable .mark.main {
+	height: 10px;
+}
+.interactive-ruler-ruler .ruler-rotatable .mark.medium {
+	height: 7px;
+}
+
+.interactive-ruler-ruler .ui-rotatable-handle {
+	position: absolute;
+	width: 14px;
+	height: 14px;
+	bottom: 20px;
+	right: -6px;
+	left: auto;
+	cursor: pointer;
+	background: url(img/circle.png) 0 0 no-repeat;
+}
+
+.interactive-ruler-protractor {
+	-webkit-user-select: none;  
+  	-moz-user-select: none;    
+  	-ms-user-select: none;      
+	width: 155px;
+	height: 155px;
+	display: none;
+	position: absolute;
+	z-index: 500;
+}
+
+.interactive-ruler-protractor .back {
+	width: 155px;
+	height: 155px;
+	background: url(img/protractor.png) 0 0 no-repeat;
+	position: relative;
+	transform-origin: center;
+}
+
+.interactive-ruler-protractor.right .back {
+	transform: rotate(0deg);
+}
+
+.interactive-ruler-protractor.left .back {
+	transform: rotate(180deg);
+}
+
+.interactive-ruler-protractor.top .back {
+	transform: rotate(270deg);
+}
+
+.interactive-ruler-protractor.bottom .back {
+	transform: rotate(90deg);
+}
+
+.interactive-ruler-protractor .interactive-ruler-protractor-rotatable {
+	width: 140px;
+	/*height: 2px;
+	background: #000; 
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;*/
+	position: absolute;
+	top: 78px;
+	left: 78px;
+}
+.interactive-ruler-protractor .interactive-ruler-protractor-rotatable .black-back {
+	position: absolute;
+    width: 100%;
+    top: -1px;
+    height: 2px;
+    background: black;
+}
+
+.interactive-ruler-protractor .interactive-ruler-protractor-label {
+	display: inline-block;
+	padding: 4px;
+	border: 1px solid #acacac;
+	background-color: #dfcfaf;
+	color: #000;
+	font-size: 14px;
+	position: absolute;
+} 
+
+.interactive-ruler-protractor .interactive-ruler-protractor-rotatable .ui-rotatable-handle {
+	position: absolute;
+	width: 14px;
+	height: 14px;
+	top: -7px;
+	right: -6px;
+	left: auto;
+	cursor: pointer;
+	background: url(img/circle.png) 0 0 no-repeat;
+}
+
+.interactive-ruler .ruler-link, 
+.interactive-ruler .protractor-link {
+	cursor: pointer;
+	margin: 0 6px;
+	float: left;
+	width: 63px;
+	height: 39px;
+}
+
+.interactive-ruler .ruler-link {
+	background: url(img/b_2.png) 0 0 no-repeat;	
+}
+
+.interactive-ruler .protractor-link {
+	background: url(img/b_1.png) 0 0 no-repeat;	
+}
+
+.interactive-ruler .control-panel {
+	display: inline-block;
+}

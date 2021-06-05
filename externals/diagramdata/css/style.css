@@ -1,0 +1,26 @@
+.idiagramdata {
+  border:1px solid #1f71a9;
+  border-radius: 12px;
+  overflow: hidden;
+  font-size: 14px;
+}
+.idiagramdata th {
+  cursor:pointer;
+}
+.idiagramdata td:first-child {
+  text-align: left;
+  cursor:default;
+}
+.idiagramdata th:first-child {
+  cursor:default;
+}
+
+.idiagramdata td div {
+  opacity: 0;
+}
+.idiagramdata .selected div {
+  opacity: 1;
+}
+
+.idiagramdata .scroll {width:100%; height:100%; overflow: auto;}
+.idiagramdata .number {white-space: nowrap;}

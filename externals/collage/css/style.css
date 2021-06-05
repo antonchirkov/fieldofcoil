@@ -1,0 +1,190 @@
+@CHARSET "UTF-8";
+
+.icollage{margin:auto}
+
+.icollage .model-popup-wrapper .ui-widget-overlay {
+	position: absolute;
+}
+
+.icollage .mCSB_container {
+	margin-right: 0px !important;
+}
+
+.icollage .gallery-view .single-image:after,
+.icollage .preview-gallery .single-image:after {
+	content: '';
+	background: url("../../ischemetree/styles/images/plus-01.png") 0 0 no-repeat;
+	background-size: contain;
+	width:30px;
+	height:30px;
+
+	top: 2px;
+	right: 2px;
+	position: absolute;
+	cursor: pointer;
+	opacity: 0.7;
+}
+
+.single-image img{
+	-o-object-fit:cover;
+	object-fit:cover;
+	font-family: 'object-fit: cover;' /* for IE & Edge - the css polifill special property*/
+}
+.setted-image img{
+	width:100%;
+	height:100%;
+}
+.setted-image>img {
+	margin-top:25px;
+}
+
+/* fix IE 9 object fit make over background */
+.icollage .single-image img {
+	opacity:0;
+}
+.single-image {
+	background-position:center center;
+	background-size:cover;
+}
+.icollage .single-image .fon {
+	background-position:center center;
+	background-size:cover;
+	position:absolute;
+	z-index:-1;
+	top:25px; /*#8434 firsov 25*/
+	bottom:0;
+	left:0;
+	right:0;
+}
+
+
+.first-pane{padding:0!important;}
+
+.single-layout .gallery-view .single-image,
+.first-pane .single-image,
+.second-pane .single-image {
+	border-radius:6px;
+	border:1px groove #005e9e;
+}
+.single-layout .gallery-view .single-image img,
+.first-pane .single-image img,
+.second-pane .single-image img {
+	border-radius:0;
+	border:none;
+}
+
+.first-pane .single-image .title-bar {
+	line-height:23px;
+	height:25px;/*#8434 firsov 25*/
+	width:100%;
+	background:url(img/title_bg.png) repeat-x;
+	background-color:#04699c;
+	opacity:1;
+	pointer-events: all;
+}
+.first-pane .single-image .title-text{
+	margin:0; padding:0;
+	/* width:100%;  ??? мешает для определения есть ли ellipsis*/
+	white-space:nowrap;
+	pointer-events: all;
+	display: inline-block;
+	cursor:default;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.first-pane .single-image .title-bar .title-exit-arrow {
+	float:left;
+	/* position:absolute; #9715
+	top:0;
+	left:0; */
+	height:25px;
+	width:45px;
+	background:url(img/title_left.png) no-repeat left top/*#8434 url(img/title_bg.png) repeat-x; firsov 25*/ ;
+}
+.first-pane .single-image .title-bar .title-comment {
+	float:right;
+	/* position:absolute; #9715
+	top:0; right:0; */
+	height:25px;
+	width:45px;
+	background:url(img/title_right.png) no-repeat right top/*#8434,url(img/title_bg.png) repeat-x;firsov */;
+	pointer-events: all;
+}
+
+
+[skin="board"] .first-pane .single-image .title-bar{
+	height:33px;
+}
+
+[skin="board"] .icollage .single-image .fon {
+	top:33px; /*#8434 firsov 25*/
+}
+
+[skin="board"] .first-pane .single-image .title-bar .title-exit-arrow {
+	margin-top:3px;
+	/* top:3px; #9715 */
+}
+
+[skin="board"] .first-pane .single-image .title-bar .title-comment {
+	margin-top:3px;
+	/* top:3px; #9715 */
+}
+[skin="board"]  .first-pane .single-image .title-bar {
+	line-height:27px;
+}
+
+.second-pane {padding:0 0 0 4px!important;}
+
+.second-pane .single-image {padding:0!important; margin:0 3px 3px 0;}
+
+.second-pane .row:last-child .single-image {margin-bottom:0}
+
+.second-pane .row .single-image:last-child {margin-right:0}
+
+.hidden{display:none;}
+
+.single-layout .gallery-view .single-image {padding:0!important; margin:0 3px 3px 0;}
+
+.single-layout .gallery-view .row:last-child .single-image {margin-bottom:0}
+
+.single-layout .gallery-view .row .single-image:last-child {margin-right:0;}
+
+/* fix scroll position for custom sizes then scroll count from setted image width */
+.icollage.custom-preview-sizes {
+
+}
+
+.icollage>.dual-vertical-layout, .icollage>.single-layout {position:absolute; left:0; top:0}
+.icollage>.dual-vertical-layout {z-index:2}
+.icollage .mark {position:absolute; left:0; top:0; width:100%; height:100%; box-sizing: border-box; border:5px solid #3fa9ee}
+
+.icollage .cap {display:none}
+
+.icollage .gallery-view .image-copyright {display:none}
+
+.icollage .collage-prev {
+	width:31px;
+	height:31px;
+	float:left;
+	cursor:pointer;
+	position:relative;
+	background-size:cover;
+	background-position:0 0;
+	background-image:url("../../basemodel/img/play.png");
+	transform: scale(-1, 1);
+}
+.icollage .collage-next {
+	width:31px;
+	height:31px;
+	float:right;
+	cursor:pointer;
+	position:relative;
+	background-size:cover;
+	background-position:0 0;
+	background-image:url("../../basemodel/img/play.png");
+}
+.icollage .collage-next.disable {background-image:url("../../basemodel/img/play-dis.png")}
+.icollage .collage-prev.disable {background-image:url("../../basemodel/img/play-dis.png")}
+.icollage .collage-next:not(.disable):hover {opacity:0.9}
+.icollage .collage-prev:not(.disable):hover {opacity:0.9}

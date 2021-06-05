@@ -1,4 +1,4 @@
-﻿// Resourses
+// Resourses
 let decCache = [],
   decCases = [2, 0, 1, 1, 1, 2];
 
@@ -132,7 +132,7 @@ export var RES = {
     confirmationDownloadAllCourses: 'Вы действительно хотите загрузить и установить все доступные вам курсы?',
     version: 'Версия плеера:',
     releaseDate: 'выпущено',
-    sendErrortoSupport: 'Произошла ошибка. Пожалуйста, вернитесь к выполнению работы позже, сейчас на сервере ведутся технические работы.',
+    sendErrortoSupport: 'Произошла ошибка, отправьте текст ошибки в службу поддержки',
     examVariant: 'Экзаменационный вариант',
     trainVariant: 'Тренировочный вариант',
     stopAllDownloads: 'Остановить процесс загрузки',
@@ -244,8 +244,6 @@ export var RES = {
     title: 'Название',
     date: 'Дата',
     primaryScore: 'Первичный балл',
-    primaryProgress: 'Набрано процентов',
-    primaryStored: 'Ваш результат сохранен',
     primaryScoreHeader: 'Первичный<br/>балл',
     testScore: 'Тестовый балл',
     testScoreHeader: 'Тестовый<br/>балл',
@@ -254,9 +252,7 @@ export var RES = {
 
 // Slide
     next: 'Далее',
-    prev: 'Назад',
     check: 'Ответить',
-    verify: 'Проверить',
     solution: 'Решение',
     example: 'Пример',
     examples: 'Примеры',
@@ -312,7 +308,6 @@ export var RES = {
     comment: 'Комментарий',
     answerIsAccepted: 'Ваш ответ принят',
     estimateSolution: 'Оцените ваше решение',
-    noneSolution: 'Не оценено',
     answerSaved: 'Ответ сохранён',
     enter: 'Введите',
     yourAnswer: 'Ваше решение',
@@ -331,8 +326,6 @@ export var RES = {
     selectOneCriteriaHint: 'Выберите подходящий критерий',
     singlechoiceHint: 'Для ответа выберите один из предложенных вариантов',
     singlechoiceHintPrimarySchool: 'Для ответа выбери один из предложенных вариантов',
-    parsingHint: 'Выделите правильный ответ',
-    parsingHintPrimarySchool: 'Выделите правильный ответ',
     multichoiceHint: 'Для ответа выберите правильные варианты',
     multichoiceHintPrimarySchool: 'Для ответа выбери правильные варианты',
     valueanswerHint: 'Введите числовой ответ в поле ввода',
@@ -376,21 +369,6 @@ export var RES = {
     },
     mixanswerHint: 'Заполните все поля', // #11620
     mixanswerHintPrimarySchool: 'Заполните все поля', // #11620
-    audioanswerHintNoFile: 'Сделайте аудиозапись', // #8881
-    audioanswerHintSendFileSuccess: 'Аудиозапись отправлена на проверку', // #8881
-    audioanswerHintSendFileError: 'Ошибка отправки аудиозаписи',
-    audioanswerHintNotAuthorized: 'Отправка аудиозаписи доступна только авторизованным пользователям', // #8881
-    audioanswerRecStartTooltip: 'Запись',
-    audioanswerRecStopTooltip: 'Стоп',
-    audioanswerPlayTooltip: 'Старт',
-    audioanswerPauseTooltip: 'Пауза',
-    audioanswerUpdateTooltip: 'Сброс',
-    incorrectSymbol:"Данный символ запрещен",
-    concreteIncorrectSymbol: 'Символ %symbol% запрещен',
-    charactersLessThanNeed: 'Вы указали меньше символов, чем нужно',
-    charactersMoreThanNeed: 'Вы указали больше символов, чем нужно',
-    answerHasIncorrectSymbol: 'Ответ содержит недопустимые символы',
-    freeanswerHint: 'Введите решение или приложите файл',
 
 
 
@@ -434,7 +412,7 @@ export var RES = {
     answeredWrong: "Ответ неверен", // "Вы уже отвечали на этот вопрос неправильно", (подробнее [IN_IMUMK-Player3] Информационные надписи)
     notAnswered: "Вы не отвечали на эту задачу",
     taskAnswered: 'Вы уже отвечали на этот вопрос',
-    endTest: "Вы действительно хотите завершить тест?<br>После завершения вернуться к нему будет уже нельзя.",
+    endTest: "Вы действительно хотите завершить тест?",
     endTestYesBtnTitle: "Завершить тест и показать предварительные результаты",
     endTestYesBtn: "Завершить тест",
     endTestNoBtnTitle: "Продолжить работу над тестом",

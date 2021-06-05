@@ -1,0 +1,547 @@
+@CHARSET "UTF-8";
+
+.interactive-table {
+	position: relative;
+	-webkit-user-select: none;
+  	-moz-user-select: none;
+  	-ms-user-select: none;
+  	user-select: none;
+  	/* min-width: 500px; */
+  	width: auto/* 100% */;
+  	/* height: 100%; */
+  	padding: 8px;
+  	box-sizing: border-box;
+  	font-family: Trebuchet MS;
+
+	-webkit-border-radius: 14px;
+    -moz-border-radius: 14px;
+    -o-border-radius: 14px;
+	border-radius: 14px;
+
+	/*overflow:hidden;*/	/* fix filter layout visible over */
+}
+
+.interactive-table.invisible {
+	opacity: 0;
+	filter:Alpha(Opacity=0);
+}
+
+.interactive-table .itable .first-row {
+	text-align: center;
+}
+
+.interactive-table .itable {
+	table-layout:fixed;
+	width: auto /* 100% */;
+	border: none !important;
+	-webkit-border-radius: 14px;
+    -moz-border-radius: 14px;
+    -o-border-radius: 14px;
+    border-radius: 14px;
+    overflow-x: hidden;
+    border-collapse: separate;
+}
+.interactive-table .scrolling {
+	border-radius: 14px;
+	overflow-x: auto;
+	overflow-y: hidden;
+}
+
+.interactive-table.comboboxed .itable {
+	height: auto/* 100% */;
+	table-layout:fixed;
+}
+
+.interactive-table .itable th {
+	box-sizing:border-box;
+	min-height: 20px;
+	position: relative;
+	background: url(img/blue_top_middle.png) 0 0 repeat-x;
+	background-size: contain;
+	color:#fff;
+}
+
+.interactive-table .itable td {
+	background: white;
+	height: 60px;
+}
+
+.interactive-table .itable td table td,
+.interactive-table .itable th table td {
+	background: none;
+	border: none;
+}
+
+.interactive-table .itable.striped tbody tr:nth-child(odd) td {
+	background: #DBF1FF;
+}
+
+.interactive-table .itable td, table th {
+  border: 1px solid #CACACA;
+}
+.interactive-table .itable tr:first-child th {
+  border-top: 0;
+}
+.interactive-table .itable tr:last-child td {
+  border-bottom: 0;
+}
+.interactive-table .itable tr td:first-child,
+.interactive-table .itable tr th:first-child {
+  border-left: 0;
+}
+.interactive-table .itable tr td:last-child,
+.interactive-table .itable tr th:last-child {
+  border-right: 0;
+}
+
+
+.interactive-table .itable > tbody >tr:first-child > th:first-child {
+  border-top-left-radius: 14px;
+}
+.interactive-table .itable > tbody > tr:first-child > th:last-child {
+  border-top-right-radius: 14px;
+}
+.interactive-table .itable > tbody > tr:last-child > td:first-child {
+  border-bottom-left-radius: 14px;
+}
+.interactive-table .itable > tbody > tr:last-child > td:last-child {
+  border-bottom-right-radius: 14px;
+}
+
+
+.interactive-table .itable th .filter-btn {
+	height: 50px;
+	width: 30px;
+	position: absolute;
+	right: -3px;
+	bottom: -3px;
+	background: url(img/filter.png) 0 0 no-repeat;
+	cursor: pointer;
+}
+
+.interactive-table .itable th:last-child .filter-btn {
+	right:0px;
+}
+
+.interactive-table .filter-layout {
+	position: absolute;
+	/* width: 200px; */
+	height: auto;
+	min-width: 180px;
+	background: white;
+	box-sizing: border-box;
+	padding: 10px 0 56px 0;
+	border: 2px solid #FD582A;
+	display: none;
+	z-index: 100;
+	-webkit-border-radius: 14px;
+    -moz-border-radius: 14px;
+    -o-border-radius: 14px;
+    border-radius: 14px;
+	opacity:0;
+}
+
+.interactive-table .filter-layout .sorting-layout {
+	padding: 6px 4px;
+	display: inline-block;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.interactive-table .filter-layout .sorting-layout .sort {
+	color: #5566dd;
+	cursor: pointer;
+	padding: 2px 0;
+}
+.interactive-table .filter-layout .sorting-layout .sort.reset {
+	width: 96px;
+	height: 31px;
+	float: right;
+	background: url(img/b_clear.png) 0 0 no-repeat;
+	margin-right: 8px;
+}
+
+.interactive-table .filter-layout .sorting-layout .sort.desc,
+.interactive-table .filter-layout .sorting-layout .sort.asc	{
+	width: 31px;
+	height: 31px;
+	float: left;
+	margin-left: 8px;
+}
+.interactive-table .filter-layout .sorting-layout .sort.desc {
+	background: url(img/descending.png) 0 0 no-repeat;
+}
+.interactive-table .filter-layout .sorting-layout .sort.asc {
+	background: url(img/ascending.png) 0 0 no-repeat;
+}
+
+.interactive-table .filter-layout .sorting-layout .sort.desc.disabled,
+.interactive-table .filter-layout .sorting-layout .sort.asc.disabled {
+	opacity: 0.4;
+	pointer-events: none;
+	cursor: default;
+}
+
+.interactive-table .filter-layout .checkboxes-layout {
+	padding: 8px;
+	box-sizing: border-box;
+	max-height: 400px;
+	overflow-y: auto;
+	float: left;
+	width: 100%;
+}
+
+.interactive-table .filter-layout .filter-item {
+	display: table;
+	margin: 6px;
+}
+
+.interactive-table .filter-layout .filter-item input {
+	display: table-cell;
+	vertical-align: middle;
+	cursor: pointer;
+	width: 16px;
+	height: 16px;
+	margin: 4px;
+}
+
+.interactive-table .filter-layout .filter-item .filter-label {
+	display: table-cell;
+	vertical-align: middle;
+	padding-left: 6px;
+	line-height: 20px;
+}
+
+.interactive-table .filter-layout .filter-item .filter-name {
+	max-height: 40px;
+	overflow: hidden;
+}
+
+.interactive-table .filter-layout .apply-btn,
+.interactive-table .filter-layout .cancel-btn {
+	position: absolute;
+	bottom: 0;
+	margin: 12px;
+	bottom: 0;
+	border: none;
+}
+
+.interactive-table .filter-layout .apply-btn {
+	width: 96px;
+	height: 31px;
+	background: url(img/b_accept.png) 0 0 no-repeat;
+	left:0;
+}
+
+.interactive-table .filter-layout .cancel-btn {
+	width: 75px;
+	height: 31px;
+	background: url(img/b_cancel.png) 0 0 no-repeat;
+	right:0;
+}
+
+.interactive-table .itable .working-row {
+	vertical-align: top;
+}
+
+.interactive-table .itable .working-row .td-data {
+	overflow-y: auto;
+}
+
+.interactive-table .itable .working-row td:first-child {
+	padding: 0;
+
+}
+
+.interactive-table .itable td {
+	padding: 14px;
+	box-sizing: border-box;
+}
+.interactive-table .itable tr.fake-tr ~ tr td:last-child {
+	padding-right: 24px;
+}
+
+.interactive-table table .working-row td:first-child {
+	border-bottom-left-radius: 12px;
+    /*height: 300px; /* ????? fix #7874 */
+	/* width: 258px; */
+}
+.interactive-table .itable .working-row td:last-child {
+	border-bottom-right-radius: 12px;
+}
+.interactive-table .itable th {
+	padding:10px 15px;
+}
+.interactive-table .itable th.active {
+	background: url(img/orange_top_middle2.png) 0 0 repeat-x;
+	background-size: contain;
+	/* background:#FF4E1C; */
+}
+
+.interactive-table .switcher-layout {
+	display: inline-block;
+	width: 100%;
+}
+
+.interactive-table .switcher-layout.bordered {
+	padding: 0 !important;
+	margin: 0 !important;
+}
+
+.interactive-table .switcher-layout .switcher {
+	position: relative;
+	width: 74px;
+	height: 24px;
+	-webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -o-border-radius: 6px;
+    border-radius: 6px;
+    z-index: 10;
+    float: left;
+    margin: 4px;
+    cursor: pointer;
+}
+
+.interactive-table .switcher-layout .switcher-title {
+	float: left;
+	font-size: 16px;
+	/*height: 25px;*/
+	/* max-width: 115px; */
+	line-height: 25px;
+	margin: 4px 4px 4px 10px;
+	color:grey;
+}
+
+.interactive-table .switcher-layout .switcher .plus,
+.interactive-table .switcher-layout .switcher .minus {
+	float: left;
+	font-size: 22px;
+	color: white;
+	font-weight: 800;
+	height: 24px;
+	width: 37px;
+	text-align: center;
+}
+.interactive-table .switcher-layout .switcher .plus {
+	line-height: 24px;
+}
+.interactive-table .switcher-layout .switcher .minus {
+	background: #595959;
+	line-height: 20px;
+	-webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -o-border-radius: 6px;
+    border-radius: 6px;
+}
+
+.interactive-table .switcher-layout .switcher .switcher-button {
+	position: absolute;
+	width: 41px;
+	height: 25px;
+	background: url(img/switcher-button.png) 0 0 no-repeat;
+	top: 0;
+	z-index: 11;
+}
+.interactive-table .switcher-layout.disabled .switcher {
+	opacity: 0.7;
+	cursor: auto;
+}
+.interactive-table .switcher-layout.disabled .switcher-title {
+	opacity: 0.5;
+}
+
+/* ---------------- Dropdown -------------------*/
+
+.interactive-table div.select-main {
+	/*height: 45px;*/ /*#10686 Закомментил*/
+	border-bottom: 2px solid #e8e8e8;
+	position: relative;
+	/* width: 258px; */
+	box-sizing: border-box;
+	background: url(img/select-closed.png) 100% 50% no-repeat; /* #10686 Исправил position на 100% 50% */
+	cursor: pointer;
+	-webkit-user-select: none; /* webkit (safari, chrome) browsers */
+    -moz-user-select: none; /* mozilla browsers */
+    -khtml-user-select: none; /* webkit (konqueror) browsers */
+    -ms-user-select: none; /* IE10+ */
+}
+
+.interactive-table div.select-main.z-index {
+	z-index: 10;
+	background: url(img/select.png) 100% 50% no-repeat; /*#10686 Исправлен position на 100% 50%*/
+}
+
+.interactive-table div.select-main.disabled {
+	cursor: default;
+	filter: alpha(opacity=50);
+	opacity: 0.5;
+	zoom: 1;
+}
+
+.interactive-table div.select-main.disabled div.select-set {
+	cursor: default;
+}
+
+.interactive-table div.select-main.disabled div.select-arrow {
+	cursor: default;
+}
+.interactive-table div.select-main.z-index div.select-set {
+	color: #ff4b1e;
+}
+.interactive-table div.select-set {
+	color: #037a9c;
+	font-weight: 600;
+	cursor: pointer;
+	/*height: 45px;*/ /*#10686 Закомментил*/
+	/*line-height: 45px;*/ /*#10686 Закомментил*/
+	min-height: 45px; /*#10686*/
+	overflow: hidden;
+	position: relative;
+	padding: 10px 52px 10px 18px;
+	/*text-overflow: ellipsis;*/ /*#10686 Закомментил*/
+	/*white-space: nowrap;*/ /*#10686 Закомментил*/
+	/* width: 258px; */
+	box-sizing: border-box;
+	z-index: 5;
+}
+
+.interactive-table div.select-arrow {
+	display: none;
+}
+
+.interactive-table div.select-arrow.reverse {
+	border-top: 7px solid transparent;
+	border-bottom: 7px solid #2DB2FF;
+	top: 10px;
+}
+
+.interactive-table div.select-block {
+    line-height: 20px;
+
+		/* #11045 */
+		position: absolute;
+    /*top: 30px;*/ /*#10686*/
+		width: 100%;
+		left: 0;
+}
+
+/*#10686*/
+.interactive-table div.select-block_pos {
+	position: static;
+}
+
+.interactive-table ul.select-list {
+	cursor: pointer;
+	/*margin: 15px 0 7px;*/ /*#13014 Закомментил*/
+	margin: 0; /*#10686 Удаление скролла в ячейке.*/
+	padding: 0;
+	background: #e6e6e6;
+}
+
+/* Scroll view */
+
+.interactive-table ul.select-list::-webkit-scrollbar {
+    width: 12px;
+}
+
+.interactive-table ul.select-list::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+
+.interactive-table ul.select-list::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+
+.interactive-table ul.select-list {
+	scrollbar-face-color: #AEB1B1;
+    scrollbar-shadow-color: #C7CACA;
+    scrollbar-highlight-color: #CED1D1;
+    scrollbar-3dlight-color: #CED1D1;
+    scrollbar-darkshadow-color: #C7CACA;
+    scrollbar-track-color: #CED1D1;
+    scrollbar-arrow-color: #FFFFFF;
+}
+
+/* End scroll view */
+
+.interactive-table li.select-items {
+	color: #333333;
+	padding: 10px 7px;
+	background: #e6e6e6;
+	font-weight: 600;
+	margin: 0 8px;
+	box-sizing: border-box;
+	border-bottom: 1px solid #ccc;
+}
+
+.interactive-table li.select-items:hover,
+.interactive-table li.select-items.active {
+	background-color: #95CDE4;
+}
+
+.interactive-table .caption {
+	height: auto !important;
+
+}
+.comboboxed .itable .working-row > td {box-sizing:border-box}
+.comboboxed .itable .working-row > .first-row {overflow-x:auto}
+.comboboxed .itable .working-row > .first-row .select-block li{list-style-type:none}
+
+
+.fake-tr td{
+	padding:0!important;
+	margin:0!important;
+	height:0px!important;
+}
+
+.interactive-table .switcher-layout .switcher-title{
+	white-space:nowrap;
+	text-align:left;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+input[type="checkbox"].check_box {
+	position:absolute;top:2px;left:3px;
+	border:0px solid white!important;
+	width:20px;height:20px;
+	background-color:white!important;
+	border-radius:3px!important;
+}
+
+.spanned{
+	background:white;
+	outline:1px solid #E8EBFA;
+	outline-offset:0px;
+}
+.spanned > tbody > tr > td {
+	border: 0px solid transparent!important;
+	outline:1px solid /*rgba(212, 218, 229,.63);*/ #e0e0e0;
+	outline-offset:0px;
+}
+
+/* fix #7825 удаляем паразитный ряд */
+.interactive-table .itable .itable th {display:none}
+
+.interactive-table .th {text-align:inherit;}
+
+
+
+/* #8130 */
+/* #8129 */
+
+/*fix for FireFox */
+@-moz-document url-prefix() {
+
+  .comboboxed .itable .working-row > .first-row {position:relative}
+	.interactive-table div.select-main.z-index {width:100%; top:0; bottom:0; height:auto}
+}
+
+/*fix all but not Firefox and IE  */
+@supports (-webkit-appearance:none) {
+
+	.comboboxed .itable .working-row > .first-row {position:relative}
+	.interactive-table div.select-main.z-index {width:100%; top:0; bottom:0; height:auto}
+}

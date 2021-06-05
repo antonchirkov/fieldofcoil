@@ -1,0 +1,601 @@
+@CHARSET "UTF-8";
+
+.igraph {
+	box-sizing: border-box;
+	position: relative;
+}
+
+.igraph .center-layout {
+	/* border: 1px solid #1f71a9; */
+	-webkit-border-radius: 12px !important;
+  	-moz-border-radius: 12px !important;
+  	border-radius: 12px !important;
+}
+
+.igraph .single-layout {
+	display: block !important;
+}
+
+.igraph .single-layout.diag-btns-layout {
+	padding: 8px;
+	padding-bottom: 0;
+}
+
+.igraph .single-layout.diag-btns-layout.hidden {
+	display: none !important;
+}
+
+/* .igraph .hover-point:after {
+	content:attr(functooltip);
+	position:absolute;
+	left:15px;
+	top:15px;
+	border: 1px solid #c5c5c5;
+	background: #ffffff;
+  color: #333333;
+	font-size:14px;
+	border-radius: 12px;
+	padding: 8px;
+	z-index:999;
+	font-size:16px;
+	width:auto;
+} */
+
+.igraph .horizontal-scale {
+	width: 100%;
+	position: absolute;
+	bottom: 41px;
+	left: 0;
+	height:0;
+	/* background: #00659c; url(../../basemodel/img/blue-background.png) 0 0 repeat-x; */
+	/* height: 3px;	42px */
+	z-index: 2;
+	/*border-bottom-left-radius: 12px;
+	border-bottom-right-radius: 12px;*/
+}
+
+.igraph .horizontal-scale .scale-line {
+	height: 3px;
+	width: 100%;
+	top: -2px;
+	left: 0;
+	position: absolute;
+	background: #00659c;
+	z-index: 200;
+}
+
+.igraph .scale-label .MathJax_SVG_Display {	/* $$V$$, м/с */
+	display:inline-block !important;
+	width: auto;
+}
+
+.igraph .horizontal-scale .scale-line:before {
+	content:'';
+	position:absolute;
+	right:-12px;
+	top:-5px;
+	width:0;
+	height:0;
+	border:6px solid transparent;
+	border-left:24px solid #00659c;
+}
+
+
+.igraph .horizontal-scale .scale-label {
+	position: absolute;
+	right: -24px;
+	top: -32px;
+	white-space: nowrap;
+	font-size:18px;
+}
+
+.igraph .vertical-scale {
+	position: absolute;
+}
+
+.igraph .diagram-point {
+	position: absolute;
+	width: 12px;
+	height: 12px;
+	z-index: 500;
+	cursor: pointer;
+}
+
+.igraph .vertical-scale .scale-line {
+	width: 3px;
+	height: 100%;
+	top: 0;
+	left: 0;
+	position: absolute;
+	background: #00659c;
+	z-index: 200;
+}
+
+.igraph .vertical-scale .scale-line:before {
+	content:'';
+	position:absolute;
+	right:-5px;
+	top:-20px;
+	width:0;
+	height:0;
+	border:6px solid transparent;
+	border-bottom:24px solid #00659c;
+}
+
+.igraph .vertical-scale .scale-label {
+	position: absolute;
+	left: 12px;
+	top: -14px;
+	font-weight: normal;
+	white-space: nowrap;
+	font-size: 18px;
+}
+
+.igraph .coordinates-grid:not(.hscale-bottom) .horizontal-scale .zero {
+	margin-left: -18px;
+  margin-top: -10px;
+}
+.igraph .vertical-scale .zero {display:none;}
+.igraph .vscale-left .horizontal-scale .zero {display:none;}
+.igraph .vscale-left .vertical-scale .zero {display:block;}
+.igraph .hscale-bottom .vertical-scale .zero {display:none;}
+
+.igraph .mainButton {
+	border:0;
+	padding:0;
+
+	height: 40px;
+	cursor: pointer;
+  color: #2877ad;
+	background: url(../../basemodel/img/button-back.png) 0 0 repeat-x;
+  text-align: center;
+  line-height: 40px;
+  /* font-size: 14px; */
+  float: left;
+  border-bottom: 1px solid #919191;
+  border-left: 1px solid #919191;
+  border-right: 1px solid #919191;
+	border:0;
+}
+.igraph .mainButton:focus {
+  outline: none;
+}
+
+.igraph .mainButton.top-left-radius {
+	-webkit-border-top-left-radius: 12px;
+	-moz-border-radius-topleft: 12px;
+	border-top-left-radius: 12px;
+}
+
+.igraph .mainButton.top-right-radius {
+	-webkit-border-top-right-radius: 12px;
+	-moz-border-radius-topright: 12px;
+	 border-top-right-radius: 12px;
+}
+
+.igraph .mainButton.legend {
+	height: 40px;
+	width: 43px;
+	background: url(../img/legends-but.png) 0 0 no-repeat;
+	border-bottom: none;
+	border-left: none;
+	border-right: none;
+	margin: 40px 3px 25px 0;
+	cursor: pointer;
+	float: right;
+}
+
+.igraph .mainButton.line {
+	height: 40px;
+	width: 43px;
+	background: url(../img/line-but.png) 0 0 no-repeat;
+	border-bottom: none;
+	border-left: none;
+	border-right: none;
+	margin:0 3px 25px 0;
+	cursor: pointer;
+	float: right;
+}
+
+.igraph .diagButton {
+	width: 44px;
+	height: 40px;
+	margin-right: 3px;
+	margin-bottom: 8px;
+	cursor: pointer;
+	float: right;
+}
+
+.igraph .diagButton.active {
+	cursor: auto;
+	pointer-events: none;
+}
+
+.igraph .diagButton.cVertBtn {
+	background: url(../img/cvert_btn.png) 0 0 no-repeat;
+}
+
+.igraph .diagButton.cVertBtn.active {
+	background: url(../img/cvert_btn_a.png) 0 0 no-repeat;
+}
+
+.igraph .diagButton.cHorBtn {
+	background: url(../img/chor_btn.png) 0 0 no-repeat;
+}
+
+.igraph .diagButton.cHorBtn.active {
+	background: url(../img/chor_btn_a.png) 0 0 no-repeat;
+}
+
+.igraph .diagButton.linearBtn {
+	background: url(../img/linear_btn.png) 0 0 no-repeat;
+}
+
+.igraph .diagButton.linearBtn.active {
+	background: url(../img/linear_btn_a.png) 0 0 no-repeat;
+}
+
+.igraph .diagButton.petBtn {
+	background: url(../img/pet_btn.png) 0 0 no-repeat;
+}
+
+.igraph .diagButton.petBtn.active {
+	background: url(../img/pet_btn_a.png) 0 0 no-repeat;
+}
+
+.igraph .diagButton.circularBtn {
+	background: url(../img/circular-but.png) 0 0 no-repeat;
+}
+
+.igraph .diagButton.circularBtn.active {
+	background: url(../img/circular-but-act.png) 0 0 no-repeat;
+}
+
+.igraph .coordinates-grid {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+.base-model.igraph .dual-horizontal-layout .bottom-pane.main-layout {
+	padding: 8px 8px 12px 8px;
+	border: 1px solid #1f71a9;
+}
+
+.base-model.igraph .dual-horizontal-layout .bottom-pane.main-layout[tab="data"] {
+	padding:0;
+}
+
+.igraph .diagram-wrp canvas {
+	z-index: 200;
+}
+
+.igraph .diagram-wrp .mark {
+	position: absolute;
+	/*color: white;*/
+	text-align: center;
+	top: 12px;
+	/* overflow: hidden; Плохо для минуса, который margin-left */
+	font-size: 18px;
+	box-sizing: border-box;
+}
+.igraph .diagram-wrp .mark .verdana {
+	margin-left:-10px;
+}
+.igraph .diagram-wrp .mark-line {
+	width: 1px;
+	background-color: #00659c;
+	height: 8px;
+	position: absolute;
+	top: 2px;
+}
+
+.igraph .diagram-wrp .v-mark {
+	position: absolute;
+	left: -12px;
+	/* max-width: 30px; bad auto left outset calculation */
+	overflow: hidden;
+	font-size: 18px;
+	white-space:nowrap;
+	text-align: right;
+}
+
+.igraph .diagram-wrp .v-mark-line {
+	height: 1px;
+	background-color: #00659c;
+	width: 10px;
+	position: absolute;
+	left: -10px;
+}
+
+.igraph .diagram-wrp .grid-line {
+	width: 1px;
+	background-color: #adadad;
+	position: absolute;
+	top: 0;
+	opacity: 0.5;
+}
+
+.igraph .diagram-wrp .v-grid-line {
+	height: 1px;
+	background-color: #adadad;
+	position: absolute;
+	left: 0;
+	opacity: 0.5;
+}
+
+/* =================== Vertical diagram ==================*/
+
+.igraph .vertical-diagram .value-column {
+	position: absolute;
+	z-index: 100;
+	bottom: 42px;
+}
+
+/* =================== Horizontal diagram ==================*/
+
+.igraph .horizontal-diagram .value-column {
+	position: absolute;
+	z-index: 100;
+	left: 38px;
+}
+
+.igraph .graph-point {
+	position: absolute;
+	width: 11px;
+	height: 11px;
+	border-radius: 6px;
+	background-color: white;
+	border:1px solid #00659c;
+	margin-top:-6px;
+	margin-left: -6px;
+	cursor: pointer;
+	z-index: 1400;
+}
+
+/* ===================== Data table ========================= */
+.igraph .diagram-data-table .data-table {
+	table-layout: fixed;
+	min-width: 100%;
+	height:100%;
+	position: relative;
+}
+.igraph .diagram-data-table {
+	width: 100%;
+	height:100%;
+}
+
+.igraph .diagram-data-table .input-view {
+	display: block;
+	position: relative;
+	height:auto;
+	min-width:45px;
+}
+
+.igraph .diagram-data-table .data-table tr {
+	border-top: 1px solid #adadad;
+	/*height: 60px;*/
+}
+.igraph .diagram-data-table .data-table tr:first-child,
+.igraph .diagram-data-table .data-table tr:last-child {
+	border-top:0;
+}
+.igraph .diagram-data-table .data-table .footer {
+	height:4px;
+}
+.igraph .diagram-data-table .data-table .footer td:first-child {
+	border:0
+}
+
+.igraph .diagram-data-table .data-table td,
+.igraph .diagram-data-table .data-table th {
+	text-align: center;
+	vertical-align: middle;
+	padding: 6px;
+	border: none;
+	border-left: 1px solid #adadad;
+	position: relative;
+}
+.igraph .diagram-data-table .data-table th  {
+	vertical-align: middle;
+	height: 50px;
+}
+.igraph .diagram-data-table .data-table th.empty {
+	border-left: none !important;
+	/* width: 180px; #8858 */
+}
+.igraph .diagram-data-table .data-table th.formula {
+	width: 120px;
+}
+.igraph .diagram-data-table .data-table td.category {
+	text-align: left;
+	font-weight: 600;
+	border-left: 8px solid;
+}
+.igraph .diagram-data-table .data-table td.category.last-cell .diag-add-button {
+	left: auto;
+	bottom: auto;
+	top: 2px;
+	right: 2px;
+}
+.igraph .settings-row .input-view input {
+	height: 25px;
+	padding-top: 4px;
+	width: 80px;
+}
+.igraph .settings-row {
+	border-bottom: 1px solid #acacac;
+	height: 60px;
+	display: table !important;
+}
+.igraph .settings-row .inner {
+	display: table-cell !important;
+	vertical-align: middle;
+}
+.igraph .switcher-wrapper {
+	display: table-cell !important;
+	vertical-align: middle;
+}
+.igraph .switcher-wrapper .base-switcher {
+	display: block;
+}
+.igraph .switcher-wrapper .base-switcher .switcher-title {
+	font-size: 16px;
+	font-weight: 600;
+	margin-left: 2px;
+}
+.igraph .diagram-settings .title-layout input {
+	width: 100% !important;
+}
+.igraph .diagram-settings .single-layout {
+/*	display: table-cell !important;*/
+}
+.igraph .diagram-legend {
+	position: absolute;
+	bottom: 12px;
+	right: 70px;
+	z-index: 6000;
+	background-color: white;
+	-webkit-border-radius: 6px !important;
+	-moz-border-radius: 6px !important;
+  border-radius: 6px !important;
+	min-width: 300px;
+  max-height: 80%;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	border-collapse: separate;
+}
+.igraph .diagram-legend .legend-item {
+	width: 100%;
+	box-sizing: border-box;
+	padding: 6px;
+}
+.igraph .diagram-legend .item-color {
+	vertical-align: middle;
+	display: table-cell;
+	border-radius: 5px;
+}
+.igraph .diagram-legend .item-color div {width: 40px; height: 20px;}
+.igraph .diagram-legend .item-desc {
+	vertical-align: middle;
+	display: table-cell;
+	text-align: left;
+	padding-left: 8px;
+	/* white-space: nowrap; Слишком длинная строка вылазиет за края*/
+}
+.igraph .diag-delete-button {
+	width: 14px;
+	height: 14px;
+	position: absolute;
+	bottom: 2px;
+	right: 2px;
+	background: url(../img/diag-delete-btn.png) 0 0 no-repeat;
+}
+.igraph .diag-add-button {
+	width: 24px;
+	height: 20px;
+	position: absolute;
+	bottom: 2px;
+	left: 2px;
+	background: url(../img/add-column-btn.png) 0 0 no-repeat;
+}
+
+.igraph .connection-line {
+	z-index: 1100;
+	background-color: #cfcfcf;
+	border: 1px solid #ababab;
+	opacity: 0.7;
+	height: 3px;
+}
+
+.igraph .formula-cell .input-view {
+	float: left;
+}
+.igraph .formula-cell .base-model-checkbox {
+	float: right;
+	height: 30px;
+	position: relative;
+}
+
+.igraph .formula-cell .base-model-checkbox .checkbox-inner {
+	top: 3px;
+	margin: 0;
+}
+
+.igraph .settings-row .settings-switcher {
+	height: 48px;
+}
+
+.igraph .canvas-events {
+	position:absolute;
+	z-index:1300;
+	background:#fff;
+	opacity: 0
+}
+
+.igraph .line-angle {
+	position:absolute;
+	/*width:50px;*/
+	/*margin-left:-25px;*/
+	text-align: center;
+	height: 50px;
+  line-height: 50px;
+  /*margin-top: -25px;*/
+  z-index: 1200;
+	white-space:nowrap;
+}
+
+.igraph .line-angle b {
+	font-weight:normal;
+}
+.igraph .line-angle .MathJax_SVG_Display {
+	display:inline !important;
+}
+.igraph .fraction u {
+	text-decoration:none;
+	border-bottom:2px solid #000;
+	padding-bottom:7px;
+	display:block;
+}
+
+
+
+.igraph .close-legend {
+	position: absolute;
+	width: 27px;
+	height: 27px;
+	cursor: pointer;
+	top: -13px;
+	right: -13px;
+	background: url(../../basemodel/img/dialog_close_icon.png) 0 0 no-repeat;
+}
+
+.igraph .title-legend {
+	padding:5px;
+	text-align: center;
+}
+
+.igraph .callout {
+	position:absolute;
+}
+.igraph .callout.rightside {
+	text-align: right;
+}
+.igraph .callout-line {
+	height: 2px;
+  background-color: #000;
+	border:none;
+	opacity: 1;
+}
+
+.igraph.legend-opened .callout, .igraph.legend-opened .callout-line {display:none}
+
+.igraph .value-input-cell:not(.category) {white-space: nowrap;}
+
+.igraph .detecting-point {
+	position: absolute;
+	z-index: 300;
+	background:#fff;
+	opacity: 0;
+}
+
+[skin="board"] .igraph .scale-label {font-size:20px;}

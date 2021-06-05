@@ -1,0 +1,61 @@
+1. �������� ���.js �� �����_���.js
+
+2. �������� �������� ������� ��������
+	// stage content:
+	(lib.�����_���
+
+3. � ����� ����� ��������������� modelNS.IReact.libs.�����_���
+if (window.modelNS) {
+	modelNS.IReact.libs.�����_��� = AdobeAn.getComposition("58777A8649048D418C71472A90CC5483").getLibrary();
+}
+
+3.5 Удалить var... createjs, - дублирование переменной
+
+
+4. �����
+
+var color = lib.properties.color || lib.properties.defColor,
+		rgb = color.indexOf('#')===0 ? convertToRGB(color) : color;
+
+	colors["#948653"] = prepareColor([0, 0, 0]);
+	colors["#7E7247"] = prepareColor([22, 20, 12]);
+	colors["#EBD28A"] = prepareColor([-87, -76, -55]);
+
+	console.log(color)
+	/*
+	function _tempDiff (color1, color2)
+	{
+		var diffColor = [];
+		color1 = convertToRGB(color1);
+		color2 = convertToRGB(color2);
+		for (var i=0; i<3; i++) diffColor.push(color1[i]-color2[i]);
+		return diffColor;
+	}
+	_tempDiff("#948653", "#7E7247");
+	*/
+
+	function prepareColor(diff)
+	{
+		var diffColor = [];
+		for (var i=0; i<3; i++)
+		{
+			var c = rgb[i] - diff[i];
+			if (c<0) c=0;
+			if (c>255) c=255;
+			diffColor.push(c);
+		}
+		return 'rgba(' + diffColor.join(',') + ',1)';
+	}
+
+
+5. ��������� �������:
+
+	lib.properties = {
+		..
+		scale: 0.9,
+		..
+
+
+6.
+	this.clip = .. // �� ���� ����� ����������� ������ .gotoAndPlay() ������ �� �������� ����� �� ���� ���������
+	this.frameClip	..// ��, ��� currentFrame ����� ���������� ��� ����������� onMovieEnd
