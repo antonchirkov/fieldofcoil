@@ -1,3 +1,4 @@
+
 function findBxy(x,y,r,i){
 	let dFi = 3.141593/360
 	let answerBx =0;
@@ -15,7 +16,9 @@ function findBxy(x,y,r,i){
 
 	return [answerBx, answerBy, Math.sqrt(answerBx*answerBx+answerBy*answerBy)];
 }
-// Функция строитель модели
+
+// Функция строитель для вашей модели
+// Наименование функции - CamelCase от type модели из XML
 // Код этой функции в большинстве случаев копируется и не редактируется разработчиком кастомной модели
 function fieldOfCoil(xmlData, wrapper, basePath, params) {
 
@@ -51,6 +54,7 @@ function fieldOfCoil(xmlData, wrapper, basePath, params) {
 
 }
 
+// Важно, чтобы ключ modelNS.CommonModel.models.fieldOfCoil - соответствовал типу в XML
 // fieldOfCoil - функция-строитель данной модели
 modelNS.CommonModel.models.fieldofcoil = fieldOfCoil;
 
@@ -295,4 +299,3 @@ modelNS.fieldOfCoilView = modelNS.BaseModelView.extend({
 
 
 });
- 
