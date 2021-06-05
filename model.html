@@ -219,7 +219,6 @@ z-index: 3;
   writeB(Number(coordinateX.innerHTML), Number(coordinateY.innerHTML), Number(radius.innerHTML), Number(current.innerHTML));
   plotLines(0, Number(radius.innerHTML), Number(current.innerHTML), Number(dB.innerHTML));
   //fillInMatrix();
-  console.log(matrix["1.00,2.00"]);
 
   animation.onclick=function(event){
     let x=(event.pageX-400)/20;
@@ -256,19 +255,21 @@ z-index: 3;
     BFieldY.innerHTML=(answer[1]*1000000).toFixed(2);
   }
   function findBxy(x,y,r,i){
-    let dFi = 3.141593/360
-    let answerBx =0;
-    let answerBy =0;
-    let fi=-3.141593/2;
-    while (fi<=3.141593/2)
-    {
+  	let dFi = 3.141593/360
+  	let answerBx =0;
+  	let answerBy =0;
+  	let fi=-3.141593/2;
+  	// Интегралл
+  	while (fi<=3.141593/2)
+  	{
       answerBx=answerBx + (r/100-y/100*Math.sin(fi))*r/100/Math.pow(y*y/10000+x*x/10000+r*r/10000-2*r*y/10000*Math.sin(fi),3/2);
       answerBy=answerBy + x/100*Math.sin(fi)*r/100/Math.pow(y*y/10000+x*x/10000+r*r/10000-2*r*y/10000*Math.sin(fi),3/2);
       fi=fi+dFi;
-    }
-    answerBx=dFi*2*Math.pow(10,-7)*i*answerBx;
-    answerBy=dFi*2*Math.pow(10,-7)*i*answerBy;
-    return [answerBx, answerBy, Math.sqrt(answerBx*answerBx+answerBy*answerBy)];
+  	}
+  	answerBx=dFi*2*Math.pow(10,-7)*i*answerBx;
+  	answerBy=dFi*2*Math.pow(10,-7)*i*answerBy;
+
+  	return [answerBx, answerBy, Math.sqrt(answerBx*answerBx+answerBy*answerBy)];
   }
 function writeOutputFromMatrix(){
   let output = matrix[coordinateX.innerHTML + ',' + coordinateY.innerHTML];
