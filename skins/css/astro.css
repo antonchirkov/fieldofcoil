@@ -1,0 +1,33 @@
+.title {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    vertical-align: middle;
+    font-size: 20px;
+    color: #f5b76e;
+    position: relative;
+    overflow: hidden;
+    width: 375px;
+}
+
+.title span {
+    display: inline-block;
+    vertical-align: baseline;
+    zoom: 1;
+    position: relative;
+    padding: 0;
+}
+
+.title > span:after {
+    border-top: 2px solid #f5b76e;
+    content: '';
+    display: block;
+    width: 375px;
+    position: absolute;
+    top: 14px;
+    left: 100%;
+    margin-left: 10px;
+}
+
+p {
+    line-height: 1.4;
+}

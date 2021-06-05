@@ -1,0 +1,28 @@
+Файл заготовка для справочной информации по моделе
+
+Пример использования пака с инструментами.
+Для инструментов мы используем "тип" инструмента, тип всегда соответствует названию оборудования без приставки _pack
+Например для pipette_pack тип инструментов вынимаемых из пака пипеток будет pipette.
+...
+<equipment>
+  <equip type="pipette_pack" attachto="shelf_0"></equip> <!-- пак пипеток -->
+</equipment>
+...
+<step>
+  <caption>Внесите пипеткой воду в пробирку</caption>
+  <condition equip="pipette" reagent="h2o" from="glass_h2o"/> <!-- pipette - это любая пипетка из пака -->
+  <condition equip="test_tube_1" reagent="h2o" from="pipette"/>
+</step>
+
+Если пипетка используется несколько раз что-бы налить один и тот-же реагент, то записываем как и раньше, через регулирование size у пробирки и dose у пипетки.
+По умолчанию dose у пипетки на текущий момент равно 1ml.
+...
+<equipment>
+  <equip type="pipette_pack" attachto="shelf_0" dose="1"></equip> <!-- пак пипеток, для всех пипеток доза устанавливается = 1ml -->
+</equipment>
+...
+<step>
+  <caption>Внесите пипеткой воду в пробирку</caption>
+  <condition equip="pipette" reagent="h2o" from="glass_h2o"/> <!-- pipette - это любая пипетка из пака -->
+  <condition equip="test_tube_1" reagent="h2o" from="pipette" size="3"/> <!-- условие выполнится когда размер реагента h2o в пробирке будет равен 3ml -->
+</step>

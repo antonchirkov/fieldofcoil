@@ -1,0 +1,671 @@
+@CHARSET "UTF-8";
+
+
+.idiagram {
+	box-sizing: border-box;
+	position: relative;
+}
+
+.idiagram .diagramBtn {
+	border-radius: 0;
+}
+
+.idiagram .center-layout {
+	/* border: 1px solid #1f71a9; */
+	-webkit-border-radius: 12px !important;
+  	-moz-border-radius: 12px !important;
+  	border-radius: 12px !important;
+}
+
+.idiagram .single-layout {
+	display: block !important;
+	overflow: visible;
+}
+
+.idiagram .single-layout.diag-btns-layout {
+	padding: 8px;
+	padding-bottom: 0;
+}
+
+.idiagram .single-layout.diag-btns-layout.hidden {
+	display: none !important;
+}
+
+.idiagram .horizontal-scale {
+	width: 100%;
+	position: absolute;
+	bottom: 39px;
+	left: 0;
+	background: #00659c; /* url(../../basemodel/img/blue-background.png) 0 0 repeat-x; */
+	height: 3px;	/* 42px */
+	z-index: 2;
+	/*border-bottom-left-radius: 12px;
+	border-bottom-right-radius: 12px;*/
+}
+.idiagram .horizontal-scale:after {
+	content:'';
+	position:absolute;
+	right:-12px;
+	top:-2px;
+	width:0;
+	height:0;
+	border:4px solid transparent;
+	border-left:15px solid #00659c;
+}
+
+
+.idiagram .diagram-wrp .axis-label { /* .. .horizontal-scale .. 9872#note-1 Данные построенной диаграммы перекрывают название оси */
+	position: absolute;
+	/* right: -10px;
+	top: -29px; */
+  right: 30px;
+  /* bottom: 43px; ?? */
+	height: 23px;
+	z-index: 150;
+	font-size: 18px;
+}
+
+.idiagram .vertical-scale {
+	width: 3px;
+	position: absolute;
+	background: #00659c;
+}
+.idiagram .vertical-scale:after {
+	content:'';
+	position:absolute;
+	right:-2px;
+	top:-15px;
+	width:0;
+	height:0;
+	border:4px solid transparent;
+	border-bottom:15px solid #00659c;
+}
+
+.idiagram .horizontal-diagram .vertical-scale:after {
+	/* display:none;  На диаграмме не должно быть стрелки вверх. #9872#note-1 */
+}
+
+.idiagram .diagram-point {
+	position: absolute;
+	width: 12px;
+	height: 12px;
+	z-index: 500;
+	cursor: pointer;
+}
+
+.idiagram .vertical-scale .scale-line {
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	position: absolute;
+	background: #00659c;
+	z-index: 200;
+}
+
+.idiagram .vertical-scale .axis-label {
+	position: absolute;
+	left: 12px;
+	top: -24px;
+	margin-top: -4px;
+	font-weight: normal;
+	font-size: 18px;
+	text-align: left;
+}
+
+.idiagram .model-button.mainButton {
+	border:0;
+	padding:0;
+
+	height: 100%;
+	cursor: pointer;
+  color: #1f71a9;
+	/* background: url(../../basemodel/img/button-back.png) 0 0 repeat-x; */
+	background-color:#cdd6dd;
+  text-align: center;
+  line-height: 40px;
+  font-size: 18px;
+  float: left;
+  border-top: 1px solid #ffffff;
+  border-bottom: 1px solid #848d9c;
+  border-right: 1px solid #aab3bc;
+	margin:0;
+	border-radius: 0;
+	z-index: 2;
+	position: relative;
+}
+[skin="board"] .idiagram .mainButton { font-size: 24px;}
+
+.idiagram .mainButton.active {
+	color: white;
+	pointer-events: none;
+	background-color:#0c71b5;
+	border-top-color: #326bb0;
+	cursor:default;
+}
+
+.idiagram .mainButton:focus {
+  outline: none;
+}
+
+.idiagram .mainButton:first-child {
+	-webkit-border-top-left-radius: 8px;
+	-moz-border-radius-topleft: 8px;
+	border-top-left-radius: 8px;
+	border-bottom-left-radius: 8px;
+}
+
+.idiagram .mainButton:last-child {
+	-webkit-border-top-right-radius: 8px;
+	-moz-border-radius-topright: 8px;
+	 border-top-right-radius: 8px;
+	 border-bottom-right-radius: 8px;
+
+	 /* компенсируем пиксели которые не удалось ровно разделить на кнопки */
+	 float:right;
+	 margin-left: -5px;
+	 z-index: 1;
+}
+
+.idiagram .mainButton.legend {
+	height: 40px;
+	width: 43px;
+	background-image: url(../img/legends-but.png);
+	border-bottom: none;
+	border-left: none;
+	border-right: none;
+	/* margin: 40px 3px 25px 0; */
+	cursor: pointer;
+	float: right;
+}
+
+.idiagram .mainButton.line {
+	height: 40px;
+	width: 43px;
+	background: url(../img/line-but.png) 0 0 no-repeat;
+	border-bottom: none;
+	border-left: none;
+	border-right: none;
+	margin:0 3px 25px 0;
+	cursor: pointer;
+	float: right;
+}
+
+.idiagram .diagButton {
+	width: 44px;
+	height: 40px;
+	margin-right: 3px;
+	margin-bottom: 8px;
+	cursor: pointer;
+	float: left;
+	background-position:  center center;
+	background-repeat: no-repeat;
+}
+
+.idiagram .mainButton {
+	background-position:  center center;
+	background-repeat: no-repeat;
+}
+.idiagram .mainButton.dataBtn {background-image: url(../img/data_but.png)}
+.idiagram .mainButton.dataBtn.active {background-image: url(../img/data_but_a.png)}
+.idiagram .mainButton.settingsBtn {background-image: url(../img/settings_but.png)}
+.idiagram .mainButton.settingsBtn.active {background-image: url(../img/settings_but_a.png)}
+
+.idiagram .diagButton.active {
+	cursor: auto;
+	pointer-events: none;
+}
+
+.idiagram .diagButton.cVertBtn {
+	background-image: url(../img/cvert_btn.png);
+}
+
+.idiagram .diagButton.cVertBtn.active {
+	background-image: url(../img/cvert_btn_a.png);
+}
+
+.idiagram .diagButton.cHorBtn {
+	background-image: url(../img/chor_btn.png);
+}
+
+.idiagram .diagButton.cHorBtn.active {
+	background-image: url(../img/chor_btn_a.png);
+}
+
+.idiagram .diagButton.linearBtn {
+	background-image: url(../img/linear_btn.png);
+}
+
+.idiagram .diagButton.linearBtn.active {
+	background-image: url(../img/linear_btn_a.png);
+}
+
+.idiagram .diagButton.petBtn {
+	background-image: url(../img/pet_btn.png);
+}
+
+.idiagram .diagButton.petBtn.active {
+	background-image: url(../img/pet_btn_a.png);
+}
+
+.idiagram .diagButton.circularBtn {
+	background-image: url(../img/circular-but.png);
+}
+
+.idiagram .diagButton.circularBtn.active {
+	background-image: url(../img/circular-but-act.png);
+}
+
+.idiagram .vertical-diagram,
+.idiagram .horizontal-diagram,
+.idiagram .linear-diagram,
+.idiagram .line-tool,
+.idiagram .petals-diagram,
+.idiagram .diagram-settings {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+/* столбыцы могут перекрыть подпись оси */
+.idiagram .vertical-diagram .horizontal-scale .axis-label {
+	top:0;
+}
+
+.base-model.idiagram .dual-horizontal-layout .bottom-pane.main-layout {
+	padding: 8px 8px 12px 8px;
+	/* border: 1px solid #1f71a9; у нового дизайна border включается отдельно */
+	border-top:0;
+	border-radius: 0 0 8px 8px;
+}
+
+.base-model.idiagram .dual-horizontal-layout .bottom-pane.main-layout[tab="data"] {
+	padding:0;
+}
+
+.idiagram .diagram-wrp canvas {
+	z-index: 0;
+}
+
+.idiagram .diagram-wrp .mark {
+	position: absolute;
+	/*color: white;*/
+	text-align: center;
+	top: 12px;
+	/* overflow: hidden; Плохо для минуса, который margin-left */
+	font-size: 14px;
+	box-sizing: border-box;
+}
+.idiagram .diagram-wrp .mark .verdana {
+	margin-left:-10px;
+}
+.idiagram .diagram-wrp .mark-line {
+	width: 1px;
+	background-color: #00659c;
+	height: 8px;
+	position: absolute;
+	top: 2px;
+}
+
+.idiagram .diagram-wrp .v-mark {
+	position: absolute;
+	left: -34px;
+	text-align: right;
+	overflow: hidden;
+	font-size: 18px;
+	cursor: default;
+}
+
+.idiagram .linear-diagram .diagram-wrp .v-mark {
+	white-space: nowrap;
+}
+
+.idiagram .diagram-wrp .v-mark-line {
+	height: 1px;
+	background-color: #00659c;
+	width: 10px;
+	position: absolute;
+	left: -10px;
+}
+
+.idiagram .diagram-wrp .grid-line {
+	width: 1px;
+	background-color: #adadad;
+	position: absolute;
+	top: 0;
+}
+
+.idiagram .diagram-wrp .v-grid-line {
+	height: 1px;
+	background-color: #adadad;
+	position: absolute;
+	left: 0;
+}
+
+/* =================== Vertical diagram ==================*/
+
+.idiagram .vertical-diagram .value-column {
+	position: absolute;
+	z-index: 100;
+	bottom: 42px;
+}
+
+/* =================== Horizontal diagram ==================*/
+
+.idiagram .horizontal-diagram .value-column {
+	position: absolute;
+	z-index: 100;
+	left: 38px;
+}
+
+/* ===================== Line Tool ========================== */
+
+.idiagram .tool-point {
+	position: absolute;
+	width: 12px;
+	height: 12px;
+	border-radius: 6px;
+	background-color: red;
+	cursor: pointer;
+	z-index: 1400;
+}
+
+/* ===================== Data table ========================= */
+.idiagram .diagram-data-table .data-table {
+	table-layout: fixed;
+	min-width: 100%;
+	height:100%;
+	position: relative;
+}
+.idiagram .diagram-data-table {
+	width: 100%;
+	height:100%;
+}
+
+.idiagram .diagram-data-table .input-view {
+	display: block;
+	position: relative;
+	height:auto;
+	min-width:45px;
+}
+
+.idiagram .diagram-data-table .data-table tr {
+	border-top: 1px solid #adadad;
+	/*height: 60px;*/
+}
+.idiagram .diagram-data-table .data-table tr:first-child,
+.idiagram .diagram-data-table .data-table tr:last-child {
+	border-top:0;
+}
+.idiagram .diagram-data-table .data-table .footer {
+	height:4px;
+}
+.idiagram .diagram-data-table .data-table .footer td:first-child {
+	border:0
+}
+
+.idiagram .diagram-data-table .data-table td,
+.idiagram .diagram-data-table .data-table th {
+	text-align: center;
+	vertical-align: middle;
+	padding: 6px;
+	border: none;
+	border-left: 1px solid #adadad;
+	position: relative;
+}
+.idiagram .diagram-data-table .data-table th  {
+	vertical-align: middle;
+	height: 50px;
+}
+.idiagram .diagram-data-table .data-table th.empty {
+	border-left: none !important;
+	/* width: 180px; #8858 */
+}
+.idiagram .diagram-data-table .data-table th.formula {
+	width: 120px;
+}
+.idiagram .diagram-data-table .data-table td.category {
+	text-align: left;
+	/* font-weight: 600; #10009 */
+	border-left: 8px solid;
+}
+.idiagram .diagram-data-table .data-table td.category .input-view {
+	min-width: 150px;
+}
+.idiagram .diagram-data-table .data-table td.category.last-cell .diag-add-button {
+	left: auto;
+	bottom: auto;
+	top: 2px;
+	right: 2px;
+}
+.idiagram .settings-row .input-view input {
+	height: 25px;
+	padding-top: 4px;
+	width: 80px;
+}
+.idiagram .settings-row {
+	border-bottom: 1px solid #acacac;
+	height: 60px;
+	display: table !important;
+}
+.idiagram .settings-row .inner {
+	display: table-cell !important;
+	vertical-align: middle;
+}
+.idiagram .switcher-wrapper {
+	display: table-cell !important;
+	vertical-align: middle;
+}
+.idiagram .switcher-wrapper .base-switcher {
+	display: block;
+}
+.idiagram .switcher-wrapper .base-switcher .switcher-title {
+	font-size: 16px;
+	font-weight: 600;
+	margin-left: 2px;
+}
+.idiagram .diagram-settings .title-layout input {
+	width: 100% !important;
+}
+.idiagram .diagram-settings .single-layout {
+/*	display: table-cell !important;*/
+}
+.idiagram .diagram-legend {
+	position: absolute;
+	bottom: 12px;
+	right: 70px;
+	z-index: 6000;
+	background-color: white;
+	-webkit-border-radius: 6px !important;
+	-moz-border-radius: 6px !important;
+  border-radius: 6px !important;
+	min-width: 300px;
+  max-height: 80%;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	border-collapse: separate;
+}
+.idiagram .diagram-legend .legend-item {
+	width: 100%;
+	box-sizing: border-box;
+	padding: 6px;
+}
+.idiagram .diagram-legend .item-color {
+	vertical-align: middle;
+	display: table-cell;
+	border-radius: 5px;
+}
+.idiagram .diagram-legend .item-color div {width: 40px; height: 20px;}
+.idiagram .diagram-legend .item-desc {
+	vertical-align: middle;
+	display: table-cell;
+	text-align: left;
+	padding-left: 8px;
+	/* white-space: nowrap; Слишком длинная строка вылазиет за края*/
+}
+.idiagram .diag-delete-button {
+	width: 14px;
+	height: 14px;
+	position: absolute;
+	bottom: 2px;
+	right: 2px;
+	background: url(../img/diag-delete-btn.png) 0 0 no-repeat;
+}
+.idiagram .diag-add-button {
+	width: 24px;
+	height: 20px;
+	position: absolute;
+	bottom: 2px;
+	left: 2px;
+	background: url(../img/add-column-btn.png) 0 0 no-repeat;
+}
+
+.idiagram .connection-line {
+	z-index: 1100;
+	background-color: #cfcfcf;
+	border: 1px solid #ababab;
+	opacity: 0.7;
+	height: 3px;
+}
+
+.idiagram .formula-cell .input-view {
+	float: left;
+}
+.idiagram .formula-cell .base-model-checkbox {
+	float: right;
+	height: 30px;
+	position: relative;
+}
+
+.idiagram .formula-cell .base-model-checkbox .checkbox-inner {
+	top: 3px;
+	margin: 0;
+}
+
+.idiagram .settings-row .settings-switcher {
+	height: 48px;
+}
+
+.idiagram .canvas-events {
+	position:absolute;
+	z-index:1300;
+	background:#fff;
+	opacity: 0
+}
+
+.idiagram .line-angle {
+	position:absolute;
+	/*width:50px;*/
+	/*margin-left:-25px;*/
+	text-align: center;
+	height: 50px;
+  line-height: 50px;
+  /*margin-top: -25px;*/
+  z-index: 1200;
+	white-space:nowrap;
+}
+
+.idiagram .line-angle b {
+	font-weight:normal;
+}
+.idiagram .line-angle .MathJax_SVG_Display {
+	display:inline !important;
+}
+.idiagram .fraction u {
+	text-decoration:none;
+	border-bottom:2px solid #000;
+	padding-bottom:7px;
+	display:block;
+}
+
+
+/* =================== Vertical sub marks ==================*/
+.idiagram .diagram-wrp .mark-line {background-color:#adadad;}
+.idiagram .diagram-wrp .mark-line.subaxis-0 {background-color: #00659c;}
+.idiagram .diagram-wrp .mark-line {height:5px}
+.idiagram .diagram-wrp .mark-line.subaxis-0 {height:5px}
+.idiagram .diagram-wrp .mark {opacity:1;}
+.idiagram .diagram-wrp .mark.subaxis-1 {opacity:1}
+.idiagram .diagram-wrp .mark.subaxis-0 {opacity:1;}
+.idiagram .diagram-wrp .grid-line {opacity:0.5;}
+.idiagram .diagram-wrp .grid-line.subaxis-0 {opacity:1;}
+.idiagram .diagram-wrp .grid-line.subaxis-1 {opacity:0.8;}
+
+
+
+.idiagram .close-legend {
+	position: absolute;
+	width: 27px;
+	height: 27px;
+	cursor: pointer;
+	top: -13px;
+	right: -13px;
+	background: url(../../basemodel/img/dialog_close_icon.png) 0 0 no-repeat;
+}
+
+.idiagram .title-legend {
+	padding:5px;
+	text-align: center;
+}
+
+.idiagram .callout {
+	z-index:10000;
+	position:absolute;
+}
+.idiagram .callout.rightside {
+	text-align: right;
+}
+.idiagram .callout-line {
+	height: 1px;
+  background-color: #000;
+	border:none;
+	opacity: 1;
+}
+
+.idiagram.legend-opened .callout, .idiagram.legend-opened .callout-line {display:none}
+
+.idiagram .value-input-cell:not(.category) {white-space: nowrap;}
+
+/* убираем крестик очистки в ie #9703#note-4 */
+.idiagram input::-ms-clear {
+   display: none;
+	 width : 0;
+   height: 0;
+}
+
+.idiagram .callout-proc {
+	white-space: nowrap;
+	clear:both;
+}
+
+.idiagram .callout-text, .idiagram .callout-proc {
+	float:left;
+}
+.idiagram .rightside .callout-text, .idiagram .rightside .callout-proc {
+	float:right;
+}
+
+.petals-label {
+	position:absolute;
+}
+
+.idiagram .diagram-wrp .quantity-mark {
+	right: 20px;
+  background: rgb(38, 38, 38);
+  border-radius: 2px;
+  padding: 0 5px;
+  color: #fff;
+  z-index: 200;
+}
+.idiagram .diagram-wrp .reference-mark {
+	color: green;
+}
+.idiagram .diagram-wrp .reference-line {
+	width: 0;
+	background: none;
+	border-left: 2px dashed green;
+}
+.idiagram .no-data-message {
+	height: 100%;
+	display: flex;
+	align-items: center;
+}

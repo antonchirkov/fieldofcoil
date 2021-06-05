@@ -1,0 +1,420 @@
+.ianimation {
+	position: relative;
+  z-index: 10;
+}
+.ianimation, .ianimation  a  {}
+.ianimation .base-model-checkbox {margin: 10px 10px 0px 21px}
+.ianimation .base-model-checkbox .label-view {padding-left: 17px;}
+
+.ianimation .ianimation-controls {border-spacing: 2px; border: none; border-collapse: separate;}  /* #13070, #13002 исправлено пропадание рамки у элементов (было border-spacing: 0px;) */
+
+.ianimation td {padding:0}
+.ianimation .td {background:none}
+.ianimation-controls .border {height:auto}
+.ianimation-controls {width:100%; height:100%}
+.ianimation-controls .border {height:100%}
+.ianimation-controls td {box-sizing: border-box;}
+.ianimation-controls>tbody>tr:last-child {height:auto !important} /* last tr no % size for ie, ie wrong calc % size */
+.ianimation-controls .steps-td {
+	position:relative;
+	height:100%; /* fix #8125 */
+	height:auto\0/; /* fix ie9 #8132 */
+}
+
+/* #9700 */
+.ianimation-controls tr.ddl-tr + tr > .steps-td {padding-top:11px;}
+.ianimation-controls .ddl-tr {padding-bottom:11px;}
+.ianimation-controls .ddl-tr td {padding-bottom:0; height:7px}
+
+/* У селектов нет панели с отступами */
+.ianimation-controls .ddl-tr .padding {padding:0}
+
+.ianimation .calculating-size .border, .ianimation .calculating-size tr {height:auto !important}
+.ianimation .calculating-size .steps td {height:50px !important}
+
+.ianimation.position-left .ianimation-controls>tbody>tr>td {padding-right:11px}
+
+.ianimation.position-right .ianimation-controls>tbody>tr>td {padding-left:11px}
+
+.ianimation .ianimation-controls td {padding-bottom:11px} /*#12775 Добавлен .ianimation для увеличения специфичности*/
+.ianimation-controls .checkboxes-tr td {height:0} /* #9348 */
+.ianimation:not(.position-top) .ianimation-controls tr:last-child td {padding-bottom:0}
+
+.ianimation.position-bottom .ianimation-controls {padding-top:10px}
+
+.ianimation.position-top .ianimation-controls .choices, .ianimation.position-bottom .ianimation-controls .choices {display:table}
+.ianimation.position-top .radiobutton-group, .ianimation.position-bottom .radiobutton-group {display:table-row; width:100%}
+
+.ianimation.position-top  .base-radiobutton, .ianimation.position-bottom  .base-radiobutton {display:table-cell;	width:auto;}
+
+.ianimation.position-top .ianimation-controls>tbody>tr>td,
+.ianimation.position-bottom .ianimation-controls>tbody>tr>td {padding-left:11px}
+.ianimation.position-top .ianimation-controls>tbody>tr>td:last-child,
+.ianimation.position-bottom .ianimation-controls>tbody>tr>td:last-child {padding-left:0}
+
+.ianimation .choices {height:100%; position:relative;}
+
+.ianimation .caption-wrapper {
+	border-radius:8px;
+	border:1px solid #0d68a7;
+	top: 11px;
+	bottom: 0;
+	left: 0;
+	position: absolute;
+	right: 0;
+	overflow: hidden;
+}
+.ianimation .at-top .caption-wrapper {
+	top: 0;
+	bottom: 11px;
+}
+.ianimation .caption {
+	height: 100%;
+
+	/* #13119 Закоментировано, для исправления скрола в текстовом поле */
+	/* Там, где контент не влезает в подписи, то внутри подписи должен появляться скролл (#13807) */
+	overflow: auto;
+
+	box-sizing: border-box;
+	padding: 6px 7px;
+	position:static;
+}
+#conditions .ianimation .caption {
+	padding: 6px 7px;
+	line-height: 22px;
+}
+.ianimation .caption-table {
+	height:100%;
+	width:100%;
+}
+
+.ianimation .steps-wrapper {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.ianimation .steps table {
+	width:100%;
+	height:100%;
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+
+.ianimation .steps td {
+	padding:0;
+	margin:0;
+	overflow:hidden; /* for lines */
+	vertical-align: middle !important;
+}
+
+.ianimation .steps {
+	list-style: none;
+	margin:0;
+	padding:2px 0;
+	width: 100%;
+	/*left:10px;
+	right:10px;*/
+	height: 100%;
+	overflow: hidden;
+	padding: 8px 10px; /*#11359 Добавлены отступы сверху и снизу в 8px, чтобы согласованно смотрелось с отступами в блоке с переключателями*/
+}
+
+.ianimation .steps .step div {
+	display:block;
+	/*line-height:18px;*/
+	color:#000;
+	/*padding:12px 5px;*/
+	cursor:pointer;
+	position:relative;
+	margin-left:50px;
+	padding:5px 0;
+}
+
+/* icon */
+.ianimation .steps .step i {
+	width:43px;
+	height:43px;
+	/* overflow: hidden; ??? линия :before не показывается из-за этого св-ва */
+	/* background:#fff;
+	border-radius: 50%;
+	background-position:center center;
+	background-repeat:no-repeat;
+	border:1px solid #5a9ccc; */
+	display:block;
+	/* margin:3px; */
+	/*transition: 0.3s;*/
+	position:absolute;
+	left:-48px;
+	/* top:50%;	#9695
+	margin-top:-20px; */
+	top:-4px;
+}
+
+.ianimation .steps .step .b {
+	display:none;
+}
+
+
+
+
+/* % some smaller becose of  #8365 */
+.ianimation .steps[data-steps="2"] td {height:50%}
+.ianimation .steps[data-steps="3"] td {height:30%}
+.ianimation .steps[data-steps="4"] td {height:20%}
+.ianimation .steps[data-steps="5"] td {height:15%}
+.ianimation .steps[data-steps="6"] td {height:13%}
+.ianimation .steps[data-steps="7"] td {height:10%}
+.ianimation .steps[data-steps="8"] td {height:8%}
+
+.ianimation .steps .active {
+	font-weight:bold;
+}
+
+.ianimation .steps .active .b {
+	display:block;
+}
+
+.ianimation .steps .disabled {
+	display:none;
+}
+
+.ianimation .steps .disabled {
+	cursor:pointer;
+}
+
+.ianimation ul.steps .step:first-child {
+	margin-top:0
+}
+
+
+.ianimation .steps .step i:before {
+	content: '';
+  position: absolute;
+  left: 21px;
+  height: 1000px;
+	margin-top: -500px;
+  top: 20px;
+  width: 1px;
+	background:#0d68a7;
+  z-index: -1;
+}
+.ianimation .steps .step.first i:before {
+	margin-top: 0;
+}
+.ianimation .steps .step.last i:before {
+	margin-top: -1000px;
+}
+.ianimation .steps .step.first.last i:before {
+	display:none;
+}
+
+/* .ianimation .steps .step div:before {
+	content:'';
+	position:absolute;
+	left:-27px;
+	height:1000px;
+	bottom:-500px;
+	width:1px;
+	background:#0d68a7;
+	z-index:-1;
+	margin-left:0;
+} */
+.ianimation .steps .step div:after {
+	/*content:'';
+	position:absolute;
+	top:-14px;
+	left:50%;
+	background:url("img/arr.png?2") 0 0;
+	height:15px;
+	width:9px;
+	margin-left:-4px;
+	z-index:-1;*/
+}
+.ianimation .steps .step.last div:before {bottom: inherit; top: -20%; height: 20%;}
+.ianimation .steps .step.first div:before {top:50%}
+/*.ianimation .steps .step.first div:after {display:none}*/
+.ianimation .steps .step.first.last div:before {display:none}
+
+.ianimation .border {
+	/*border-radius:10px;*/
+}
+
+.ianimation .player-controls {
+	width:155px;
+	position: absolute;
+	top: 2px;
+	right: 0px;
+	z-index:200;
+	bottom: 0;
+}
+
+.ianimation .player-controls ul {margin:0; padding:0; list-style: none; }
+.ianimation .player-controls li {
+	width:31px;
+	height:31px;
+	float:left;
+	cursor:pointer;
+	position:relative;
+	background-size:cover;
+	background-position:0 0;
+	margin: 0;
+}
+.ianimation .player-controls li:not(.disable):hover {opacity:0.9}
+.ianimation .player-controls .prev {background-image:url("img/prev.png")}
+.ianimation .player-controls .play {background-image:url("img/play.png")}
+.ianimation .player-controls .pause {background-image:url("img/pause.png")}
+/*.player-controls .pause.active {background-position:0 0}*/
+.ianimation .player-controls .pause.active {background-image:url("img/play.png")}	/* play */
+.ianimation .player-controls .stop {background-image:url("img/stop.png")}
+.ianimation .player-controls .film {background-image:url("img/film.png")}
+.ianimation .player-controls .next {background-image:url("img/next.png")}
+.ianimation .player-controls .film.active {background-image:url("img/film-act.png")}
+
+.ianimation .player-controls .play.disable {background-image:url("img/play-dis.png")}
+.ianimation .player-controls .prev.disable {background-image:url("img/prev-dis.png")}
+.ianimation .player-controls .next.disable {background-image:url("img/next-dis.png")}
+
+
+.ianimation .movie-pane .border {
+	overflow:hidden;
+}
+.ianimation .movie-pane .title-bar {padding:0 160px}
+.ianimation .media {
+	/*border-radius:8px;*/
+	/*border:1px solid #0d68a7;*/
+	display:block;
+	margin:0 auto;
+	overflow: hidden; /* фикс для РЭШ пропадает заголовок */
+
+	/* фикс что канвас перерывает кнопки контроля, когда они снизу */
+	z-index: -1;
+	position: relative;
+}
+.ianimation .media video {width:100%; height:100%}
+.ianimation.position-left .media,
+.ianimation.position-right .media {	/* fix right nopadding */
+	width:100%;
+	box-sizing: border-box;
+}
+
+/*
+.ianimation tbody {display:flex; flex-direction:column; height:400px}
+.ianimation tbody tr {flex-grow:1}
+.ianimation ul.steps {position:static}
+*/
+
+/* .ianimation .base-model-select .select-main {
+	position:relative;
+	background: linear-gradient(to bottom, #247fbc 0%,#1e6fa5 49%,#1b6494 100%,#1b6494 100%,#1b6494 100%,#1b6494 100%,#1b6494 100%,#1b6494 100%,#1b6494 100%,#1b6494 100%,#1b6494 100%,#1b6494 100%,#1b6494 100%);
+} */
+
+.ianimation .select-view .selectmenu-view {
+	display: block;
+	padding-top: 0; /* #13100 убираем лишний отступ сверху у элемента (select - ianimation) */
+}
+
+
+.ianimation .base-model-select .select-main .select-set::before {
+  content: "";
+  position: absolute;
+  top: 13px;
+  right: 10px;
+  border-top: 7px solid #ffffff;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+}
+
+.ianimation .base-model-select .select-main .select-set::after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  right: 30px;
+  height: 22px;
+  width: 2px;
+  background-color: #ffffff;
+}
+
+.select-items:hover{
+	background-color:#e0f2ff;
+
+}
+
+.ianimation .choices {
+    height: auto; /* #13100 (было 100%) убираем лишний отступ снизу у элемента (select - ianimation) */
+    position: relative;
+	overflow: visible;
+    /*border: none;*/
+    /*padding-top: 0px !important;*/
+    /*padding: 0px !important;*/
+}
+
+.ianimation .base-model-select .select-main .select-set:hover{
+	background-image:linear-gradient(to right, transparent 0, transparent calc(100% - 30px), #0b7ccc calc(100% - 30px), #0b7ccc 100%);
+	border-radius: 6px !important;
+}
+
+
+.ianimation .base-model-select .select-block {
+	width:100%;
+	border: 1px solid #66a9d3;
+	margin-top:0px;
+	margin-left: -1px;
+}
+
+.ianimation .base-model-select .select-main.z-index .select-set {
+position: relative;
+    z-index: 333;
+    background-color: #0c71b5;
+	border-radius: 6px 6px 0 0 !important;
+}
+
+
+.ianimation .base-model-select .select-main.z-index .select-block{
+	border-radius:0 0 6px 6px !important;
+}
+
+.ianimation .base-model-select .select-main.z-index .select-list{
+	margin-top:0;
+}
+
+.ianimation .base-model-select .disabled {display:none}
+
+
+
+.ianimation .base-radiobutton .radio-title {
+	width:auto !important;
+	max-width: none;
+	clear:left;
+	white-space: normal;
+	line-height: normal;
+	margin-left: 10px;	/*  restyling */
+	/* margin-top: -24px;  ??? */
+}
+
+.ianimation.loading .steps-td .step {opacity:0}
+
+.ianimation .progress {
+	position: absolute;
+	left: 0;
+	margin-left: -52px;
+	/* top: 50%;	#9695
+	margin-top: -24px; */
+	top: -8px;
+}
+
+.ianimation .base-radiobutton .radio-title11 {
+    margin-left: 35px;
+    letter-spacing: 6px;
+}
+
+/* #9157 */
+.ianimation .radiobutton-group {padding-left:13px;}	/* restyling */
+.ianimation .base-radiobutton .radio-title {margin-left:10px}
+
+.ianimation .choices .radiobutton-group { /* #12705 */
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	height: 100%;
+}

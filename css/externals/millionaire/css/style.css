@@ -1,0 +1,487 @@
+@CHARSET "UTF-8";
+
+.millionaire {
+	font-family: Trebuchet MS;
+	display: block;
+	width: 960px;
+	height: 630px;
+	box-sizing: border-box;
+	position: relative;
+	-webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-transform-origin: left top;
+    -ms-transform-origin: left top;
+    -o-transform-origin: left top;
+    transform-origin: left top;
+}
+
+.millionaire .blockingDiv {
+	width: 100%;
+	height: 101%;
+	z-index: 1000;
+	background: #acacac;
+	position: absolute;
+	top: 0;
+	left: 0;
+}	
+
+.millionaire .leftBlock, 
+.millionaire .rightBlock {
+	height: 100%;
+	position: relative;
+	float: left;
+	box-sizing: border-box;
+	background: #a6c9e1;
+	border: 1px solid #aebac4;
+	-webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -o-border-radius: 6px;
+    border-radius: 6px;
+     box-shadow: 0 4px 4px -2px #232323;
+    -moz-box-shadow: 0 4px 4px -2px #232323;
+    -webkit-box-shadow: 0 4px 4px -2px #232323;
+	
+}	
+
+.millionaire .leftBlock {
+	width: 32%;
+	padding: 12px;
+	overflow: hidden;
+	margin-right: 4px;
+}
+
+.millionaire .leftBlock .leftInner,
+.millionaire .rightBlock .rightInner {
+	background: #040651;
+	border: 1px solid #aebac4;
+	-webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -o-border-radius: 6px;
+    border-radius: 6px;
+}
+
+.millionaire .leftBlock .leftInner {
+	height: 100%;
+}
+
+.millionaire .rightBlock .rightInner {
+   -webkit-border-top-right-radius: 70px;
+   -moz-border-radius-topright: 70px;
+   border-top-right-radius: 70px;
+}
+
+.millionaire .rightBlock {
+	width: 67%;
+	padding: 12px;
+	overflow: hidden;
+}
+
+.millionaire .rightBlock .rightInner {
+	height: 92%;
+}
+
+.millionaire .rightBlock .rightInner .banner {
+	position: relative;
+	width: 70%;
+	box-sizing: border-box;
+	margin: 0 15%;
+	display: inline-block;
+}
+
+.millionaire .rightBlock .rightInner .banner img {
+	max-width: 100%;
+	max-height: 100%;
+} 
+
+.millionaire .button {
+	cursor: pointer;
+	background: #567990;
+}
+
+.millionaire .leftBlock .progressHandler {
+	width: 100%;
+	display: inline-block;
+	position: relative;
+	overflow: hidden;
+}
+
+.millionaire .leftBlock .progressHandler .item {
+	position: relative;
+	width: 70%;
+	margin: 0 15% 0 15%;
+	display: inline-block;
+	font-size: 22px;
+	line-height: 22px;
+	color: #ff9901;
+	-webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -o-border-radius: 6px;
+    border-radius: 6px;
+}
+
+.millionaire .leftBlock .progressHandler .item.active {
+	background: url(../img/item-background.png) 0 0 repeat-x;
+	color: white;
+}
+
+.millionaire .leftBlock .progressHandler .item.solid {
+	color: white;
+}	
+
+.millionaire .leftBlock .progressHandler .item .index,
+.millionaire .leftBlock .progressHandler .item .value {
+	position: relative;
+	box-sizing: border-box;
+	padding: 2%;
+	float: left;
+}
+
+.millionaire .leftBlock .progressHandler .item .index {
+	width: 40%;
+	padding-right: 6%;
+	text-align: right;
+}
+
+.millionaire .leftBlock .progressHandler .item .value {
+	width: 60%;
+	padding-left: 6%;
+	text-align: left;
+}
+
+.millionaire .leftBlock .leftBtns {
+	display: inline-block;
+	padding: 10px;
+	box-sizing: border-box;
+	width: 100%;
+}
+
+.millionaire .leftBlock .leftBtns .button {
+	float: left;
+	box-sizing: border-box;
+	padding: 0 4px;
+	height: 38px;
+/*	background: none;*/
+}
+
+.millionaire .leftBlock .leftBtns .button.last {
+	margin-right: 0;
+}
+
+.millionaire .leftBlock .leftBtns .button.disabled {
+	cursor: default;
+}	
+
+.millionaire .leftBlock .leftBtns .button img {
+	max-width: 100%;
+	max-height: 100%;
+}	
+
+.millionaire .rightBlock .bottomBtns {
+	width: 100%;
+    position: relative;
+    box-sizing: border-box;
+    padding-top: 8px;
+    height: 8%;
+}
+
+.millionaire .rightBlock .bottomBtns .button {
+	position: relative;
+	width: 49%;
+	margin-right: 2%;
+	height: 100%;
+	background: url(../img/bottom-btn-active.png) 0 0 repeat-x;
+	background-size: auto 100%;
+	color: black;
+	font-size: 22px;
+	text-align: center;
+	line-height: 100%;
+	-webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -o-border-radius: 6px;
+    border-radius: 6px;
+    box-sizing: border-box;
+    border: 1px solid #6782ad;
+	float: left;
+	cursor: pointer;
+}
+
+.millionaire .rightBlock .bottomBtns .button.last {
+	margin-right: 0;
+}
+
+.millionaire .rightBlock .bottomBtns .button.disabled {
+	background: url(../img/bottom-btn.png) 0 0 repeat-x;
+	background-size: auto 100%;
+	color: #c8ced3;
+	border: 1px solid #9aaecb;
+	cursor: default;
+}
+
+.millionaire .rightBlock .rightInner .question {
+	width: 100%;
+	position: relative;
+}	
+.millionaire .rightBlock .rightInner .question .mainQuestion {
+	width: 90%;
+	margin: 8% 5%;
+	display: inline-block;
+	box-sizing: border-box; 
+	background: url(../img/question.png) 0 center no-repeat;
+	background-size: contain;
+	height: 20%;
+	position: relative;
+}
+
+.millionaire .rightBlock .rightInner .question .mainQuestion .mainQuestionText {
+	position: relative;
+	box-sizing: border-box;
+	color: white;
+	font-size: 20px;
+	width: 100%;
+	padding: 0 10px;
+	text-align: center;
+}	
+
+.millionaire .rightBlock .rightInner .question .variantsWrp {
+	position: relative;
+	width: 100%;
+}
+
+.millionaire .rightBlock .rightInner .question .variantsWrp .variant {
+	position: relative;
+	width: 48%;
+	margin: 1% 1% 10% 1%;
+	height: 24%; 
+	float: left;
+	border-collapse: separate;
+	cursor: pointer;
+}
+
+.millionaire .rightBlock .rightInner .question .variantsWrp .variant.green {
+	background: #23ca1f;
+	-webkit-box-shadow: 0px -1px 25px 7px #23ff23;
+	box-shadow: 0px -1px 25px 7px #23ff23;
+    -moz-box-shadow: 0px -1px 25px 7px #23ff23;
+}
+
+.millionaire .rightBlock .rightInner .question .variantsWrp .variant.red {
+	background: #dd0023;
+	-webkit-box-shadow: 0px -1px 23px 7px #ff2323;
+	box-shadow: 0px -1px 23px 7px #ff2323;
+    -moz-box-shadow: 0px -1px 23px 7px #ff2323;
+}	
+
+.millionaire .rightBlock .rightInner .question .variantsWrp .variant.disabled {
+	cursor: default;
+	opacity: 0.6;
+}
+
+.millionaire .rightBlock .rightInner .question .variantsWrp .variant .label {
+	position: relative;
+	width: 19%;
+	height: 100%;
+	background-size: cover; 
+	float: left;
+}
+
+.millionaire .rightBlock .rightInner .question .variantsWrp .variant .text {
+	position: relative;
+	width: 81%;
+	height: 100%;
+	float: left;
+	color: white;
+	font-size: 20px;
+	text-align: center;
+	background: url(../img/variantback.png) 0 0 repeat-x;
+	background-size: auto 100%;
+	-webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -o-border-radius: 10px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+
+.millionaire .rightBlock .rightInner .question .variantsWrp .variant.disabled:hover .text {
+	background: url(../img/variantback.png) 0 0 repeat-x;
+	background-size: auto 100%;
+	border: 1px solid black;
+}
+
+.millionaire .rightBlock .rightInner .question .variantsWrp .variant.active .text,
+.millionaire .rightBlock .rightInner .question .variantsWrp .variant:hover .text {
+	background: url(../img/variantback-active.png) 0 0 repeat-x;
+	background-size: auto 100%;
+	border: 2px solid #0e2c83;
+}
+
+.millionaire .rightBlock .topBtns {
+	position: absolute;
+	right: 2%;
+	top: 3%;
+	display: inline-block;
+	background: url(../img/topbtns.png) 0 0 no-repeat;
+	background-size: auto 100%;
+	z-index: 100;
+	width: 14%;
+	height: 8%;
+}
+
+.millionaire .rightBlock .topBtns .button {
+	width: 50%;
+	height: 100%;
+	position: relative;
+	background: none;
+	float: left;
+	-webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+}	
+
+.millionaire .popup {
+	position: absolute;
+	z-index: 900;
+	color: white;
+	font-size: 22px;
+	line-height: 32px;
+	box-sizing: border-box;
+	padding: 20px;
+	width: 60%;
+	left: 0;
+	top: 0;
+	display: inline-block;
+	background: #063668;
+	-webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -o-border-radius: 8px;
+    border-radius: 8px;
+    display: none;
+    text-align: justify;
+}
+
+.millionaire .popupBack {
+	position: relative;
+	width: 100%;
+	height: 101%;
+	opacity: 0.5;
+	background: #cfcfcf;
+	z-index: 890;
+	display: none;
+}
+
+.millionaire .popup .content {
+	width: 100%;
+	position: relative;
+	padding-bottom: 14px;
+}
+
+.millionaire .popup .stat {
+	position: relative;
+	background: url(../img/stat.png) center no-repeat;
+	background-size: auto 100%;
+	margin-bottom: 20px;
+	display: none;
+}
+
+.millionaire .popup .stat .percent {
+	position: absolute;
+	width: 14%;
+	bottom: 18%; 
+}
+
+.millionaire .popup .stat .percent.A {
+	left: 25%;	
+	height: 100%;
+	background: #e48701;
+}
+.millionaire .popup .stat .percent.B {
+	left: 43%;	
+	background: #caca9e;
+}
+.millionaire .popup .stat .percent.C {
+	left: 61%;
+	background: #a5bc4e;	
+}
+.millionaire .popup .stat .percent.D {
+	left: 79%;
+	background: #1b95d9;	
+}
+.millionaire .popup .buttonWrapper {
+	position: relative;
+	width: 100%;
+	height: 50px;
+	box-sizing: border-box;
+	padding: 6px 0;
+}
+.millionaire .popup .buttonWrapper .button {
+	width: 18%;
+	margin: 0 41%;
+	text-align: center;
+	color: black;
+	height: 38px;
+	box-sizing: border-box;
+	background: url(../img/popup-btn.png) 0 0 repeat-x;
+	background-size: auto 100%;
+	border: 2px solid white;
+	-webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -o-border-radius: 6px;
+    border-radius: 6px;
+}
+
+.millionaire .popup .buttonWrapper .button:hover {
+	background: url(../img/popup-btn-hover.png) 0 0 repeat-x;
+	background-size: auto 100%;
+}
+
+.millionaire .fifty-fifty-btn {
+	background: url(../img/fifty.png) 0 0 no-repeat;
+}
+.millionaire .fifty-fifty-btn.disabled {
+	background: url(../img/fifty-disabled.png) 0 0 no-repeat;
+}
+.millionaire .call-friend-btn {
+	background: url(../img/call.png) 0 0 no-repeat;
+}
+.millionaire .call-friend-btn.disabled {
+	background: url(../img/call-disabled.png) 0 0 no-repeat;
+}
+.millionaire .auditorium-help-btn {
+	background: url(../img/auditorium.png) 0 0 no-repeat;
+}
+.millionaire .auditorium-help-btn.disabled {
+	background: url(../img/auditorium-disabled.png) 0 0 no-repeat;
+}
+.millionaire .renew-btn {
+	background: url(../img/try.png) 0 0 no-repeat;
+}
+.millionaire .renew-btn.disabled {
+	background: url(../img/try-disabled.png) 0 0 no-repeat;
+}
+.millionaire .banner {
+	background: url(../img/banner.png) 0 0 no-repeat;
+	background-size: cover;
+	height: 22%;
+}
+.millionaire .variantsWrp .label.A {
+	background: url(../img/labelA.png) 0 0 no-repeat;
+	background-size: 97% 99% !important;
+}
+.millionaire .variantsWrp .label.B {
+	background: url(../img/labelB.png) 0 0 no-repeat;
+	background-size: 97% 99% !important;
+}
+.millionaire .variantsWrp .label.C {
+	background: url(../img/labelC.png) 0 0 no-repeat;
+	background-size: 97% 99% !important;
+}
+.millionaire .variantsWrp .label.D {
+	background: url(../img/labelD.png) 0 0 no-repeat;
+	background-size: 97% 99% !important;
+}

@@ -1,0 +1,1603 @@
+@font-face {
+	font-family: TrebuchetMS;
+	src: local('Trebuchet MS');
+}
+
+@font-face {
+	font-family: TrebuchetMS-Italic;
+	src: local('Trebuchet MS');
+	font-style: italic;
+}
+
+.base-model {
+	font-family: "Trebuchet MS";
+	position: relative;
+	/*-webkit-transform-origin: left top;
+    -ms-transform-origin: left top;
+    -o-transform-origin: left top;*/
+	transform-origin: left top;
+	box-sizing: border-box;
+	/*-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;*/
+	/*user-select: none;*/
+}
+
+.base-model .hidden-element {
+	visibility: hidden;
+}
+
+.base-model .no-pointer-events {
+	/*pointer-events: none;*/
+	/* http://jigsaw.w3.org/css-validator/validator */
+}
+
+/*------------------- Layouts ----------------------------*/
+
+.base-model .single-layout {
+	position: relative;
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	/*padding: 12px;*/
+	display: inline-block;
+	cursor: default;
+}
+
+.base-model .single-layout .title-bar {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.base-model .dual-vertical-layout {
+	position: relative;
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	display: flex;
+}
+
+.base-model .dual-vertical-layout .first-pane,
+.base-model .dual-vertical-layout .second-pane {
+	position: relative;
+	box-sizing: border-box;
+	width: 50%;
+	height: 100%;
+	padding: 4px;
+	float: left;
+}
+
+.base-model .dual-vertical-layout .first-pane.nopadding,
+.base-model .dual-vertical-layout .second-pane.nopadding {
+	padding: 0;
+}
+
+.base-model .dual-horizontal-layout {
+	position: relative;
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	display: inline-block;
+}
+
+.base-model .dual-horizontal-layout .top-pane,
+.base-model .dual-horizontal-layout .bottom-pane {
+	position: relative;
+	box-sizing: border-box;
+	height: 50%;
+	width: 100%;
+	padding: 4px;
+	float: left;
+}
+
+.base-model .dual-horizontal-layout .top-pane.nopadding,
+.base-model .dual-horizontal-layout .bottom-pane.nopadding {
+	padding: 0;
+}
+
+.base-model .multiple-columns-layout {
+	position: relative;
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	display: inline-block;
+}
+
+.base-model .multiple-columns-layout .column {
+	position: relative;
+	box-sizing: border-box;
+	float: left;
+}
+
+/*------------------- Image View -------------------------*/
+
+.base-model .single-image {
+	position: relative;
+	box-sizing: border-box;
+	display: inline-block;
+	padding: 4px;
+	float: left;
+	cursor: pointer;
+	overflow: hidden;
+}
+
+.base-model .single-image .image-not-found {
+	width: 100%;
+	height: 100%;
+	color: red;
+	text-align: center;
+	background: #dedede;
+	position: relative;
+}
+
+.base-model .single-image .image-not-found div {
+	width: 100%;
+	position: absolute;
+	top: 50%;
+	height: 24px;
+	margin-top: -12px;
+}
+
+.base-model .single-image svg {
+	/*pointer-events: none;*/
+	/* http://jigsaw.w3.org/css-validator/validator */
+	cursor: default;
+}
+
+.base-model .pointer-events-enabled {
+	/*pointer-events: auto; */
+	/* http://jigsaw.w3.org/css-validator/validator */
+	cursor: pointer;
+}
+
+.base-model .single-image.no-padding {
+	padding: 0;
+}
+
+.base-model .single-image img {
+	height: 100%;
+}
+
+.base-model .single-image img.draggable {
+	height: auto;
+}
+
+.base-model .title-bar {
+	position: absolute;
+	box-sizing: border-box;
+	top: 4px;
+	left: 4px;
+	background: #242329;
+	text-align: center;
+	height: 40px;
+	color: white;
+	font-size: 18px;
+	z-index: 300;
+	font-weight: 200;	/* 700 #9008 */
+	line-height: 40px;
+	opacity: 0.8;
+	/*-moz-opacity: 0.8;
+	-khtml-opacity: 0.8;*/
+	overflow: hidden;
+}
+
+.base-model .single-image.no-padding .title-bar {
+	top: 0;
+	left: 0;
+}
+
+.base-model .single-image .model-slider-vertical {
+	position: absolute;
+	height: 140px;
+	z-index: 500;
+	left: 20px;
+	bottom: 20px;
+}
+
+.base-model .single-image .title-copy {
+	margin-right: 5px;
+	cursor:pointer;
+}
+
+/*------------------- Gallery view -----------------------*/
+
+.base-model .gallery-view {
+	position: relative;
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.base-model .gallery-view.scroll-x {
+	overflow-x: auto;
+}
+
+.base-model .gallery-view .row {
+	position: relative;
+	box-sizing: border-box;
+	display: inline-block;
+	margin: 0 auto;
+	float: left;
+}
+
+/* ----------------------------------------------------- */
+
+/* ---------------------- Popup ------------------------ */
+
+/* #8422 remove .base-model ... prefix */
+
+.model-popup-wrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 800;
+		/* 5000 приводит к багу что .popup за уже вызваным окном #9584 */
+		/* 100 приводит к багу #10802 */
+}
+
+.ui-dialog {
+	border: 1px solid #dcd !important;
+}
+
+.model-popup {
+	outline: none;
+	background-color: white !important;
+	/*-webkit-border-radius: 8px !important;
+  -moz-border-radius: 8px !important;*/
+	border-radius: 8px !important;
+	padding: 4px !important;
+	box-sizing: border-box;
+	margin: 0 20px;
+}
+
+.model-popup.ui-dialog .ui-dialog-titlebar-close {
+	position: absolute;
+	background: url(img/dialog_close_icon.png) 0 0 no-repeat !important;
+	width: 27px;
+	height: 27px;
+	top: 5px;
+	right: 0;
+	cursor: pointer;
+	border: none !important;
+	margin: -24px -20px 0 0;
+	/* fix ui upgrade (for iPicture and iShceme)*/
+}
+
+.model-popup .ui-dialog-titlebar-close span {
+	display: none;
+}
+
+.model-popup .content {
+	position: relative;
+	font-size: 11pt;
+	line-height: 13pt;
+	height: 100%;
+	width: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+	text-align: center;
+	padding: 10px;
+	box-sizing: border-box;
+	font-family: "Trebuchet MS";
+}
+
+.model-popup.ui-dialog-content.ui-widget-content {
+	overflow-x: hidden;
+
+	/* make default from body style */
+	/*font-size: 11pt;
+  line-height: 13pt;*/
+	font-size: inherit;
+	line-height: inherit;
+}
+
+.model-popup .title {
+	padding: 0 !important;
+}
+
+.model-popup.withTitle .title {
+	box-sizing: border-box;
+	width: 100%;
+	height: 24px;
+	position: absolute;
+	line-height: 24px;
+	top: 12px;
+	left: 0;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+	font-size: 16px;
+	font-weight: 600;
+	color: black;
+}
+
+.model-popup.withTitle {
+	padding-top: 40px;
+}
+
+.model-popup .closeBtn {
+	position: absolute;
+	background: url(img/dialog_close_icon.png) 0 0 no-repeat;
+	width: 27px;
+	height: 27px;
+	top: -14px;
+	right: -14px;
+	cursor: pointer;
+}
+
+.model-popup .ui-dialog .ui-dialog-buttonpane {
+	margin-top: 0;
+}
+
+.model-popup .ui-button {
+	background: url(img/blue-background.png) 0 0 repeat-x;
+	color: white;
+	/*-webkit-border-radius: 6px !important;
+	-moz-border-radius: 6px !important;*/
+	border-radius: 6px !important;
+	border: none;
+	padding: 0 10px 0 10px;
+	box-sizing: border-box;
+}
+
+.base-model .blocking-screen {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: #000000;
+	opacity: 0.6;
+	z-index: 1100;
+}
+
+/* ----------------------------------------------------- */
+
+/* ----------------------- Slider -----------------------*/
+
+.base-model .model-slider {
+	width: 100%;
+	position: relative;
+	height: 100%;
+	z-index: 500;
+}
+
+.base-model .model-slider .model-slider-left {
+	width: 8px;
+	height: 8px;
+	position: absolute;
+	background: url(img/main-slider-left.png) 0 0 no-repeat;
+	left: 12px;
+}
+
+.base-model .model-slider .model-slider-right {
+	width: 8px;
+	height: 8px;
+	position: absolute;
+	background: url(img/main-slider-right.png) 0 0 no-repeat;
+	right: 12px;
+}
+
+.base-model .model-slider .model-slider-back {
+	background: url(img/blue-slider-back.png) 0 0 repeat-x;
+	position: absolute;
+	height: 100%;
+	z-index: 2;
+}
+
+.base-model .model-slider-horizontal { height: 60px; }
+.base-model .model-slider-horizontal .model-slider-slider,
+.base-model .model-slider-horizontal .model-slider-right,
+.base-model .model-slider-horizontal .model-slider-left {
+	bottom: 18px;
+}
+
+.base-model .model-slider .ui-slider-handle {
+	height: 34px !important;
+	width: 34px !important;
+	background: none !important;
+	border: none !important;
+	top: -14px;
+	cursor: pointer;
+	position: absolute;
+	z-index: 200;
+	/*pointer-events: none;*/
+}
+
+.base-model .model-slider .ui-slider-handle .handler {
+	position: relative;
+	height: 34px;
+	width: 34px;
+}
+
+.base-model .model-slider .ui-slider-handle .handler .slide {
+	background: url(img/main-slider-marker.png) 0 0 no-repeat !important;
+	cursor: pointer;
+	position: absolute;
+	height: 34px;
+	width: 34px;
+	left:0;
+	/*pointer-events: auto;*/
+}
+
+.base-model .model-slider .ui-slider-handle.ui-state-focus,
+.base-model .model-slider .ui-slider-handle.ui-state-hover,
+.base-model .model-slider .ui-slider-handle.ui-state-active {
+	border: none !important;
+	outline: none !important;
+}
+
+.base-model .model-slider-slider {
+	height: 8px;
+	border: none;
+	position: absolute;
+	margin: 0 20px;
+	cursor: pointer;
+	left: 0;
+}
+
+.base-model .model-slider-slider .model-slider-scale {
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+
+.base-model .model-slider-slider .model-slider-scale .model-slider-scale-back {
+	background: url(img/main-slider-background.png) 0 0 repeat-x;
+	height: 100%;
+	width: 100%;
+	position: relative;
+	z-index: 1;
+}
+
+.base-model .model-slider-slider .model-slider-scale .markLine {
+	border-left: 1px solid #acacac;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	z-index: 4;
+}
+
+/* используется в timeline */
+.base-model .model-slider-horizontal .model-slider-slider .markLine {
+	width: 4px;
+}
+
+.base-model .slider-handler .model-slider-slider .markLine {
+	top: 0;
+}
+
+.base-model .model-slider-slider .model-slider-scale .mark {
+	color: black;
+	top: 22px;
+	position: absolute;
+	cursor: pointer;
+	z-index: 4;
+	white-space: nowrap; /* #9290 #note-9  */
+}
+
+.base-model .model-slider-slider .model-slider-scale .mark[valign="top"] {
+	top: -30px;
+}
+
+.base-model .model-slider-slider .model-slider-scale .markLine[valign="top"] {
+	top: -12px;
+}
+
+.base-model .mark {
+	font-size: 12px
+}
+
+.base-model .model-slider-horizontal .model-slider-slider .mark {
+	top: -34px;
+	max-width: 145px;
+}
+
+.base-model .model-slider-marksbottom {}
+.base-model .model-slider-marksbottom .model-slider-slider,
+.base-model .model-slider-marksbottom .model-slider-right,
+.base-model .model-slider-marksbottom .model-slider-left { top: 19px }
+.base-model .model-slider-marksbottom .model-slider-slider .mark { top: 22px }
+
+.base-model .slider-handler .slider-label {	position: absolute;	margin: 0;	float: none;}
+.base-model .slider-handler .slider-label.top {	top: 2px;}
+.base-model .slider-handler .slider-label.bottom {	bottom: 2px;}
+.base-model .slider-handler .slider-label.right {	left: 0;}
+.base-model .slider-handler .slider-label.left {	right: 0;}
+.base-model .slider-handler .model-slider-slider,
+.base-model .slider-handler .model-slider-right,
+.base-model .slider-handler .model-slider-left {bottom: 12px;}
+.im-model .slider-handler .model-slider-horizontal {height: 52px;}
+
+/* ----------------------------------------------------- */
+
+/* ------------------ Vertical slider -------------------*/
+
+.base-model .model-slider-vertical {
+	position: relative;
+	width: 20px;
+	height: 100%;
+	z-index: 500;
+}
+
+.base-model .model-slider-vertical .slider {
+	width: 7px;
+	height: 100%;
+	background: url(img/vertical-slider.png) 0 0 no-repeat;
+	background-size: cover;
+	border: none;
+}
+
+.base-model .model-slider-vertical .slider .ui-slider-handle.ui-state-focus,
+.base-model .model-slider-vertical .slider .ui-slider-handle.ui-state-hover,
+.base-model .model-slider-vertical .slider .ui-slider-handle.ui-state-active {
+	border: none !important;
+	outline: none !important;
+}
+
+.base-model .model-slider-vertical .slider .ui-slider-handle {
+	width: 33px !important;
+	height: 15px !important;
+	background: none !important;
+	position: absolute;
+	border: none !important;
+	left: -12px;
+	z-index: 500;
+
+	margin-bottom: -7px !important;
+}
+
+.base-model .model-slider-vertical .slider .ui-slider-handle .handle {
+	width: 33px;
+	height: 15px;
+}
+
+.base-model .model-slider-vertical .slider .ui-slider-handle .handle-back {
+	width: 33px;
+	height: 15px;
+	position: absolute;
+	/*bottom: -8px;*/
+	background: url(img/vertical-slider-handle.png) 0 0 no-repeat !important;
+	cursor: pointer;
+}
+
+.base-model .model-slider-vertical .marks-wrapper {
+	width: 30px;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 8px;
+}
+
+.base-model .model-slider-vertical .marks-wrapper .mark {
+	width: 8px;
+	height: 1px;
+	background: gray;
+	position: absolute;
+}
+
+.base-model .model-slider-vertical .marks-wrapper .mark-label {
+	position: absolute;
+	left: 12px;
+	height: 16px;
+	line-height: 16px;
+}
+
+.base-model .model-slider-vertical.disabled {
+	opacity: 0.5;
+}
+
+/* ------------------------ Color Slider ------------------------------*/
+.color-slider .ui-slider-handle {
+    cursor: pointer;
+    position: absolute;
+    outline: none;
+    border-radius: 34px !important;
+    height: 34px;
+    width: 34px;
+    left: 0;
+    top: -14px;
+}
+.color-slider{
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 0px !important;
+    height: 8px;
+}
+.color-slider-label {
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 10px;
+}
+
+/* ------------------------ Switchers ------------------------------*/
+
+.base-model .switcher-group {
+	/*width: 100%;
+	height: 100%;*/
+	box-sizing: border-box;
+}
+
+.base-model .base-switcher {
+	display: inline-block;
+	width: 100%;
+}
+
+.base-model .base-switcher.bordered {
+	border-bottom: 1px solid #C8C9CD;
+	padding: 0 !important;
+	margin: 0 !important;
+}
+
+.base-model .base-switcher .switcher {
+	position: relative;
+	width: 74px;
+	height: 24px;
+	/*-webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -o-border-radius: 6px;*/
+	border-radius: 6px;
+	z-index: 10;
+	float: left;
+	margin: 4px;
+	cursor: pointer;
+	box-sizing: border-box;
+}
+
+.base-model .base-switcher .switcher-title {
+	float: left;
+	font-size: 14px;
+	max-width: 150px;
+	line-height: 25px;
+	margin: 4px 4px 4px 10px;
+	box-sizing: border-box;
+	white-space: nowrap;
+}
+
+.base-model .base-switcher .switcher .plus,
+.base-model .base-switcher .switcher .minus {
+	float: left;
+	font-size: 22px;
+	color: white;
+	font-weight: 800;
+	height: 24px;
+	width: 37px;
+	text-align: center;
+}
+
+.base-model .base-switcher .switcher .plus {
+	line-height: 24px;
+}
+
+.base-model .base-switcher .switcher .minus {
+	background: #595959;
+	line-height: 20px;
+	/*-webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -o-border-radius: 6px;*/
+	border-radius: 6px;
+}
+
+.base-model .base-switcher .switcher .switcher-slider {
+	position: absolute;
+	width: 41px;
+	height: 25px;
+	background: url(img/switcher-button.png) 0 0 no-repeat;
+	top: 0;
+	left: 0;
+	z-index: 11;
+}
+
+.base-model .base-switcher.checked .switcher .switcher-slider {
+	left: 33px;
+}
+
+.base-model .base-switcher.disabled .switcher {
+	opacity: 0.7;
+	cursor: auto;
+}
+
+.base-model .base-switcher.disabled .switcher-title {
+	opacity: 0.5;
+}
+
+.base-model .label {
+	position: relative;
+	text-align: center;
+	font-size: 16px;
+	color: #343434;
+}
+
+/*------------------ Canvas ------------------------*/
+
+.base-model .base-model-canvas {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 200;
+}
+
+/*------------------ Tooltip ------------------------*/
+
+.base-model .base-model.tooltip {
+	width: auto;
+}
+
+/*------------------ Button ------------------------*/
+
+.base-model .model-button {
+	box-sizing: border-box;
+}
+
+.base-model .model-button {
+	cursor: pointer;
+}
+
+.base-model .model-button.disabled {
+	/*pointer-events: none;*/
+	opacity: 0.5;
+	cursor: pointer;
+}
+
+/* ------------------ Label View ---------------------*/
+
+.base-model .label-view {
+	display: table-cell;
+	vertical-align: middle;
+	font-size: 16px;
+	width: 100%;
+	/* overflow: hidden; */
+	box-sizing: border-box;
+	padding: 6px;
+	line-height: 1;
+	/* font-weight: 600; */
+	white-space: nowrap;
+}
+
+/* ------------------ Input View ---------------------*/
+
+.base-model .input-view {
+	display: table-cell;
+	vertical-align: middle;
+	font-size: 16px;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	box-sizing: border-box;
+}
+
+.base-model .input-view input {
+	height: 30px;
+	/* padding: 6px 6px 4px 6px; */
+	/*-webkit-border-radius: 6px !important;
+	-moz-border-radius: 6px !important;*/
+	line-height: 16px;
+	font-size: 16px;
+	border-radius: 6px;
+	outline: none;
+	border: 1px solid #76aad2;
+	box-sizing: border-box;
+	display: block;
+}
+
+/* Стили которые должны примениться вне зависимости от скина (связано с #11847) */
+[skin] .base-model .input-view input {
+	width: 100%;
+}
+
+/* когда формула то инпут растягивается по высоте из-за высоты формулы */
+.base-model .input-label .MathJax_SVG {margin:-10px 0}
+
+.base-model .input-view[input='number'] {position:relative;}
+.base-model .input-view[input='number'] input {
+	text-align:right;
+	padding-right:20px;
+	width: 100%; /* Демка Фотоэффекта 2.2.1.6 */
+}
+/*
+#13476 Увеличиваю специфичность для этого случая. В вебе main.css перебивает стили base-model
+При проверке web у себя очередность загрузки стилей верная. В head сначала идет main.css, затем
+base-model.css
+На imumk base-model.css находится в head, а при зарузке плеера в iframe main.css грузится в body,
+поэтому возникает конфликт.
+*/
+.base-model .input-view[input='number'] input[type='text'] {
+	padding-right: 20px;
+}
+.base-model .input-view[input='number'] .up,
+.base-model .input-view[input='number'] .down {
+	position: absolute;
+	right: 0;
+	background: #76aad2;
+	border:1px solid #76aad2;
+	height: 50%;
+	width: 16px;
+	cursor: pointer;
+	/* #0d68a7 */
+}
+.base-model .input-view[input='number'] .up {
+	top: 0;
+	border-radius: 0 6px 0 0;
+}
+.base-model .input-view[input='number'] .up:after {
+	content:'▲';
+	color:#0d68a7;
+	position:absolute;
+	line-height: 16px;
+	font-size: 7px;
+	top:0px;
+	left:0px;
+	width:16px;
+	text-align: center;
+}
+.base-model .input-view[input='number'] .down {
+	bottom: 0;
+	border-radius: 0 0 6px 0;
+}
+.base-model .input-view[input='number'] .down:after {
+	content:'▼';
+	color:#0d68a7;
+	position:absolute;
+	line-height: 16px;
+	font-size: 7px;
+	top:0px;
+	left:0px;
+	width:16px;
+	text-align: center;
+}
+
+.base-model .input-view input.disabled {
+	/*-webkit-user-select: none;
+  	-moz-user-select: none;
+  	-ms-user-select: none;*/
+	/*user-select: none;*/
+	background-color: #dcdcdc;
+	color: #545454;
+}
+
+/* --------------------- Select ------------------------ */
+
+/** old support **/
+.base-model .base-model-select .select-main {
+	text-align: center;
+	height: 32px;
+	box-sizing: border-box;
+	/*-webkit-border-radius: 6px !important;
+	-moz-border-radius: 6px !important;*/
+	border-radius: 6px !important;
+	background-color: #0c71b5;
+	color: white;
+	line-height: 32px;
+	cursor: pointer;
+}
+
+.base-model .base-model-select .select-block {
+	color: black;
+	position: absolute;
+	background: white;
+	/*-webkit-border-radius: 6px !important;
+	-moz-border-radius: 6px !important;*/
+	border-radius: 6px !important;
+	z-index: 200;
+}
+
+.base-model .base-model-select .select-block {
+	display: block;
+}
+
+.base-model .base-model-select .select-list {
+	padding: 0;
+	text-align: center;
+	overflow: hidden;
+}
+/** old support **/
+
+.im-model .select-view .selectmenu-view {
+	position:relative;
+	display:table-cell;
+	padding-top: 2px; /* Демка Фотоэффекта 2.2.1.6 */
+}
+.im-model .select-view .ui-selectmenu-button.ui-button {
+	text-align: center;
+	height: 32px;
+	box-sizing: border-box;
+	/*-webkit-border-radius: 6px !important;
+	-moz-border-radius: 6px !important;*/
+	border-radius: 6px !important;
+	background-color: #0c71b5;
+	color: white;
+	line-height: 32px;
+	cursor: pointer;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	outline: none;
+	padding:0;
+	border:none;
+}
+.im-model .select-view .ui-selectmenu-button.ui-button:before {
+  content: "";
+  position: absolute;
+  top: 13px;
+  right: 10px;
+  border-top: 7px solid #ffffff;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+}
+.im-model .select-view .ui-selectmenu-button.ui-button:after {
+	content: "";
+  position: absolute;
+  top: 5px;
+  right: 30px;
+  height: 22px;
+  width: 2px;
+  background-color: #ffffff;
+}
+.im-model .select-view .ui-selectmenu-icon.ui-icon {
+	display:none;
+}
+.im-model .select-view .ui-selectmenu-text {
+	margin-right:25px;
+}
+.im-model .select-view .ui-selectmenu-button {
+	display:block;
+}
+
+.im-model .ui-selectmenu-menu {z-index: 1000}
+.im-model .ui-selectmenu-menu .ui-widget.ui-widget-content {
+	color: black;
+	background: white;
+	border-radius: 6px;
+	z-index: 200;
+	border:none;
+	top:-32px;
+	left:0;
+	padding: 0;
+}
+.im-model .ui-selectmenu-menu .ui-widget.ui-widget-content .ui-state-active {
+		background-color: #85b8da;
+		border:0;
+		margin:0;
+}
+.im-model .ui-selectmenu-menu .ui-menu .ui-menu-item-wrapper {
+	padding:0;
+	text-align: center;
+	height: 32px;
+	line-height: 32px;
+	display:block;	/* fix courseML li>div {display:inline} */
+}
+/* -------------------- Radiobutton ------------------------*/
+
+.base-model .radiobutton-group {
+	box-sizing: border-box;
+	position: relative;
+	width: 100%;
+	line-height: 0; /* becose we use inline-block for base-radiobutton, when calculate vertical-align middle in im-model */
+}
+
+.base-model .base-radiobutton {
+	display: inline-block;
+	width: 100%;
+	position: relative;
+}
+
+.base-model .base-radiobutton .radiobutton {
+	width: 20px;
+	height: 20px;
+	border: 1px solid #1f71a9;
+	/* box-sizing: border-box; */
+	/*-webkit-border-radius: 11px !important;
+  	-moz-border-radius: 11px !important;*/
+	position: relative;
+	border-radius: 20px;
+	float: left;
+	cursor: pointer;
+	overflow: hidden;
+}
+
+.base-model .base-radiobutton .radiobutton .radiospot {
+/*	position: absolute; */
+    /* top: 0px; */
+    /* left: 0px; */
+    /* transform: translate(4px, 4px); */
+    width: 12px;
+    height: 12px;
+    background: #1f71a9;
+    /* box-sizing: border-box; */
+    border-radius: 12px;
+    display: none;
+    border: 4px solid #e8ecf9;
+}
+
+.base-model .base-radiobutton.checked .radiobutton .radiospot {
+	display: block;
+}
+
+.base-model .base-radiobutton .radio-title {
+	float: left;
+	max-width: 150px;
+	line-height: 25px;
+	margin-left: 10px;
+	box-sizing: border-box;
+	white-space: nowrap;
+	cursor: pointer;
+	position: relative;
+}
+
+.base-model .base-radiobutton.disabled {
+	/*pointer-events: none;*/
+}
+
+.base-model .base-radiobutton.disabled .radiobutton {
+	opacity: 0.7;
+	cursor: auto;
+}
+
+.base-model .base-radiobutton.disabled .radio-title {
+	opacity: 0.5;
+	cursor: auto;
+}
+
+/* ------------------------ Checkbox -----------------------------------*/
+
+.base-model .base-model-checkbox {
+	height: 100%;
+	float: left;
+	width: 23px;
+	position:relative; /* #10213 */
+	cursor: pointer;
+}
+
+.base-model .base-model-checkbox .checkbox-inner {
+	position: absolute;
+	height: 22px;
+	width: 23px;
+	left:0;
+	top: 0;
+	/* top: 50%; #10213 */
+	margin-top: 2px;
+	background: url(img/checkbox.png) 0 0 no-repeat;
+	cursor: pointer;
+	/*pointer-events: auto;*/
+}
+
+/* 10826 */
+.base-model-checkbox .label-view {
+	white-space: normal;
+	padding-top: 1px;
+}
+
+.model-blue .base-model-checkbox {
+	height:auto;
+	display:inline-block;
+	float:none;
+	position:relative;
+}
+
+.model-blue .base-model-checkbox {
+	padding-left:23px;
+	box-sizing: border-box;
+	width:auto;
+}
+
+
+.base-model .base-model-checkbox.checked .checkbox-inner {
+	background: url(img/checkbox-checked.png) 0 0 no-repeat;
+}
+
+.base-model .base-model-checkbox.disabled .checkbox-inner {
+	/*pointer-events: none;*/
+	cursor: default;
+	opacity:0.5;
+}
+
+.base-model .connection-line {
+	padding: 0;
+	margin: 0;
+	height: 4px;
+	background-color: #084a77;
+	position: absolute;
+	line-height: 1px;
+	/*pointer-events: none;*/
+}
+
+.base-model .model-popup-wrapper .ui-widget-overlay {
+	position: absolute;
+}
+
+.popup-opened .base-model .model-popup-wrapper .ui-widget-overlay {
+	height: 5000px;
+	width: 5000px;
+	left: -2000px;
+	top: -2000px;
+}
+
+
+/* Slideshow */
+
+.slideshow.base-model {
+	margin: 0 auto;
+	/* used for align in slideshow screens slides in main page */
+}
+/*ARCH #9564 в высоту у маленького экрана эта часть начинает заезжать на слайдшоу*/
+/*.slideshow .bottom-pane {margin-top:-100px;}	!* TODO: move in code autodetect depend from max photo height *!*/
+
+.slideshow figure {
+	perspective: 300px;
+	transform-style: unset; /* #11190 */
+	position: relative;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.slideshow figure img {
+	cursor: pointer;
+	transition: 1s;
+	position: absolute;
+	transform: rotateY(0deg) translate3d(0, 0, 200px) scale(0.68);
+	z-index: 1;
+	background: #e9edf9;
+	box-sizing: border-box;
+}
+
+.slideshow figure.fast img {
+	transition: 0.3s;
+}
+
+.slideshow figure img.leftback {
+	transform: rotateY( -100deg);
+}
+
+.slideshow figure img.rightback {
+	transform: rotateY( 100deg);
+}
+
+/*.slideshow figure img:hover {  transform: rotateY( 80deg ) !important;}*/
+
+.slideshow figure img.lleft {
+	width: 10%;
+	height: 25%;
+	margin-right: 0;
+	transform: rotateY(-40deg) translate3d(300px, 0, 50px) scale(0.68);
+	left: 10%;
+	z-index: 2;
+}
+
+.slideshow figure img.rright {
+	width: 10%;
+	height: 25%;
+	transform: rotateY( 40deg)  translate3d(-280px, 0, 50px) scale(0.68);
+	z-index: 2;
+}
+
+.slideshow figure img.right {
+	width: 25%;
+	height: 40%;
+	transform: rotateY( 30deg) translate3d(-200px, 0, 100px) scale(0.68);
+	left: 75%;
+	z-index: 3;
+}
+
+.slideshow figure img.left {
+	float: left;
+	width: 25%;
+	transform: rotateY( -30deg) translate3d(186px, 0, 100px) scale(0.68);
+	z-index: 3;
+}
+
+.slideshow figure img.center {
+	width: 50%;
+	height: auto;
+	max-height: 100%;
+	margin: 0;
+	z-index: 4;
+	transform: rotateY( 0) translate3d(0, 0, 210px) scale(0.6);
+}
+
+.slideshow .top-pane {
+	position: relative;
+}
+
+.slideshow .prev, .slideshow .next {
+	width: 40px;
+	height: 40px;
+	/* background: #e5e7ed; */
+	border-radius: 5px;
+	top: 50%;
+	left: 0;
+	margin-top: -20px;
+	/* border: 1px solid #e2e3e3; */
+	position: absolute;
+	cursor: pointer;
+}
+
+.slideshow .prev:after {
+	content: '';
+	position: absolute;
+	top: 3px;
+	left: -6px;
+	border: 16px solid transparent;
+	border-right: 16px solid #034c8f;
+	transition: 0.5s;
+}
+
+.slideshow .prev:hover:after {
+	border-right-color: #1f7ac0;
+}
+
+.slideshow .next {
+	right: 0;
+	left: auto;
+}
+
+.slideshow .next:after {
+	content: '';
+	position: absolute;
+	top: 3px;
+	right: -6px;
+	border: 16px solid transparent;
+	border-left: 16px solid #034c8f;
+	transition: 0.5s;
+}
+
+.slideshow .next:hover:after {
+	border-left-color: #1f7ac0;
+}
+
+.slideshow .bottom-pane {
+	text-align: center
+}
+
+.slideshow .slideshow-point {
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	border-radius: 8px;
+	background: #8fbdde;
+	margin: 15px 5px 0 5px;
+	position: relative;
+	transition: 0.3s;
+	cursor: pointer;
+	padding: 0
+}
+
+.slideshow .slideshow-point.active {
+	background: #2879bd;
+}
+
+.slideshow .slideshow-point:after {
+	content: '';
+	position: absolute;
+	border: 1px solid #8fbdde;
+	border-radius: 10px;
+	width: 0px;
+	height: 0px;
+	top: 10px;
+	left: 10px;
+	transition: 0.3s;
+}
+
+.slideshow .slideshow-point.active:after {
+	content: '';
+	position: absolute;
+	border: 1px solid #8fbdde;
+	border-radius: 20px;
+	width: 20px;
+	height: 20px;
+	top: -3px;
+	left: -3px;
+}
+
+.slideshow .title {
+	text-align: center;
+	line-height: 28px;
+}
+
+.slideshow .pic {
+	text-align: center
+}
+
+.slideshow .nav {
+	text-align: center;
+	padding-bottom: 5px;
+}
+
+.slideshow-container {
+	position: relative;
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%
+}
+
+.slideshow-container.has-arrow {
+	overflow:hidden; /* fix когда размеры не большие стрелка справа почему то больше 40px из за этого появляется с кролл в слайдшоу-оглавлении */
+	padding: 0 40px;
+}
+
+.slideshow .canvases {
+	display: none
+}
+
+.slideshow canvas {
+	position: absolute;
+	cursor: pointer
+}
+
+.slideshow.ie9 figure img {
+	visibility: hidden;
+}
+
+.slideshow.ie9 figure.fast {
+	height: 0px;
+	overflow: hidden
+}
+
+.slideshow.ie9 .canvases {
+	display: block
+}
+
+.slideshow-title {
+	/*position: absolute;*/ /*ARCH #9564 чтоб текст автоматически следовал после переключателя слайдов*/
+	text-align: center;
+	margin-top: 30px;
+	left:0px;
+}
+
+.base-model .tabs-layout-bar {display: table}
+.base-model .tabs-layout-bar>.title-bar {
+  /* position: static; мешает маус клик эффекту в синхронизации */
+  position: relative;
+	font-size: 16px;	/* Шрифт в табах великоват – надо посмотреть, что у нас в других типах моделей */
+	line-height: 16px;
+	padding: 7px 3px;
+	cursor: pointer;
+
+	/* float:left; Табы должны автоматически менять размер если слишком большое содержимое (iPicture) */
+	display: table-cell;
+}
+.base-model .tabs-layout-bar[columns="1"]>.title-bar {cursor: default;}
+.base-model .tabs-layout>.pane-content-wrap {padding-top:30px} /* tabbar outset */
+.base-model .tabs-layout-bar>.title-bar:not(.active) {
+	color:#1f71a9;
+	background: #c2d0d7;
+}
+
+
+/* Блок с голубыми границами и заголовком используется для iPicture и для iAnimation, и еще для других моделей
+ * попытка вынести это в общий файл
+ * что бы если поменяется цветовая схема, сразу менять в одном месте для всех
+ */
+
+.base-model .border {
+	width: 100%;
+	height: 100%;
+	border: 1px solid #005e9e;
+	border-radius: 8px;
+	box-sizing: border-box;
+	float: left;
+	position: relative;
+}
+
+.base-model .model-title {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 1;
+	text-align: center;
+	color: #fff;
+	line-height: 30px;
+	border-top: 1px solid #5eb5dc;
+	border-radius: 7px 7px 0 0;
+	display: none;
+	font-size: 18px;
+	height:30px; /* #9528 */
+
+	background: #247fbc;
+	/* Old browsers */
+	background: linear-gradient(to bottom, #247fbc 0%, #1e6fa5 49%, #1b6494 100%, #1b6494 100%, #1b6494 100%, #1b6494 100%, #1b6494 100%, #1b6494 100%, #1b6494 100%, #1b6494 100%, #1b6494 100%, #1b6494 100%, #1b6494 100%);
+	/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+.base-model .border.has-title .model-title {
+	display: block
+}
+
+.base-model .border.padding {
+	padding: 10px;
+}
+
+.base-model .border.has-title {
+	padding-top: 30px;
+}
+
+.base-model .border.padding.has-title {
+	padding-top: 40px;
+}
+
+.base-model .axis-label {
+	font-size: 18px;
+}
+
+/* used for correct calculation some models */
+
+.normal-scale .base-model {
+	transform: scale(1) !important;
+	zoom: 1 !important;
+}
+
+
+/* #8990 - used in scheme tree for correct calculate positions */
+.normal-scale #wrapper {
+    transform: scale(1) !important
+}
+
+/*  #8141 <p> default align left */
+/* .ui-dialog p {text-align: left} #9265 */
+
+/* #7868 fix centering slider handle */
+
+.base-model .ui-slider-horizontal .ui-slider-handle {
+	margin-left: -17px;
+}
+
+/* linked with #8164 -> #8263 */
+
+/*.popup-opened .model-popup-wrapper-parent>*:not(.model-popup-wrapper) {opacity:0.5}
+.popup-opened .model-popup-wrapper-parent:after {content:''; z-index:3; position:absolute; top:0; left:0; height:100%; width:100%; opacity:0; background:#fff}*/
+
+/* #8263 */
+
+.popup-opened #slide {
+	overflow: hidden
+}
+
+.popup-opened .base-model {
+	overflow: visible !important;
+}
+
+.popup-opened .model-wrp {
+	overflow: visible !important;
+}
+
+/* linked with #8255 */
+
+.quote {
+	margin-left: 2px;
+}
+
+/* while automatic calcualte duration from content lines */
+
+.calculating-duration img {
+	display: none
+}
+
+.calculating-duration,
+.calculating-duration * {
+	height: auto !important;
+	padding: 0 !important;
+}
+
+/* re-styling */
+.im-model {position:relative;}
+.im-model .dual-vertical-layout>.first-pane {padding:0 2px 0 0}
+.im-model .dual-vertical-layout>.second-pane {padding:0 0 0 2px}
+.im-model .dual-horizontal-layout>.top-pane {padding:0 0 2px 0}
+.im-model .dual-horizontal-layout>.bottom-pane {padding:2px 0 0 0}
+.im-model .label-view {width:auto;}
+.im-model .row-view {padding:1px 0;}
+
+.im-model .single-layout.no-border {
+    border: 0;
+    border-radius: 0;
+}
+.im-model .single-layout .pane-content {width:100%; height:100%; box-sizing: border-box; overflow: auto; padding:5px;}
+.im-model .single-layout.nopadding .pane-content {padding:0;}
+.im-model .single-layout .pane-content-wrap {box-sizing: border-box; width:100%; height:100%; overflow: hidden; border-radius: 6px;}
+.im-model .single-layout.has-padding {padding:8px;}
+.im-model .single-layout.no-padding .pane-content{padding:0}
+.im-model .single-layout.has-title>.pane-content-wrap {padding-top:30px}
+.im-model .single-layout.has-title:not(.has-content) {padding-top:30px; box-sizing: border-box;}
+.im-model .base-radiobutton {padding-left:23px; position:relative; box-sizing: border-box;}
+.im-model .base-radiobutton:not(:first-child) {margin-top:10px;}/*#11359 Добавлен отступ к непервому блоку переключателю*/
+.im-model .base-radiobutton .radiobutton { top:0; margin-top:4px; left:0; position:absolute;}
+.im-model .base-radiobutton .radio-title {max-width:none; width:auto; padding: 6px; line-height: 18px; margin-left: 0;}
+.im-model [columns]>* {display:inline-block; vertical-align: middle; }
+.im-model [columns="1"]>* {width:100%}
+.im-model [columns="2"]>* {width:50%}
+.im-model [columns="3"]>* {width:33%}
+.im-model [columns="4"]>* {width:25%}
+.im-model [columns="5"]>* {width:20%}
+
+.model-blue .model-button {
+	text-align: center;
+	background: #0c71b5;
+	border-radius: 8px;
+	color:#fff;
+	display: inline-block;
+	padding:2px 8px;
+	margin:0 2px;
+}
+
+.model-blue .single-layout {
+	border-radius:8px;
+	border:1px solid #0d68a7;
+	overflow:hidden;
+}
+.model-blue .title-bar {
+	background: #1f71a9;
+	height: 30px;
+	line-height: 28px;
+	font-weight: 200;
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+	opacity:1;
+}
+.model-blue .single-layout>.title-bar {width:100%}
+.model-blue .single-layout>.title-bar>span {white-space:nowrap; display: inline-block; overflow: hidden; text-overflow: ellipsis;}
+.model-blue .tabs-layout-bar {background:#c2d0d7}
+
+/* как временное решение когда селект выходит за границы панели */
+.model-blue .single-layout.overflow-visible {overflow:visible}
+.model-blue .single-layout.overflow-visible .pane-content-wrap {overflow:visible}
+.model-blue .single-layout.overflow-visible .pane-content {overflow:visible}
+
+/* Player-controls */
+.model-blue .player-controls {position:absolute; right:2px; top:0; margin:0; padding:0; list-style: none;}
+.model-blue .player-controls li {
+	width:31px;
+	height:31px;
+	float:left;
+	cursor:pointer;
+	position:relative;
+	background-size:cover;
+	background-position:0 0;
+	margin:0;
+}
+.model-blue .player-controls li:not(.disable):hover {opacity:0.9}
+.model-blue .player-controls .prev {background-image:url("img/prev.png")}
+.model-blue .player-controls .play {background-image:url("img/play.png")}
+.model-blue .player-controls .pause {background-image:url("img/pause.png")}
+.model-blue .player-controls .pause.active {background-image:url("img/play.png")}	/* play */
+.model-blue .player-controls .stop {background-image:url("img/stop.png")}
+.model-blue .player-controls .next {background-image:url("img/next.png")}
+
+.model-blue .player-controls .play.disable {background-image:url("img/play-dis.png")}
+.model-blue .player-controls .prev.disable {background-image:url("img/prev-dis.png")}
+.model-blue .player-controls .next.disable {background-image:url("img/next-dis.png")}
+.model-blue .player-controls .stop.disable {background-image:url("img/stop-dis.png")}
+
+.image-copyright {
+	position:absolute;
+	background-image:url("img/copyrightCorner.png");
+	width:53px;
+	height:62px;
+	right:-1px;
+	bottom:-1px;
+}
+.image-copyright a {
+	position:absolute;
+	background-image:url("img/copyright.png"); /* #13610 svg на png */
+	width:20px;
+	height:20px;
+	right:2px;
+	bottom:1px;
+}
+
+/* Commonmodel */
+.borderedimg>.commonmodel>.single-layout {
+	border: 0;
+}

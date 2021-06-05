@@ -1,0 +1,145 @@
+.imusic {
+
+}
+
+.imusic .piano {
+	position:relative;
+	text-align: center;
+}
+
+.imusic .piano-key {
+	border:1px solid #000;
+	display:inline-block;
+	box-sizing: border-box;
+	width:6.5%;
+	height:100px;
+	background:#fff;
+	cursor:pointer;
+	border-radius: 0 0 4px 4px;
+}
+.imusic .piano-key:hover {
+	-webkit-box-shadow: inset 0px -12px 37px -14px rgba(0,0,0,0.3);
+	-moz-box-shadow: inset 0px -12px 37px -14px rgba(0,0,0,0.3);
+	box-shadow: inset 0px -12px 37px -14px rgba(0,0,0,0.3);
+}
+.imusic .piano-key.pressed {
+	-webkit-box-shadow: inset 0px -110px 156px -37px rgba(0,0,0,0.24);
+	-moz-box-shadow: inset 0px -110px 156px -37px rgba(0,0,0,0.24);
+	box-shadow: inset 0px -110px 156px -37px rgba(0,0,0,0.24);
+}
+
+.imusic .piano-key-black {
+	background:#000;
+	width:4%;
+	background:#000;
+	height:50px;
+	display:inline-block;
+	margin-left:-2%;
+	margin-right:-2%;
+	position:relative;
+	z-index: 2;
+	vertical-align: top;
+	border-radius: 0 0 4px 4px;
+	cursor:pointer;
+}
+.imusic .piano-key-black:hover {
+	-webkit-box-shadow: inset 0px 0px 5px 0px rgba(255,255,255,1);
+	-moz-box-shadow: inset 0px 0px 5px 0px rgba(255,255,255,1);
+	box-shadow: inset 0px 0px 5px 0px rgba(255,255,255,1);
+}
+.imusic .piano-key-black.pressed {
+	-webkit-box-shadow: inset 0px -110px 156px -37px rgba(255,255,255,0.24);
+	-moz-box-shadow: inset 0px -110px 156px -37px rgba(255,255,255,0.24);
+	box-shadow: inset 0px -110px 156px -37px rgba(255,255,255,0.24);
+}
+
+
+.imusic .staff {
+	position:relative;
+	text-align: center;
+	margin-top:30px;
+}
+.imusic .staff:before {
+	content: '𝄞';
+	position:absolute;
+	left:0;
+	top:0;
+	font-size: 100px;
+	line-height: 100px;
+}
+.imusic .staff-line {
+	border-bottom:1px solid #000;
+	height:20px;
+	box-sizing: border-box;
+}
+.imusic .staff-note {
+	font-style: italic;
+	display:inline-block;
+	width:6.5%;
+	position:relative;
+	padding-top:30px;
+	line-height: 27px;
+}
+.imusic .staff-note:before {
+	content: '♩';
+	font-size: 100px;
+	font-style: normal;
+	position:absolute;
+	top:-50px;
+	left:5px;
+	cursor:pointer;
+}
+.imusic .staff-note:after {
+	content: '';
+	border-top: 1px solid #000;
+	position: absolute;
+	width: 40px;
+	left: 5px;
+	height: 0;
+	top: 20px;
+	display:none;
+}
+.imusic .staff-note[key="C"][octave="4"]:after {top: 20px; display:block}
+.imusic .staff-note[key="C"][octave="4"]:before {top:-20px}
+.imusic .staff-note[key="D"][octave="4"]:before {top:-30px}
+.imusic .staff-note[key="E"][octave="4"]:before {top:-40px}
+.imusic .staff-note[key="F"][octave="4"]:before {top:-50px}
+.imusic .staff-note[key="G"][octave="4"]:before {top:-60px}
+.imusic .staff-note[key="A"][octave="4"]:before {top:-70px}
+.imusic .staff-note[key="B"][octave="4"]:before {top:-30px; transform: rotate(180deg);}
+
+.imusic .staff-note[key="C"][octave="5"]:before {top:-40px; transform: rotate(180deg);}
+.imusic .staff-note[key="D"][octave="5"]:before {top:-50px; transform: rotate(180deg);}
+.imusic .staff-note[key="E"][octave="5"]:before {top:-60px; transform: rotate(180deg);}
+.imusic .staff-note[key="F"][octave="5"]:before {top:-70px; transform: rotate(180deg);}
+.imusic .staff-note[key="G"][octave="5"]:before {top:-80px; transform: rotate(180deg);}
+.imusic .staff-note[key="A"][octave="5"]:before {top:-90px; transform: rotate(180deg);}
+.imusic .staff-note[key="B"][octave="5"]:before {top:-100px; transform: rotate(180deg);}
+.imusic .staff-note[key="A"][octave="5"]:after {top: -101px; display:block}
+.imusic .staff-note[key="B"][octave="5"]:after {top: -101px; display:block}
+
+.imusic .svg-wrap {
+	text-align: center;
+}
+
+.imusic .svg-wrap svg {
+	overflow: visible;
+}
+.imusic [marked] {
+	stroke:#83c0f5;
+	stroke-width:3px;
+	stroke-dasharray: 1;	/* у некоторых <g/> уже есть сплошная линия и цвет не переопределяется */
+}
+.imusic [mark] {
+	/* stroke:#2196f3;
+	stroke-width:3px; */
+	fill:#83c0f5;
+	opacity:0;
+}
+
+
+
+/* for svg regions */
+.imusic .clickable {
+	cursor:pointer;
+}

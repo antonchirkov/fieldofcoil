@@ -1,0 +1,378 @@
+@CHARSET "UTF-8";
+.imicro {
+	overflow: hidden; /* Линии ответа должны обрезаться */
+}
+.imicro .label {
+	text-align: left;
+	color: #787878;
+	padding: 6px 0;
+}
+
+.imicro .model-slider-vertical {
+	position: absolute;
+	right: 30px;
+	height: 88%;
+	top: 6%;
+}
+
+.imicro .image-preview {
+	margin-top: 36px;
+	padding-left: 8px;
+	/*position: absolute;
+	top: 50%;
+	left: 40%;*/
+}
+
+.imicro .image-preview .indicator {
+	position: absolute;
+	z-index: 100;
+	border: 2px solid #0d70b2;
+	border-radius: 2px;
+	box-sizing: border-box;
+	background-color: rgba(255, 255, 255, 0);
+}
+
+.imicro .spot {
+	position: absolute;
+	width: 4px;
+	height: 4px;
+	/* background: url(../img/circle_blue.png) 0 0 no-repeat; */
+	background: #000;
+	border-radius: 50px;
+	z-index: 210;
+	cursor: pointer;
+	border: 6px solid #084a77;
+}
+[skin="board"] .imicro .spot {
+	width: 26px;
+	height: 26px;
+	border: none;
+	background: #015287;
+}
+
+.imicro .has-spots {
+	margin:10px 0;
+}
+.imicro .has-spots .spot {
+	position:static;
+	display:inline-block;
+	margin:2px;
+}
+
+.imicro .spot.correct {
+	/* background: url(../img/circle_green.png) 0 0 no-repeat; */
+	border-color: green;
+}
+
+.imicro .spot.wrong {
+	/* background: url(../img/circle_red.png) 0 0 no-repeat; */
+	border-color: red;
+}
+
+.imicro .connection-line {
+
+}
+
+.imicro .connection-line.wrong {
+	background: #f60301;
+}
+
+.imicro .connection-line.correct {
+	background: #326b37;
+}
+
+.circle-line {
+	position: absolute;
+	border: 3px solid #084a77;
+	border-radius: 1000px;
+}
+
+.imicro .hspot {
+	position: absolute;
+	width: 21px;
+	height: 21px;
+	background: url(../../basemodel/img/pointer.png) 0 0 no-repeat;
+	z-index: 210;
+}
+
+.imicro #microscope-drawing-canvas {
+	pointer-events: none;
+}
+.imicro #microscope-canvas,
+.imicro #microscope-source-canvas {
+	z-index: 210;
+}
+
+.imicro .source-point {
+	position: absolute;
+	width: 38px;
+	height: 38px;
+	/*background: url('../../basemodel/img/classitem_circle.png') 0 0 no-repeat;*/
+	cursor: pointer;
+	border: solid 2px #015287;
+	border-radius: 50%;
+}
+
+/* #10743 */
+.imicro .source-point-region {
+	position: absolute;
+	cursor: pointer;
+}
+.imicro .title-bar {
+	background: #1f71a9;
+	height: 30px;
+	line-height: 30px;
+	font-weight: 200;
+	opacity: 1;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+.imicro .main-image-view,
+.imicro .zoom-block,
+.imicro .preview-block,
+.imicro .source-image-wrapper,
+.imicro .light-block {
+	display: block;
+	border: 1px solid #1f71a9;
+	-webkit-border-radius: 8px !important;
+  	-moz-border-radius: 8px !important;
+  	border-radius: 8px !important;
+}
+
+.imicro .single-image.main-image-view {
+	cursor: default; /*#10743 note 42*/
+}
+
+.imicro .source-image {
+	cursor: default;
+}
+
+.imicro .buttons-block {
+	display: block;
+	margin-bottom: 8px;
+}
+
+.imicro .zoom-block {
+	height: 30%;
+}
+
+.imicro .light-block {
+	height: 25%;
+}
+
+.imicro .preview-block {
+	height: 45%;
+}
+
+.imicro .zoom-block,
+.imicro .light-block {
+	margin-bottom: 8px;
+}
+.imicro .light-block .radiobutton-group {
+	/* position: absolute;
+	top: 50%;
+	margin-top: -12px; */
+	padding-left: 16px;
+	height: 100%;
+}
+
+.imicro .zoom-block .radiobutton-group {
+	/* position: absolute;	#9480#note-6
+	top: 50%;
+	transform: translateY(-28px); */
+	padding-left: 16px;
+  height: 100%;
+}
+
+.imicro .preview-block .preview-block-inner {
+	padding-bottom: 4px;
+}
+
+.imicro .info-btn,
+.imicro .answer-btn,
+.imicro .settings-btn {
+	width: 115px;
+	height: 40px;
+	margin:0 10px;
+	float: left;
+	position:relative;
+	border-radius: 0;
+}
+
+.imicro .answer-btn {
+	width:90px;
+	margin:0;
+}
+
+.imicro .has-answer .info-btn,
+.imicro .has-answer .settings-btn {
+	width:70px;
+}
+
+.imicro .info-btn {
+	background: url(../img/info_btn.png) center 0 no-repeat;
+}
+.imicro .info-btn:before {
+	content:'';
+	position:absolute;
+	background: url(../img/info_btn.png) 0 0 no-repeat;
+	width:10px;
+	height:40px;
+	left:-10px;
+	top:0;
+}
+.imicro .info-btn:after {
+	content:'';
+	position:absolute;
+	background: url(../img/info_btn.png) right 0 no-repeat;
+	width:10px;
+	height:40px;
+	right:-10px;
+	top:0;
+}
+
+.imicro .answer-btn {
+	background: url(../img/answer_btn.png) 0 0 no-repeat;
+}
+
+.imicro .settings-btn {
+	background: url(../img/settings_btn.png) center 0 no-repeat;
+}
+.imicro .settings-btn:before {
+	content:'';
+	position:absolute;
+	background: url(../img/settings_btn.png) 0 0 no-repeat;
+	width:10px;
+	height:40px;
+	left:-10px;
+	top:0;
+}
+.imicro .settings-btn:after {
+	content:'';
+	position:absolute;
+	background: url(../img/settings_btn.png) right 0 no-repeat;
+	width:10px;
+	height:40px;
+	right:-10px;
+	top:0;
+}
+
+.imicro .info-btn.active {
+	background: url(../img/info_btn_active.png) center 0 no-repeat;
+}
+.imicro .info-btn.active:before {
+	content:'';
+	position:absolute;
+	background: url(../img/info_btn_active.png) 0 0 no-repeat;
+	width:10px;
+	height:40px;
+	left:-10px;
+	top:0;
+}
+.imicro .info-btn.active:after {
+	content:'';
+	position:absolute;
+	background: url(../img/info_btn_active.png) right 0 no-repeat;
+	width:10px;
+	height:40px;
+	right:-10px;
+	top:0;
+}
+
+.imicro .answer-btn.active {
+	background: url(../img/answer_btn_active.png) 0 0 no-repeat;
+}
+
+.imicro .settings-btn.active {
+	background: url(../img/settings_btn_active.png) center 0 no-repeat;
+}
+.imicro .settings-btn.active:before {
+	content:'';
+	position:absolute;
+	background: url(../img/settings_btn_active.png) 0 0 no-repeat;
+	width:10px;
+	height:40px;
+	left:-10px;
+	top:0;
+}
+.imicro .settings-btn.active:after {
+	content:'';
+	position:absolute;
+	background: url(../img/settings_btn_active.png) right 0 no-repeat;
+	width:10px;
+	height:40px;
+	right:-10px;
+	top:0;
+}
+
+.imicro .info-btn.disabled,
+.imicro .answer-btn.disabled,
+.imicro .settings-btn.disabled {
+	pointer-events: none;
+	cursor: default;
+	opacity: 0.5;
+}
+
+.imicro .info-block {
+	display: none;
+}
+
+.imicro .answer-block {
+	overflow: visible; /* точки можно перетягивать */
+}
+.imicro .info-block {
+	display: none;
+}
+
+.imicro .info-block .mCustomScrollbar {
+	padding-left: 10px;
+	padding-right: 0;
+}
+.imicro .microscope-check-panel {
+	position: absolute;
+	height: 60px;
+	bottom: 0;
+	left: 0;
+  	border-bottom-left-radius: 8px !important;
+	border-bottom-right-radius: 8px !important;
+  	padding: 0;
+  	display: none;
+}
+
+.imicro .microscope-check-panel .check-icon {
+	width: 35px;
+	height: 34px;
+	position: absolute;
+	top: 14px;
+	left: 50%;
+	margin-left: -18px;
+}
+
+.imicro .microscope-check-panel.wrong {
+	background: #ff8182;
+}
+
+.imicro .microscope-check-panel.correct {
+	background: #b1f097;
+}
+
+.imicro .microscope-check-panel.wrong .check-icon {
+	background: url(../img/answer_wrong.png) 0 0 no-repeat;
+}
+
+.imicro .microscope-check-panel.correct .check-icon {
+	background: url(../img/answer_true.png) 0 0 no-repeat;
+}
+
+.imicro .hidden {
+	position:absolute;
+	z-index:-2;
+	opacity:0;
+	display:block !important;
+}
+
+
+.imicro #rightPanel {padding-left:8px}
+
+.imicro .radio-title {text-align:left}

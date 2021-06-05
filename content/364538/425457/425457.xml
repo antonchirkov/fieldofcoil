@@ -1,0 +1,8 @@
+﻿<commonmodel width="900" height="600" type="collisions">
+	<script lib="externals/createjs-2015.11.26.min.js"/>
+	<script src="js/iphysiccollisions.js"/>
+	<script src="js/platform.js"/>
+	<script src="js/wheel.js"/>
+	<script src="js/cube.js"/>
+	<style src="css/iphysiccollisions.css"/>
+</commonmodel>

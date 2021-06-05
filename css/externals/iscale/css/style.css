@@ -1,0 +1,124 @@
+@CHARSET "UTF-8";
+.iscale .title-bar {
+	background: #005e94;
+	color: white;
+	font-size: 20px;
+	height: 30px;
+	line-height: 30px;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	opacity: 1;
+}
+
+.iscale .top-pane .single-layout {
+  	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+}
+
+.iscale .top-pane .single-layout img {
+	border: none !important;
+	vertical-align: middle;
+}
+
+.iscale .bottom-pane .play-button {
+	background: url(../../basemodel/img/play-button.png) 0 0 no-repeat;
+}
+
+.iscale .slider-handler .model-slider-horizontal {
+  height: 56px;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.iscale .play-button {
+  margin-top: 20px;
+}
+
+.iscale .play-button.pause {
+  background: url(../../basemodel/img/pause-button.png) 0 0 no-repeat;
+}
+
+.iscale .demo-block .title-bar span {padding:0 10px;}
+
+.iscale .demo-block-content.without-title {
+	margin-top: 0px;
+    -webkit-border-radius: 8px !important;
+    -moz-border-radius: 8px !important;
+    border-radius: 8px !important;
+}
+
+.iscale .demo-block .pane-content {
+	/* overflow-y: auto;
+	overflow-x: hidden; на board - появляется скролл из-за увеличенного заголовка*/
+	overflow: hidden;
+	padding: 0;
+}
+
+.iscale .demo-block .magnify-glass {
+	position: absolute;
+	top: 50%;
+	right: 2px;
+	width: 30px;
+	height: 30px;
+	margin-top: -15px;
+	background: url(../img/lupa_icon.png) center center no-repeat;
+	cursor: pointer;
+}
+
+.contentImage img{
+	-o-object-fit:cover;
+	object-fit:cover;
+	font-family: 'object-fit: cover;';/* for IE & Edge - the css polifill special property*/
+	width:100%;
+	height:100%;
+}
+
+/* fix #7866 */
+.iscale .multiple-columns-layout .column {line-height:14px}
+
+.iscale .multiple-columns-layout{
+	display:block;
+}
+
+[skin="board"] .iscale .slider-label {line-height:20px;}
+
+.iscale .model-slider-slider .model-slider-scale .mark {top:30px;} /* #8402 - #9712 Исправлено с 26 на 30*/
+.iscale .model-slider-slider .model-slider-scale .mark[valign="top"] {top:auto;bottom:30px;} /* #8402 */
+.iscale .model-slider .ui-slider-handle .handler .slide { /* #8402 */
+    height: 28px;
+    width: 28px;
+    left: 3px;
+    top: 3px;
+    background-size: cover!important; /*!important, т.к. в base-model.css background тоже !important*/
+}
+.courseml[skin="board"] .iscale.im-model[skin-title] .title-bar { /* #8402 Правка стилей из board для этой модели */
+	height: 34px;
+	line-height: 34px;
+}
+.courseml[skin="board"] .im-model[skin-title] .top-pane > .single-layout.has-title > .pane-content-wrap { /* #8402 Правка стилей из board для этой модели */
+	padding-top: 34px;
+}
+.iscale .bottom-pane { /* #8402 Нижняя панель была увеличена на 2px, поэтому добавить отступ сверху */
+	padding-top: 2px;
+}
+
+/*
+	#8402 Для этого класса в base-model.css пока нет стилей, но класс задается, т.к. указан valign="middle" у <axislabel>.
+ 	Когда этот класс потребуется внести в base-model и будет с чем сравнивать во избежание ошибок, то этот класс отсюда можно удалить или исправить
+*/
+.iscale .slider-handler .slider-label.middle {
+	top: 28px;
+}
+
+.iscale .model-slider-slider .model-slider-scale .mark:after { /* 9977 */
+	content:'';
+	position:absolute;
+	width:100%;
+	height: 18px;
+	left:0;
+	bottom:100%;
+}
+.iscale .model-slider-slider .model-slider-scale .mark[valign="top"]:after { /* 9977 */
+	top:100%;
+	bottom:0;
+}

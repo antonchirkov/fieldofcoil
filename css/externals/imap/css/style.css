@@ -1,0 +1,352 @@
+@CHARSET "UTF-8";
+
+.interactive-map {
+	overflow: hidden;
+	-webkit-user-select: none; 
+  	-moz-user-select: none;    
+  	-ms-user-select: none;     
+  	user-select: none;   
+  	font-weight: 400;
+  	-webkit-transform-origin: left top;
+   	-ms-transform-origin: left top;
+   	-o-transform-origin: left top;
+   	transform-origin: left top;
+   	position: relative;
+   	-webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -o-border-radius: 6px;
+    border-radius: 6px;
+    position: relative;
+}
+
+.interactive-map.non-visible,
+.interactive-map .non-visible {
+	visibility: hidden;
+}	
+
+/* ----------------------- Стили переключателей слоев -------------------------------*/
+
+.interactive-map .switcher-layout {
+	display: inline-block;	
+	width: 100%;
+}
+
+.interactive-map .switcher-layout.bordered {
+	border-bottom: 1px solid #C8C9CD;
+	padding: 0 !important;
+	margin: 0 !important;
+}
+.interactive-map .switcher-layout.disabled {
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+/* ----------------------- Стили общей разметки -------------------------------*/
+
+.interactive-map .maparea {
+	float: left;
+	position: relative;
+	width: 500px;
+	height: 500px;
+	-webkit-border-radius: 8px;
+  	-moz-border-radius: 8px;
+ 	border-radius: 8px;
+ 	background: #ababab;
+ 	margin: 0 8px 8px 0;
+ 	overflow: hidden;
+ 	cursor: default;
+}
+
+.interactive-map .maparea .mapdraggablearea {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}	
+
+.interactive-map .maparea .mapdraggablearea .mapLayer {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+}
+
+.interactive-map .controlsarea {
+	float: left;
+	height: 500px;
+	width: 250px;
+	margin: 0 0 8px 8px;
+	position: relative;
+}
+
+.interactive-map .sliderarea {
+	float: left;
+	height: 48px;
+	width: 500px;
+	margin: 8px 8px 0 0;
+	position: relative;
+}
+
+.interactive-map .controlsarea .controlswitcher {
+	height: 33px;
+	width: 244px;
+	margin-bottom: 8px;
+	position: relative;
+	cursor: pointer;
+}
+
+.interactive-map .controlsarea .controlswitcher .layerstitle,
+.interactive-map .controlsarea .controlswitcher .legendtitle { 
+	height: 100%;
+	width: 50%;
+	float: left;
+	position: relative;
+	font-size: 16px;
+	line-height: 33px;
+	text-align: center;
+}
+.interactive-map .controlsarea .controlswitcher.controls {
+	background: url(../img/switcher1.png) 0 0 no-repeat;
+}
+.interactive-map .controlsarea .controlswitcher.controls .layerstitle,
+.interactive-map .controlsarea .controlswitcher.legend .legendtitle {
+	color: white;
+}
+.interactive-map .controlsarea .controlswitcher.controls .legendtitle,
+.interactive-map .controlsarea .controlswitcher.legend .layerstitle {
+	color: #0B72B4;
+}
+
+.interactive-map .controlsarea .controlswitcher.legend {
+	background: url(../img/switcher2.png) 0 0 no-repeat;
+}
+
+.interactive-map .controlsarea .legendhandler,
+.interactive-map .controlsarea .switchers {
+	height: 100%;
+	width: 100%; 
+	overflow-x: hidden;
+	overflow-y: auto;
+}	
+
+.interactive-map .controlsarea .legendhandler {
+	display: none;
+	text-align: center;
+}
+
+/* ----------------------- Стили слайдера дат ------------------------------ */
+
+.interactive-map .sliderarea .ui-slider-handle .handler .slide {
+	background: url(../img/main-slider-marker.png) 0 0 no-repeat !important;
+}
+
+.interactive-map .sliderarea .markLine {
+	cursor: pointer;
+}
+
+.interactive-map .sliderarea .sliderhandler {
+  float: left;
+  position: relative;
+  width: 387px;		
+  height: 40px;
+}
+
+.interactive-map .sliderarea .sliderhandler .sliderback {
+  position: absolute;
+  height: 8px;
+  width: 380px;
+  background: url(../img/main-slider-background.png) 0 0 repeat-x;
+  bottom: 0px;
+  margin: 0 8px;
+}
+.interactive-map .sliderarea .sliderhandler .sliderback .right,
+.interactive-map .sliderarea .sliderhandler .sliderback .left {
+  height: 8px;
+  width: 8px;
+  position: absolute;
+}
+.interactive-map .sliderarea .sliderhandler .sliderback .left {
+  background: url(../img/main-slider-left.png) 0 0 repeat-x;
+  left: -8px;
+}
+.interactive-map .sliderarea .sliderhandler .sliderback .right {
+  background: url(../img/main-slider-right.png) 0 0 repeat-x;
+  right: -8px;
+}
+	
+.interactive-map .sliderarea .slider {
+  background: none;
+  border: none;
+  position: absolute;
+  width: 100%;
+  height: 8px;
+  bottom: 0px;
+  cursor: pointer;
+}
+.interactive-map .sliderarea .ui-slider-handle.ui-state-focus,
+.interactive-map .sliderarea .ui-slider-handle.ui-state-hover,
+.interactive-map .sliderarea .ui-slider-handle.ui-state-active {
+  border: none !important;	
+  outline: none !important;
+}  
+
+.interactive-map .sliderarea .multimediabutton {
+	width: 73px;
+	height: 40px;
+	margin-right: 8px;
+	float: left;
+	position: relative;
+	background: url(../img/play-button.png) 0 0 no-repeat;
+	cursor: pointer;
+}
+.interactive-map .sliderarea .multimediabutton.pause {
+	background: url(../img/pause-button.png) 0 0 no-repeat;
+}	
+.interactive-map .sliderarea .yearmark {
+	position: absolute;
+	width: 2px;
+	height: 8px;
+	background: #acacac;
+	top: -9px;
+}	
+.interactive-map .sliderarea .yearlabel {
+	position: absolute;
+	display: inline-block;
+	text-align: center;
+	line-height: 20px;
+	font-size: 14px;
+	color: black;
+	top: -30px;
+}
+
+/* ------------------- Слайдер зума карты ----------------------*/
+
+.interactive-map .maparea .zoomsliderhandler {
+	position: absolute;
+	width: 20px;
+	height: 120px;
+	z-index: 500;
+	bottom: 24px;
+	left: 24px;
+}
+
+.interactive-map .maparea .zoomslider {
+	width: 7px;
+	height: 115px;
+	background: url(../img/zoom-back.png) 0 0 no-repeat;
+	border: none;
+}
+
+.interactive-map .maparea .zoomslider .ui-slider-handle.ui-state-focus,
+.interactive-map .maparea .zoomslider .ui-slider-handle.ui-state-hover,
+.interactive-map .maparea .zoomslider .ui-slider-handle.ui-state-active {
+  border: none !important;	
+  outline: none !important;
+}
+
+.interactive-map .maparea .zoomslider .ui-slider-handle {
+  width: 33px !important;
+  height: 15px !important;
+  background: none !important;
+  position: absolute;
+  border: none !important;
+  left: -12px;
+}
+.interactive-map .maparea .zoomslider .ui-slider-handle .handle {
+  width: 33px;
+  height: 15px;
+}
+.interactive-map .maparea .zoomslider .ui-slider-handle .handle-back {
+  width: 33px;
+  height: 15px;
+  position: absolute;
+  bottom: -8px;
+  background: url(../img/zoom-slider.png) 0 0 no-repeat !important;
+  cursor: pointer;
+}
+.interactive-map .maparea .layer-text-label {
+  position: absolute;
+  display: inline-block;	
+  text-align: center;
+}
+
+.interactive-map .maparea .settlement-point {
+	position: absolute;
+}
+
+.interactive-map .maparea .settlement-point.village {
+	background: url(../img/city_6.png) 0 0 no-repeat;
+	width: 6px;
+	height: 6px;
+}
+.interactive-map .maparea .settlement-point.urbanvillage {
+	background: url(../img/city_6.png) 0 0 no-repeat;
+	width: 6px;
+	height: 6px;
+}
+.interactive-map .maparea .settlement-point.city {
+	background: url(../img/city_3.png) 0 0 no-repeat;
+	width: 10px;
+	height: 10px;
+}
+.interactive-map .maparea .settlement-point.agglomeration {
+	background: url(../img/city_2.png) 0 0 no-repeat;
+	width: 12px;
+	height: 12px;
+}
+
+.interactive-map .imap-popup {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #dcd;
+  -webkit-border-radius: 8px !important;
+  -moz-border-radius: 8px !important;
+  border-radius: 8px !important;
+  z-index: 1200;
+  display: none;
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+.interactive-map .imap-popup .content {
+  position: relative;
+  font-size: 11pt;
+  line-height: 13pt;
+  max-height: 480px;
+  max-width: 600px;	
+  overflow-y: auto;
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.interactive-map .imap-popup .closeBtn {
+  position: absolute;
+  background: url(../img/dialog_close_icon.png) 0 0 no-repeat;
+  width: 27px;
+  height: 27px; 
+  top: -14px;
+  right: -14px;
+  cursor: pointer;  
+}
+
+.interactive-map .blocking-screen {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	display: none;
+	background: #000000;
+	opacity: 0.6;
+	z-index: 1100;
+}
+
+.interactive-map .checkbox-inner {
+	margin-top: -11px !important;
+}
+
+.interactive-map .model-popup-wrapper .ui-widget-overlay {
+	position: absolute;
+} 

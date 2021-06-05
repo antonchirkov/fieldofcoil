@@ -1,0 +1,443 @@
+<experiment width="900" height="630">
+
+<equipment>
+	<!--
+		Контейнерный элемент для всех элементов лабораторного оборудования (в т. ч. емкостей для реагентов)
+	-->
+	<equip type="bottle" id="bottle1CH3COONa" attachto="shelf_1" align="right" reagent="CH3COONa"> <!--ацетат натрия-->
+		<label>CH<sub>3</sub>COONa</label>
+	</equip>
+	<!--
+            Элемент лабораторного оборудования. 
+            Атрибуты и их возможные значения:
+				id: уникальный на всю модель идентификатор объекта
+				type: - тип оборудования,
+					burning_spoon	- Ложка для сжигания веществ,
+					hose			- Шланг, устаревшее, использовался для Киппа
+					labels			- область в которой распологаются плавающие подписи, в случае если подпись была выбрашена с пробирки на стол, подпись улетит в эту область
+					switch			- электрически переключатель
+					used_tools		- контейнер для использованого оборудования
+										∙ В шагах что бы оборудование выбросить в лоток нужно использовать attachto="used_tools"
+					bath			- Водяная баня
+					battery			- батарея
+					burner_block	- подставка для горелки
+					burner			- горелка
+					bottle			- Банка для сыпучих веществ
+					bottle_keros	- Банка с керосином для Na и др
+					cable			- кабель для электросборок
+					filter_paper	- фильтровальная бумага
+					flaconpipette	- флакон с пипеткой
+					cork_gastube	- Пробка с газоотводной трубкой
+					gastube			- газоотводный шланг с трубкой
+										∙ Если в приборе появляется газ, то трубка передает этот газ к другому присоединнному элементу (например стакан)
+										∙ Если трубка отсоединяется от объекта (стакана) то из объекта удаляется(если он есть) реаегент "газ" который (если)передавался трубкой
+										∙ Что-бы убрать газоотводную трубку из объекта, нужно использовать attachto к объекту к которому она закреплена:
+											н/п: <condition equip="gastube" attachto="cork_gastube"/>
+										  при этом трубка отсоединиться если ее бросить в любое свободное место стола или полки
+					flask			- Флакон
+					flask_cap		- крышка для флакона
+					florence_flask	- колба
+					glass			- стакан
+					glass_electrodes - стакан с электродами
+					cap_electrodes	- крышка для стакана с электродами
+					kippa			- аппарат Киппа
+					indicator_pack	- набор универсальной индикаторной бумаги
+					lamp			- лампа, индикатор тока.
+										∙ Если лампа учавствует в сборке, то при разрыве сборки лампа выключается.
+										∙ Если в сборке есть переключатель, то при выключении сборки - лампа выключается.
+					petri			- чаша петри
+					matchbox		- спички
+					mortar			- ступка
+					pipette			- пипетка
+					plate			- Фарфоровая плстинка, 7 капель, для обращения к капле использовать id_пластинки-dropper_номер, например equip="plate1-dropper1" для первой капли
+					rod				- стеклянная палочка
+					stand			- Пробиркодержатель
+					splinter		- Лучина
+					splinter_block	- подставка для лучины
+					therm			- термометр
+					spoon			- ложечка чайная
+					test_tube		- пробирка
+					timer			- секундомер
+					tigel			- тигельная (фарфоровая) чаша
+					spatula			- Шпатель
+					tweezers		- пинцет
+					tubes_stand		- стенд для пробирок
+					tweezers_tigel	- тигельные щипцы
+					wire			- проволока медная
+					gluesricker		- навешиваемая на пробирку подпись
+					beaker50		- мерный стакан химический 50ml
+					beaker100		- мерный стакан химический 100ml
+					beaker150		- мерный стакан химический 150ml
+					beaker200		- мерный стакан химический 200ml
+					needle			- игла
+										attachto: cork_gastube
+											Если пробка надета на емкость, в которой есть горящий газ (burn="true") то иглу можно поджечь <condition equip="needle" status="burn"/>
+					crystallizer	- кристализатор, емкость, может содержать в себе жикость
+					cap_dropper		- пробка с капельницей
+										Принцип действия, такой же как у газовой трубки, но только с жидкостью:
+										∙ Присоединение пробки с капельницей к пробирке добавляет реагент в пробирку находящийся в пробке.
+										∙ Отсоединение пробки с капельницей удаляет реагент из пробирки, если он еще в ней находится.
+					wurtz_flask		- колба вюрца. Взаимодействует с gastube
+					test_tube_gas	- прибор для получения газа
+									жидкий реагент может быть добавлен только при закрытой крышке
+					glass_cylinder  - стеклянный цилиндр, взаимодействует с crystallizer
+					stand_reverse	- пробиркодержатель отраженный
+					test_tube_reverse - пробирка перевернутая
+					florence_flask_100 - плоскодонная колба на 100мл
+					florence_flask_500 - плоскодонная колба на 500мл
+					cap_dropper_closable - пробка-капельница с краником
+					slideglass		- Предметное стекло
+										attachto: burner
+
+				reagent: id реагента из блока реагентов, который инициализируется в этой емкости
+				align: left | right, равнение оборудования на полке
+				left: Int, количество пикселей, альтернативное управление положением оборудования, расположение оборудования относительно левого края
+				right: Int, количество пикселей, альтернативное управление положением оборудования, расположение оборудования относительно правого края
+				top: Int, количество пикселей, расположение оборудования на столе относительно верхнего края,
+				bottom: Int, количество пикселей, расположение оборудования на столе относительно нижнего края,
+				position: $this.attr('position'),	// используется у пробирок, что бы указать для пробирки номер слота в полке
+				title: всплывающая подсказка к оборудованию, уст.
+				degree: градусы наклона, используется для пробиркодержателя
+				status: состояние
+					burner		status=[open]|closed|active (открыта|закрыта|горит)
+					lamp		status=on|[off]
+					switch		status=on|[off]
+					splinter	status=[default]|active|smolder (начальное|горит|тлеет)
+					test_tube_gas status=[open]|closed
+					cap_dropper_closable status=closed|[open]
+
+				label: подпись, задается через атрибут или через дочерний тег <label>..</label>
+				attachto: полка к которой присоединено оборудование (shelf_0|shelf_1|shelf_2 , где 0 - стол), либо id другого оборудования к которому нужно присоединить
+				color: цвет емкости
+					flaconpipette	[default]|dark
+					flask			[default]|dark
+
+				size: количество reagent
+				dose: по сколько отдает данная емкость,
+				maxdose: максимально сколько может принять,
+				angle: угол наклона
+					stand			0..100
+
+        -->
+
+	<equip type="bottle" id="bottle2NaOH" attachto="shelf_1" align="right" reagent="NaOH"> <!--гидроксид натрия-->
+		<label>NaOH</label>
+	</equip>
+	<equip type="tubes_stand" attachto="shelf_0" align="right"/>
+	<equip type="test_tube" id="Br2_f" attachto="tubes_stand" reagent="Br2" position="1"> <!--бромная вода-->
+		<label>Br<sub>2</sub> (р-р)</label>
+	</equip>
+	<equip type="test_tube" id="KMnO4_f" attachto="tubes_stand" reagent="KMnO4" position="2"> <!--перманганат натрия-->
+		<label>KMnO<sub>4</sub></label>
+	</equip>
+	<equip type="test_tube" id="H2SO4_f" attachto="tubes_stand" reagent="H2SO4" position="3"> <!--серная кислота-->
+		<label>H<sub>2</sub>SO<sub>4</sub> (конц.)</label>
+	</equip>
+	<equip type="test_tube" id="H2O_f" attachto="tubes_stand" reagent="H2O" position="4"> <!--вода-->
+		<label>H<sub>2</sub>O</label>
+	</equip>
+	<equip type="test_tube" id="test_tube_Reagent" attachto="tubes_stand" position="5"></equip>	<!--пустая для двух реагентов-->
+
+	<equip type="stand" attachto="shelf_0" angle="45" align="right"></equip>
+ 	<equip type="burner_block" attachto="stand"></equip>
+	<equip type="burner" attachto="burner_block"></equip>
+	<equip type="cork_gastube" attachto="shelf_2" align="right"></equip>
+	<equip type="gastube" attachto="cork_gastube"></equip>
+
+	<equip type="matchbox" attachto="shelf_2" align="right"></equip>
+
+	<equip type="splinter_block" attachto="shelf_1" align="right"></equip>
+	<equip type="splinter" attachto="splinter_block"></equip>
+
+</equipment>
+
+
+<reagents>
+    <!--
+        Контейнерный элемент для всех реагентов, представленных в модели.
+    -->
+	<reagent id="CH3COONa" color="#FFFFFF" state="powder">
+		<!--
+            Атрибуты и их возможные значения:
+            name		название реагента
+			color		цвет реагента
+			indicator	реакция индикаторной бумаги на данный реагент (0-12)
+			temperature	температура реагента
+			state		Состояние [liquid]|powder|granules|gas|cream|chips|crystal|fiber|balls
+			gasup		пузыри поднимающихся вверх
+			minigasup	маленькие пузырьки поднимающихся вверх
+			gasupslow	медленно поднимающиеся пузыри
+			sludge		осадок (анимация образования)
+			blur		эмульсия
+			foam		пена, расстворение (размытые кляксы)
+			burn		цвет пламени
+			fume		дым
+			oil_film	пленка маслянная
+			elasticity	Эластичность
+				test_tube+rod+reagent[elasticity >= 100] - визуальная демонстрация "нить"
+				tweezers_tigel+tweezers_tigel+reagent[state=chips][elasticity] - визуальная демонстрация - щипцы растягивают реагент
+			faraon		Пенообразный столб вещества (змея фараона)
+
+        -->
+	</reagent>
+
+	<reagent id="NaOH" color="#FFFFFF" state="powder"/>
+
+	<reagent id="Br2" state="liquid" color="rgba(255,122,0,0.5)"/>
+	<reagent id="KMnO4" state="liquid" color="rgba(169,3,192,0.7)"/>
+	<reagent id="H2SO4" state="liquid" color="rgba(147,226,234,0.5)"/>
+	<reagent id="H2O" state="liquid" color="rgba(147,226,234,0.5)"/>
+ </reagents>
+
+<setups>
+<!--
+        Контейнерный элемент для всех конфигураций лабораторных установок в эксперименте.
+        Здесь указываются только конфигурации установок со ссылками на компоненты;
+        сами компоненты объявляются в отдельном контейнере <equipment>.
+    -->
+ <setup id="lab_stand1">
+ 	<equip type="burner_block" attachto="stand"/>
+	<!--
+        Атрибуты и их возможные значения:
+			type: тип оборудования
+			attachto: к какому типу оборудования должен быть присоединен
+	-->
+ 	<equip type="burner" attachto="burner_block"/>
+ 	<equip type="test_tube" attachto="stand"/>
+ </setup>
+
+</setups>
+
+
+<steps strict="true">
+<!--
+	Контейнерный элемент для шагов в лабораторной работе.
+	Атрибуты и их возможные значения:
+		strict - true|[false] в строгом режиме пользователю доступны только действия описанные в шагах
+-->
+
+<step> <!--1-->
+		<caption>В пустую пробирку насыпьте равное количество порошков ацетата и гидроксида натрия.</caption>
+		<!--
+			Элемент для текстового описания шага.
+		-->
+		<condition equip="test_tube_Reagent" reagent="CH3COONa"/>
+		<!--
+			Элемент условия шага. Шаг выполнится при выполнении всех условий.
+			Так же, эти условия используются при демонстрации решения.
+			Атрибуты и их возможные значения:
+				reagent			id реагента
+				from			id емкости источника
+				equip			id оборудования к которому применяется условие
+				type			тип оборудования к которому применяется условие
+				contain			id реагента который по условию должен содержаться в емкости (equip) принимающей реагент (reagent)
+				attachto		требование присоединить оборудование (equip) к другому оборудованию (attachto)
+				status			требование у оборудованию (equip) определенного статуса
+				wait			оборудование (equip - таймер) должен иметь определенное значение секунд (wait)
+								если использовать без оборудования (equip) то считается время с активации шага
+				angle			требование наклона оборудования (пока что это только stand)
+				degree			требование температуры оборудования (equip)
+				zoom			требование произвести приблежение оборудования (equip)
+				size			требуемое количество реагента (reagent) в оборудовании (equip)
+				empty			требование что-бы емкость (equip) в который добавляется реагент (reagent) было пустым
+				action			требование к действию для оборудования (equip)
+									∙ mix - перемешивание
+									∙ heatevenly - плавное разогревание
+				discharge		требование очистить емкость (equip) в раковине
+		-->
+		<condition equip="test_tube_Reagent" reagent="NaOH"/>
+
+		<!-- Альтернативный метод указания condition c помощью conditiongroup, пока условия в этом теге не выполнятся, условия следующиего conditiongroup будут неактивны. По суте это минишаги в шаге без смены номера шага и описания. В один conditiongroup может быть вложенно множество condition's. -->
+		<caption><p>Запустите таймер 3 раза по минуте.</p></caption>
+		 <conditiongroup>
+		   <condition equip="timer" wait="60"/>
+		 </conditiongroup>
+		 <conditiongroup>
+		   <condition equip="timer" wait="120"/>
+		 </conditiongroup>
+		 <conditiongroup>
+		   <condition equip="timer" wait="180"/>
+		 </conditiongroup>
+		</step>
+
+<step> <!--2-->
+		<caption>Закройте пробирку пробкой с газоотводной трубкой.</caption>
+	 	<condition equip="cork_gastube" attachto="test_tube_Reagent"/>
+</step>
+
+<step> <!--2-->
+		<caption>Закрепите пробирку со смесью ацетата и гидроксида натрия в пробиркодержателе штатива. Зажгите горелку при помощи спичек и прогрейте пробирку с сухими реагентами.</caption>
+		<condition equip="test_tube_Reagent" attachto="stand"/>
+		<condition equip="burner" status="active"/>
+</step>
+
+<step> <!--2_2-->
+		<caption>Опустите газоотводную трубку в пробирку с водой. Наблюдайте за выделением метана, который можно распознать по пробулькиванию через воду.</caption>
+		<condition equip="gastube" attachto="H2O_f"/>
+</step>
+
+<step> <!--3-->
+		<caption>Выньте газоотводную трубку из пробирки с водой и опустите в пробирку с раствором перманганата калия. Наблюдайте за изменениями.</caption>
+		<condition equip="gastube" attachto="KMnO4_f"/>
+</step>
+
+<step> <!--4-->
+		<caption>Выньте газоотводную трубку из пробирки с раствором перманганата калия и опустите в пробирку с бромной водой. Наблюдайте за изменениями.</caption>
+
+		<condition equip="gastube" attachto="Br2_f"/>
+</step>
+
+<step> <!--5-->
+		<caption>Выньте газоотводную трубку из пробирки с бромной водой и опустите в пробирку с концентрированной серной кислотой. Наблюдайте за изменениями.</caption>
+		<condition equip="gastube" attachto="H2SO4_f"/>
+</step>
+
+<step> <!--6-->
+		<caption>Выньте газоотводную трубку из пробирки с концентрированной серной кислотой. Подожгите спичками лучину. Поднесите горящую лучину к концу газоотводной трубки и подожгите выделяющийся газ. Соблюдайте правила работы с огнём! Метан – взрывоопасный газ, будьте осторожны! Наблюдайте за происходящими изменениями. Метан горит голубым пламенем.</caption>
+		<condition equip="gastube" attachto="cork_gastube"/>
+		<condition equip="splinter" status="active" from="matchbox"/>
+		<condition equip="gastube" status="burn" from="splinter"/>
+</step>
+
+<step> <!--7-->
+		<caption>Погасите спиртовку.</caption>
+	 	<condition equip="burner" status="closed"/>
+</step>
+</steps>
+
+
+
+<reactions>
+    <!--
+        Контейнерный элемент для всех реакций, которые могут произойти в ходе эксперимента
+			Правила выполнения реакций:
+			- Если в одном реакторе условия выполнены для запуска нескольких реакций - то приоритете имеет реакция, у которой таймер в условиях наибольший.
+    -->
+ <reaction id="step2react1">
+	<!--
+	Атрибуты и их возможные значения:
+		id			название реакции
+		zoomable	[true]|false - установить зумирование для реакции
+		plaque		true|color|[false] - реакция приведет к образованию налета на реакторе
+		time		время прохождение реакции - поддерживается частично
+	-->
+	 <reagents>
+		<!--
+			Реагенты, которые должны находиться в емкости, для начала реакции.
+		-->
+		<reagent name="CH3COONa_NaOH"/>
+		<!--
+			Атрибуты и их возможные значения:
+				name|id			название реагента из секции <reagents/>
+				size			количество реагента требуемого для старта реакции
+		-->
+	 </reagents>
+	<conditions>
+		<!--
+			Условия начала реакции
+			Дочерние узлы и их возможные атрибуты и значения:
+				<setup_complete id="id_установки"/> - требование что-бы установка была собрана
+				<item_activated id="id_оборудования"/> - требование что-бы оборудование было активировано (имело status="active")
+				<cap_closed id="id_оборудования"/> - требование что-бы оборудование было закрыто крышкой
+				<item_angle id="id_оборудования" angle="FLOAT"/> - трубование что-бы оборудование имело определенный угол наклона (angle)
+				<results|result> // поддерживаем и <result> и <results>
+					<equip [id] [name|key] [value] [status]/>
+						устанавливает оборудованию определенный статус (например <equip id="lamp" status="on"/> включит лампу)
+						так же в случаи необходимости может установить значение (value) для любого другого не стандартного аттрибута (name|key) для оборудования
+						- cap_electrodes (цвет и пузыри на ножках)
+							key="right_color" value="цвет"
+							key="left_color" value="цвет"
+							key="right_gasup" value="true" // автоматически удаляются по выключению переключателя и ломанию сборки если объект состоит в сборке
+							key="left_gasup" value="true" // автоматически удаляются по выключению переключателя и ломанию сборки если объект состоит в сборке
+						- slideglass
+							key="soot" valut="true" (сажа)
+						- glass_cylinder
+							key="freespace" value="200" // встроеный функционла цилиндра вытеснять реагент, см "вытеснение жидкости из цилиндра.xml"
+				</results|result>
+
+				<condition/>
+					Атрибуты и их возможные значения:
+						type		mix, условие на перемешивание
+						equip		id оборудования
+						attachto	оборудование (equip) должно быть присоединено к другому оборудованию (attachto)
+						status		оборудование (equip) должно иметь определенный status
+						wait		int, оборудование (equip - таймер) должен иметь определенное значение секунд (wait)
+									если использовать без оборудования (equip) то считается время с активации шага
+		-->
+		<setup_complete id="lab_stand1"/>
+		<item_activated id="burner"/>
+	</conditions>
+	<products>
+		<product id="CH3COONa_NaOH"/>
+		<product id="Metan" state="gas" color="rgba(255,255,255,0)" burn="rgba(0,125,255,0.6)"></product>
+	 </products>
+ </reaction>
+
+ <reaction>
+	 <reagents>
+		<reagent name="CH3COONa"/>
+		<reagent name="NaOH"/>
+	 </reagents>
+	<products>
+		<product id="CH3COONa_NaOH"  state="powder"></product>
+	 </products>
+ </reaction>
+
+
+ <reaction id="step2react2">
+	 <reagents>
+		<reagent name="Metan"/>
+		<reagent name="H2O"/>
+	 </reagents>
+	<products>
+		<product id="H2O_gas" state="liquid" color="rgba(147,226,234,0.5)" gasup="rgba(255,255,255,0.7)"></product>
+		<product id="Metan"/>
+	 </products>
+ </reaction>
+
+
+  <reaction id="ne_gas" zoomable="false">
+	 <reagents>
+		<reagent name="H2O_gas"/>
+	 </reagents>
+	<products>
+		<product id="H2O"></product>
+	 </products>
+ </reaction>
+
+
+
+ <reaction id="step3react1">
+	 <reagents>
+		<reagent name="Metan"/>
+		<reagent name="KMnO4"/>
+	 </reagents>
+	<products>
+		<product id="KMnO4"></product>
+	 </products>
+ </reaction>
+
+ <reaction id="step4react1">
+	 <reagents>
+		<reagent name="Metan"/>
+		<reagent name="Br2"/>
+	 </reagents>
+	<products>
+		<product id="Br2"></product>
+	 </products>
+ </reaction>
+
+ <reaction id="step5react1">
+	 <reagents>
+		<reagent name="Metan"/>
+		<reagent name="H2SO4"/>
+	 </reagents>
+	<products>
+		<product id="H2SO4"></product>
+	 </products>
+ </reaction>
+</reactions>
+
+
+
+</experiment>

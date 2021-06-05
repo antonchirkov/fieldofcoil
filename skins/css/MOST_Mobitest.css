@@ -1,0 +1,78 @@
+#arr_right, #arr_left {
+    padding: 2px;
+}
+
+body {
+    background-image: url(../img/MOST_Mobitest/common/bg_template_default.png);
+}
+
+#uppanel, #journalpanel {
+    background-image: url('../img/MOST_Mobitest/common/up_panel_bg.png');
+}
+
+.uppaneltab, .journalpaneltab {
+    color: rgba(0, 0, 0, 0.75);
+}
+
+.checkPanelRed, .checkPanelGrey, .checkPanelSolution, .checkPanelGreen, .checkPanelDefault {
+    background-color: transparent;
+}
+
+.wronganswer {
+    color: red;
+}
+
+.rightanswer {
+    color: green;
+}
+
+.hintanswer {
+    color: grey;
+}
+
+.btn:hover, .check:hover {
+    background-image: url(../img/MOST_Mobitest/common/button_a.png);
+}
+
+.btn, .check {
+    background-image: url(../img/MOST_Mobitest/common/button_p.png);
+}
+
+#clock {
+    background-image: url(../img/MOST_Mobitest/common/button_bg_p.png);
+    border-radius: 17px;
+    border: 0px solid #919191;
+}
+
+.btn_long:hover {
+    background-image: url(../img/MOST_Mobitest/common/button_bg_a.png);
+}
+
+.egenewitem {
+    background-image: url("../img/MOST_Mobitest/common/pl_ege_newitem.png");
+}
+
+.egecheckeditem {
+    background-image: url("../img/MOST_Mobitest/common/pl_ege_checked_bg.png");
+}
+
+.egeitem {
+    background-image: url("../img/MOST_Mobitest/common/pl_ege_selecteditem.png");
+}
+
+.paragraphs {
+    background-image: url("../img/MOST_Mobitest/common/paragraph_bg.png");
+}
+
+aside {
+    background-image: url("../img/MOST_Mobitest/common/panel_left_bg.png");
+}
+
+.th {
+    background-color: #3BBD67;
+    color: #ffffff;
+}
+
+.td {
+    background-color: white;
+}

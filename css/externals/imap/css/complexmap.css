@@ -1,0 +1,88 @@
+@CHARSET "UTF-8";
+.complex-map .single-image svg text,
+.complex-map .single-image svg tspan {
+	font-family: inherit; /* #11637 */
+}
+.complex-map .single-image .title-bar {
+	display: inline-block;
+	color: black;
+	text-align: right;
+	padding-right: 12px;
+	right: 0px !important;
+	left: auto !important;
+	background: none;
+	background: -moz-linear-gradient(left,  rgba(255,255,255,0) 0%, rgba(255,255,255,1) 25%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 25%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to right,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 25%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 */
+}
+
+.complex-map .model-button.backbutton {
+	position: absolute;
+	width: 84px;
+	height: 41px;
+	top: 8px;
+	left: 6px;
+	background: url(../img/back-button.png) 0 0 no-repeat;
+	cursor: pointer;
+	z-index: 1000;
+}
+
+.complex-map .model-button.play-button,
+.complex-map .model-button.legend-button {
+	position: relative;
+	width: 73px;
+	height: 40px;
+	cursor: pointer;
+	z-index: 1000;
+}
+
+.complex-map .model-button.play-button {
+	background: url(../img/play-button.png) 0 0 no-repeat;
+}
+
+.complex-map .model-button.play-button.pause {
+	background: url(../img/pause-button.png) 0 0 no-repeat;
+}
+
+.complex-map .model-button.legend-button {
+	background: url(../img/content-button.png) 0 0 no-repeat;
+}
+
+.complex-map .model-button.legend-button.disabled {
+	opacity: 0.6;
+	pointer-events: none;
+}
+
+.complex-map .single-image {
+	cursor: default;
+	-webkit-border-radius: 8px;
+  	-moz-border-radius: 8px;
+ 	border-radius: 8px;
+}
+
+.complex-map .complex-map-footer {
+	padding: 4px 0;
+}
+
+.complex-map .model-popup {
+	border: 1px solid #cfcfbc;
+	background: #E9F4FA !important;
+	text-align: center;
+	pointer-events: auto;
+}
+.complex-map .model-popup-wrapper {
+	pointer-events: none;
+}
+
+.complex-map .model-popup-wrapper .ui-widget-overlay {
+	pointer-events: auto;
+}
+
+.complex-map .model-slider-slider .model-slider-scale .mark { /* #11635 Меняем положение подписей после введения атрибута valign у дат*/
+	top: 10px;
+	max-width: 100%;
+}
+.complex-map .model-slider-slider .model-slider-scale .mark[valign="top"] { /* #11635 Меняем положение подписей после введения атрибута valign у дат*/
+	top: -35px;
+}
