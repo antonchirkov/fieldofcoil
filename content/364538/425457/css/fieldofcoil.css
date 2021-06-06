@@ -13,3 +13,18 @@
 .fieldofcoil .params {
   font-size:15px;
 }
+.fieldofcoil .circle {
+width: 38px;
+height: 38px;
+background: #bbb;
+border-radius: 50%;
+border: 1px solid  black;
+position:absolute;
+display:block;
+text-align:center;
+line-height:38px;
+font-size:30px;
+font-weight: bold;
+color:white;
+z-index: 3;
+}
