@@ -92,6 +92,7 @@ modelNS.fieldOfCoilView = modelNS.BaseModelView.extend({
 		this.renderParams();
 		this.renderTypes();
 		this.renderOutput();
+		this.renderAnimation();
 
 		$(document.body).tooltip();
 
@@ -274,7 +275,6 @@ modelNS.fieldOfCoilView = modelNS.BaseModelView.extend({
 				dB = this.inputs.dB.getText()*1;
 				let parameters = findBxy(x,y,r,i);
 
-		// before:
 		var
 		bx = parameters[0],
 		by = parameters[1],
@@ -286,7 +286,14 @@ modelNS.fieldOfCoilView = modelNS.BaseModelView.extend({
 		this.labels.by.set({'%d': this.toLabelView(by)});
 	},
 	renderAnimation : function (){
-
+		// статика
+		$(
+			'<div style="position:absolute; height:200px; width:40px; top:130px; left:430px; background:#aaa; z-index:0;"> <div style="position:relative; width:100%; height:100%;">'+
+		 '<div class="fieldofcoil circle" style="top:-20px">⋅</div>'+
+	      '<div class="fieldofcoil circle" style="bottom:-20px">×</div></div></div>'+
+			'<div style="width:900px; height:2px; position:absolute; background:red; top:229px; display:block; z-index:1;"/>'+
+			'<div style="position:absolute; color:red; left:700px; top:218px; font-size:14px;">►</div>'
+		).appendTo(this.animationPanel.$el);
 	},
 	toLabelView : function (num)
 	{
